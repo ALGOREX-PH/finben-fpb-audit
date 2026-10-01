@@ -31,3 +31,8 @@ FINALISTS = 2
 FINMA_MODEL = "ChanceFocus/finma-7b-nlp"          # same weights as TheFinAI/finma-7b-nlp, not gated, MIT
 FINMA_PUBLISHED_F1 = 0.88
 MEMO_SAMPLE = 970            # train sentences sampled for the memorisation check
+
+# Part D: contamination x intensity controls. Kept apart from models/adapters and results/partB|partC so
+# no Part A-C glob (b3_select, b4_harness_parity, b5_report, c4_report) can ever pick them up.
+CONTROLS_DIR = MODELS_DIR / "controls"
+PARTD_DIR = ROOT / "results" / "partD"
