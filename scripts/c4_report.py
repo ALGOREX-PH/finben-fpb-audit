@@ -131,6 +131,9 @@ else:
               f"- FinMA's lead on the fresh sentences: **{lead_fresh:+.4f}** (McNemar p = {p:.2g}; only FinMA right {x}, only ours right {y})",
               f"- Shrink: **{shrink:+.4f}**, 95% CI [{lo:+.3f}, {hi:+.3f}]", "",
               f"**Verdict: {verdict}.**", "",
+              *(["*Missing check: no human has labelled or spot-checked these sentences; the gold labels are an AI's "
+                 "(see section 4). Treat the verdict as preliminary until `c2_label.py --spotcheck 40` is done.*", ""]
+                if ai_gold and not (FRESH / "spotcheck.csv").exists() else []),
               f"*Rule: supported if the lead shrinks by ≥ {MIN_SHRINK} with a CI excluding 0; not supported if FinMA still leads by "
               f"≥ {MIN_SHRINK} with p < 0.05; otherwise inconclusive.*", ""]
 
