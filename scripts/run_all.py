@@ -124,4 +124,4 @@ run("C4. Part C report (needs data/fresh/labels.csv)", "c4_report.py", skip=Fals
 # ================================ checks + the one report ====================================
 run("B4. parity with FinBen's official scoring code", "b4_harness_parity.py", skip=False)
 run("report: results/REPORT.md", "report.py", skip=False)
-print("\nDone -> scripts/results/REPORT.md")
+print("\nDone -> results/REPORT.md")
