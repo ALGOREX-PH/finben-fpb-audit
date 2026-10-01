@@ -19,6 +19,7 @@ import pandas as pd
 from sklearn.metrics import f1_score
 
 import config_b as config
+import preds
 from config_b import LABELS
 
 TIE_TOLERANCE = 0.003
@@ -35,7 +36,7 @@ def validation_runs():
     for f in (config.PRED_DIR / "validation").glob("e*_lr*_r*_s*.csv"):
         m = RUN.match(f.stem)
         if m:
-            runs[(int(m["epochs"]), float(m["lr"]), int(m["rank"]))][int(m["seed"])] = pd.read_csv(f, keep_default_na=False)
+            runs[(int(m["epochs"]), float(m["lr"]), int(m["rank"]))][int(m["seed"])] = preds.read(f)
     return runs
 
 
