@@ -84,6 +84,7 @@ if __name__ == "__main__":
     train_ds = to_dataset(train)
     valid_ds = to_dataset(valid) if valid is not None else None
     steps_per_epoch = max(1, len(train_ds) // (config.BATCH_SIZE * config.GRAD_ACCUM))
+    ckpt_dir = (config.PARTD_DIR if control else config.RESULTS_DIR) / "checkpoints" / name
     trainer = SFTTrainer(
         model=model, tokenizer=tokenizer, train_dataset=train_ds, eval_dataset=valid_ds,
         args=SFTConfig(
@@ -94,13 +95,19 @@ if __name__ == "__main__":
             warmup_steps=max(1, steps_per_epoch * args.epochs // 20),
             optim="adamw_8bit", weight_decay=0.01, logging_steps=10,
             eval_strategy="steps" if valid_ds is not None else "no", eval_steps=max(1, steps_per_epoch // 2),
-            seed=args.seed, data_seed=args.seed, output_dir=str(config.RESULTS_DIR / "checkpoints" / name),
-            save_strategy="no", report_to="none", dataset_num_proc=1))
+            seed=args.seed, data_seed=args.seed, output_dir=str(ckpt_dir),
+            # controls run for hours: checkpoint every half epoch (every step in a smoke run) and resume after a crash
+            save_strategy="steps" if control else "no", save_total_limit=1,
+            save_steps=1 if args.max_steps > 0 else max(50, steps_per_epoch // 2),
+            report_to="none", dataset_num_proc=1))
     trainer = train_on_responses_only(trainer, instruction_part="<|turn>user\n", response_part="<|turn>model\n")
 
     torch.cuda.reset_peak_memory_stats()
     t0 = time.time()
-    stats = trainer.train()
+    resume = control and any(ckpt_dir.glob("checkpoint-*"))
+    if resume:
+        print(f"resuming from the last checkpoint in {ckpt_dir}")
+    stats = trainer.train(resume_from_checkpoint=True if resume else None)
     model.save_pretrained(str(out_dir))
     tokenizer.save_pretrained(str(out_dir))
     val_curve = [(round(h["epoch"], 2), round(h["eval_loss"], 4)) for h in trainer.state.log_history if "eval_loss" in h]
