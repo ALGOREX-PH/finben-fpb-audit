@@ -41,6 +41,33 @@ def run(title, script, *script_args, skip=True):
         raise SystemExit(f"failed: {title}")
 
 
+def part_d():
+    """Part D: contamination x intensity controls, pre-registered in ANALYSIS.md (tag prereg-partD).
+    Everything goes to models/controls and results/partD; Parts A-C are never touched. Shortest runs first,
+    so a bug shows up after ~40 minutes rather than overnight."""
+    sel = json.loads(config.SELECTED.read_text())
+    recipe = ["--lr", sel["lr"], "--rank", sel["rank"]]
+    pred = config.PARTD_DIR / "predictions"
+    name = lambda epochs, seed, suffix: f"e{epochs}_lr{sel['lr']:g}_r{sel['rank']}_s{seed}_{suffix}"
+    for seed in config.SEEDS:   # cell A = the Part B final models; only their train-sample predictions are new
+        run(f"D. cell A seed {seed}: train sample", "b2_eval.py", "--adapter", name(sel["epochs"], seed, "tv"),
+            "--split", "train_sample", "--pred-dir", pred)
+    cells = [("B", 2, "trainvaltest", 3407), ("D", 15, "trainvaltest", 3407), ("C", 15, "trainval", 3407),
+             ("B", 2, "trainvaltest", 42), ("B", 2, "trainvaltest", 7)]
+    if args.all_seeds:
+        cells += [(c, 15, data, s) for s in (42, 7) for c, data in (("D", "trainvaltest"), ("C", "trainval"))]
+    for cell, epochs, data, seed in cells:
+        run_name = name(epochs, seed, "tvt" if data == "trainvaltest" else "tv")
+        run(f"D. cell {cell}: train {run_name}", "b1_train.py", "--epochs", epochs, *recipe, "--seed", seed,
+            "--data", data, "--control")
+        for split in ["test", "train_sample"]:
+            run(f"D. cell {cell}: {run_name} on {split}", "b2_eval.py", "--adapter", run_name, "--adapter-dir",
+                config.CONTROLS_DIR, "--pred-dir", pred, "--split", split)
+        run(f"D. cell {cell}: {run_name} on fresh sentences", "c3_eval.py", "--system", "control", "--adapter", run_name,
+            "--adapter-dir", config.CONTROLS_DIR, "--pred-dir", pred / "fresh")
+    run("D. Part D report: results/partD/REPORT.md", "d1_controls_report.py", skip=False)
+
+
 # GPU must be free (sharing the 8 GB spills into system RAM and slows everything down, silently)
 if not args.dry_run:
     used = int(subprocess.run(["nvidia-smi", "--query-gpu=memory.used", "--format=csv,noheader,nounits"],
