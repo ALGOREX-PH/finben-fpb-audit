@@ -10,7 +10,8 @@ Part B  beat FinMA-7B, choosing on VALIDATION only:
           finalists: top 2 configs x 3 seeds -> freeze results/partB/selected_config.json
           final: frozen config on train+validation x 3 seeds -> TEST, once
           FinMA-7B on the same test (official prompt + raw-prompt check) + the memorisation check
-Part C  fresh 2026 sentences FinMA can't have seen: collect -> YOU label blind (c2_label.py) -> models -> verdict
+Part C  fresh 2026 sentences FinMA can't have seen: collect -> label blind (c2_label.py) -> models -> verdict
+          (the shipped gold labels were made by Claude (AI); a human spot-check is pending: c2_label.py --spotcheck 40)
 Then    harness parity check + one combined results/REPORT.md
 """
 import argparse
