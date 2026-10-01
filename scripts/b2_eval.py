@@ -16,6 +16,7 @@ import argparse
 import json
 import time
 import warnings
+from pathlib import Path
 
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -90,13 +91,17 @@ if __name__ == "__main__":
     ap.add_argument("--finma-raw", action="store_true",
                     help="FinMA WITHOUT its official 'Human: ... Assistant:' wrapper (sensitivity check only)")
     ap.add_argument("--split", required=True, choices=["validation", "test", "train_sample"])
+    ap.add_argument("--adapter-dir", type=Path, default=config.ADAPTERS_DIR,
+                    help="folder holding --adapter (Part D controls: models/controls)")
+    ap.add_argument("--pred-dir", type=Path, default=config.PRED_DIR,
+                    help="output root, <pred-dir>/<split>/<system>.csv (Part D: results/partD/predictions)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--skip-existing", action="store_true")
     args = ap.parse_args()
 
     name = args.adapter or ("e4b_zeroshot" if args.zeroshot else "finma_7b_rawprompt" if args.finma_raw else "finma_7b")
     data = load_split(args.split)
-    out = config.PRED_DIR / args.split / f"{name}.csv"
+    out = args.pred_dir / args.split / f"{name}.csv"
     if args.skip_existing and out.exists() and len(pd.read_csv(out)) == len(data):
         print(f"skip: {args.split}/{out.name} exists")
         raise SystemExit(0)
@@ -107,7 +112,8 @@ if __name__ == "__main__":
 
     t0 = time.time()
     torch.cuda.reset_peak_memory_stats()
-    raws, probs = run_finma(data["query"].tolist(), wrap=not args.finma_raw) if args.finma else run_gemma(data["query"].tolist(), args.adapter)
+    raws, probs = run_finma(data["query"].tolist(), wrap=not args.finma_raw) if args.finma else \
+        run_gemma(data["query"].tolist(), args.adapter, adapter_dir=args.adapter_dir)
     seconds = time.time() - t0
     choices = [json.loads(c) for c in data.choices]
     res = pd.DataFrame({"id": data.id, "text": data.text, "gold": data.answer.str.strip().str.lower(), "raw": raws,
