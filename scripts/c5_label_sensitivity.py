@@ -236,8 +236,12 @@ if __name__ == "__main__":
               f"{w['E4B-it zero-shot'] - wf['E4B-it zero-shot']:+.4f} |", "",
               f"With the published number as FinMA's FinBen score, FinMA's FinBen lead is {lead_pub:+.4f} and the shrink is "
               f"**{shrink_pub:+.4f}**, 95% CI [{lo_p:+.3f}, {hi_p:+.3f}] (published score held fixed, everything else "
-              f"resampled as in c4_report.py): below the {MIN_SHRINK} rule, so **inconclusive** on this reference. The Part C "
-              f"verdict therefore depends on our re-run's {wf['FinMA-7B']:.3f}, which is itself unexplained "
+              f"resampled as in c4_report.py): "
+              + (f"meets the {MIN_SHRINK} rule with a CI excluding 0, so the verdict holds on this reference too. "
+                 if shrink_pub >= MIN_SHRINK and lo_p > 0 else
+                 f"by c4_report.py's rule that is **inconclusive** on this reference. The Part C verdict therefore "
+                 f"depends on our re-run's {wf['FinMA-7B']:.3f} as FinMA's FinBen score. ")
+              + f"Our re-run's {wf['FinMA-7B']:.3f} is itself unexplained "
               f"({100 * (wf['FinMA-7B'] - pub):.1f} points above the published score; see ANALYSIS.md, Part B).", ""]
 
     # ---- e) confusion matrices on the fresh set
