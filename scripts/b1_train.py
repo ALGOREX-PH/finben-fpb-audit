@@ -12,6 +12,7 @@ Adapter -> models/adapters/<run name>, e.g. e2_lr0.0002_r16_s3407 (+ _tv for tra
 """
 import argparse
 import json
+import math
 import time
 import warnings
 
@@ -29,6 +30,22 @@ from trl import SFTConfig, SFTTrainer  # noqa: E402
 
 
 DATA_SUFFIX = {"train": "", "trainval": "_tv", "trainvaltest": "_tvt"}
+
+
+def divergence(losses):
+    """Why a logged train-loss curve looks diverged, or None. trainval has no held-out loss, so this is the
+    only automatic warning sign: a non-finite loss, a spike above 3x the early level, or ending above it."""
+    if not losses:
+        return None
+    if not all(math.isfinite(x) for x in losses):
+        return "non-finite train loss"
+    k = max(1, len(losses) // 10)
+    early, late = sum(losses[:k]) / k, sum(losses[-k:]) / k
+    if max(losses) > 3 * early:
+        return f"train loss spiked to {max(losses):.3f} (early level {early:.3f})"
+    if late > early:
+        return f"train loss ended above its early level ({late:.3f} > {early:.3f})"
+    return None
 
 
 def run_name(epochs, lr, rank, seed, data):
