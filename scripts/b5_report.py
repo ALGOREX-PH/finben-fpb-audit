@@ -1,4 +1,4 @@
-"""results/REPORT.md for Task 03. No GPU, seconds.
+"""Part B report: results/partB/REPORT.md. No GPU, seconds.
 
   uv run python scripts/b5_report.py
 
