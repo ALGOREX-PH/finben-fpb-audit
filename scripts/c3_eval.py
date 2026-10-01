@@ -17,6 +17,7 @@ import importlib.util
 import json
 import time
 import warnings
+from pathlib import Path
 
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -48,16 +49,25 @@ if __name__ == "__main__":
     ap.add_argument("--seed", type=int, default=3407)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--skip-existing", action="store_true")
+    ap.add_argument("--adapter-dir", type=Path, default=config.ADAPTERS_DIR,
+                    help="folder holding the adapter (Part D controls: models/controls)")
+    ap.add_argument("--pred-dir", type=Path, default=PRED,
+                    help="output folder, <pred-dir>/<system>.csv (Part D: results/partD/predictions/fresh)")
     args = ap.parse_args()
 
     sel = json.loads(config.SELECTED.read_text())
     adapter = f"e{sel['epochs']}_lr{sel['lr']:g}_r{sel['rank']}_s{args.seed}_tv"
     name = {"zeroshot": "e4b_zeroshot", "finma": "finma_7b", "ours": adapter}[args.system]
     cand = pd.read_csv(config.DATA_DIR / "fresh" / "candidates.csv")
-    out = PRED / f"{name}.csv"
+    out = args.pred_dir / f"{name}.csv"
     if args.skip_existing and out.exists() and len(pd.read_csv(out)) == len(cand):
         print(f"skip: {out.name} exists")
         raise SystemExit(0)
+    frozen = out.resolve().is_relative_to(PRED.resolve())
+    if frozen and args.adapter_dir.resolve() != config.ADAPTERS_DIR.resolve():
+        raise SystemExit("control adapters must not write into results/partC -- pass --pred-dir results/partD/predictions/fresh")
+    if frozen and out.exists() and not args.limit:
+        raise SystemExit(f"{out} is a frozen Part C result -- not overwriting it")
     if args.limit:
         cand = cand.head(args.limit)
 
@@ -74,6 +84,6 @@ if __name__ == "__main__":
     for j, label in enumerate(LABELS):
         res[f"p_{label}"] = probs[:, j]
     if not args.limit:
-        PRED.mkdir(parents=True, exist_ok=True)
+        args.pred_dir.mkdir(parents=True, exist_ok=True)
         res.to_csv(out, index=False)
     print(f"{name} on {len(res)} fresh sentences ({time.time() - t0:.0f}s): predicted {res.pred.value_counts().to_dict()}")
