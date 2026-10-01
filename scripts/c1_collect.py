@@ -29,7 +29,6 @@ from config import DATA_DIR, NEAR_DUP_THRESHOLD, NGRAM_N, SPLIT_FILES
 from ftlib.contamination import contamination_table
 
 FEED = "https://news.cision.com/ListItems?format=rss&pageSize=100&pageIx={page}"
-MIN_DATE = pd.Timestamp("2025-01-01", tz="UTC")
 BOILERPLATE = re.compile(
     r"(for (further|more) information|contact|e-?mail|tel\.?|phone|\+\d|www\.|http|@|forward[- ]looking|disclaimer|"
     r"this (information|announcement|press release) (is|was)|inside information|pursuant to|in accordance with|"
