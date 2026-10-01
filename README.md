@@ -90,6 +90,7 @@ The PyTorch index in `pyproject.toml` targets CUDA 12.8 (needed for RTX 50-serie
 ## Limitations
 
 - **Part C's answer key is AI-made** (Claude, following PhraseBank's annotation rule) and not yet human-checked. An LLM labelling a test for LLMs could favour some of them.
+- **Seeing the test set and training intensity are confounded** in Parts B–C: FinMA differs from our model in both. The Part D controls that separate them are pre-registered ([`ANALYSIS.md`](ANALYSIS.md)) but not yet run.
 - **One benchmark, modest test sizes:** 970 and 349 sentences, so differences under ~2–3 points are hard to detect.
 - **On fresh data we match FinMA, we don't beat it** (0.811 vs 0.791, McNemar p = 0.3).
 - **The FinMA re-run** uses our loading (4-bit) and greedy decoding; scoring is verified identical to FinBen's, but the model-loading path differs. Our re-run (0.937) is well above FinMA's published 0.88, which we can't explain from their paper.
