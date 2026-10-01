@@ -42,5 +42,10 @@ package = true   # installs ftlib/ so the scripts can `import ftlib`
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[dependency-groups]
+test = [
+    "pytest>=9.1.1",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["ftlib"]
