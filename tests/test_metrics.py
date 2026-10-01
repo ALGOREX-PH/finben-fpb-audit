@@ -62,3 +62,31 @@ def test_mcnemar_is_symmetric_and_handles_identical_systems():
     a, b = ["a", "a", "a", "b"], ["b", "b", "a", "b"]
     assert metrics.mcnemar(gold, a, b)["p_value"] == metrics.mcnemar(gold, b, a)["p_value"]
     assert metrics.mcnemar(gold, a, a) == {"a_only_right": 0, "b_only_right": 0, "p_value": 1.0}
+
+
+ABC = ["a", "b", "c"]
+# two items at confidence 0.75 (one right, one wrong) and one at 1.0 (right):
+# bin (0.7, 0.8]: gap |0.5 - 0.75| = 0.25, weight 2/3;  bin (0.9, 1.0]: gap 0, weight 1/3  ->  ECE = 1/6
+ECE_GOLD = ["a", "b", "c"]
+ECE_PROBS = [[0.75, 0.25, 0.0], [0.75, 0.25, 0.0], [0.0, 0.0, 1.0]]
+
+
+def test_expected_calibration_error_hand_computed():
+    ece, rows = metrics.expected_calibration_error(ECE_GOLD, ECE_PROBS, ABC)
+    assert ece == pytest.approx(1 / 6)
+    assert [r[2] for r in rows] == [2, 1]                       # items per non-empty bin
+    assert rows[0][3:] == pytest.approx((0.75, 0.5))            # mean confidence, accuracy
+    assert rows[1][3:] == pytest.approx((1.0, 1.0))
+
+
+def test_expected_calibration_error_of_confident_correct_predictions_is_zero():
+    assert metrics.expected_calibration_error(["a", "b"], [[1, 0, 0], [0, 1, 0]], ABC)[0] == 0.0
+
+
+def test_bootstrap_ece_is_deterministic_and_ordered():
+    rng = np.random.default_rng(2)
+    probs = rng.dirichlet([1, 1, 1], 120)
+    gold = rng.choice(ABC, 120)
+    lo, hi = metrics.bootstrap_ece(gold, probs, ABC, n_resamples=200, seed=3)
+    assert (lo, hi) == metrics.bootstrap_ece(gold, probs, ABC, n_resamples=200, seed=3)
+    assert 0.0 <= lo <= hi <= 1.0
