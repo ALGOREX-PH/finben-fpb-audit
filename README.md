@@ -10,7 +10,7 @@ FinBen's FPB task (Financial PhraseBank sentiment: positive / negative / neutral
 | **B** | Can a laptop fine-tune beat FinMA-7B (published 0.88), choosing only on validation? | **0.885 ± 0.006** (3 seeds), **0.890** as an ensemble: above the published 0.88, but FinMA scores **0.937** when re-run under identical conditions |
 | **C** | On fresh 2026 sentences that no model can have seen, does FinMA's lead survive? | **Apparently not** (preliminary: AI-made labels, controls pending). Ours 0.811 vs FinMA 0.791 (n.s.). FinMA drops **14.7** points vs our **7.9**, so its lead shrinks by **6.8** (95% CI +2.5 to +11.0) |
 
-> **Status:** the fresh 2026 test set (Part C) was labelled by an LLM (Claude); a human spot-check is pending. Treat Part C as strong preliminary evidence until it's done.
+> **Status:** the fresh 2026 test set (Part C) was labelled by an LLM (Claude); a human spot-check is pending, and the controls that separate "saw the test sentences" from "trained longer on PhraseBank" (Part D) haven't run yet. Treat Part C as preliminary evidence until both are done.
 
 ---
 
