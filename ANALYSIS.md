@@ -141,7 +141,7 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 | + 3-seed ensemble | 0.899 |
 
 - A third epoch hurts: validation loss climbs 0.125 → 0.203, a textbook overfitting curve.
-- Rank 32 scored 0.897 on one seed, but within the tie tolerance; the rule kept the cheaper rank 16.
+- Rank 32 (lr 2e-4) scored 0.897 on one seed during the search, within the tie tolerance of rank 16 (0.899), so the rule kept the cheaper rank 16. It then missed the 3-seed finalist round by 0.00004 (0.89669 vs lr 4e-4's 0.89673): the finalist cut takes the top 2 by raw score, with no tie rule. With 3 seeds, added after the freeze, it scores 0.899; see the tie-rule audit below.
 
 **2. The final model: 0.885 ± 0.006 test wF1 (0.890 as an ensemble).**
 - That's up from 0.867 in Part A, and it beats FinMA's **published** 0.88.
