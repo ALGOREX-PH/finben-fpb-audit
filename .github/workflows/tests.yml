@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+concurrency:   # one push per commit: only the newest run per branch matters
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   cpu:
     runs-on: ubuntu-latest
