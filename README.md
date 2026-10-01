@@ -98,4 +98,4 @@ The PyTorch index in `pyproject.toml` targets CUDA 12.8 (needed for RTX 50-serie
 
 ## Acknowledgements
 
-FinBen and PIXIU / FinMA ([The-FinAI](https://github.com/The-FinAI)); Financial PhraseBank (Malo et al., 2014, *"Good debt or bad debt: Detecting semantic orientations in economic texts"*); [Unsloth](https://github.com/unslothai/unsloth) for QLoRA training; Google's Gemma 4.
+[FinBen](https://github.com/The-FinAI/FinBen) (Xie et al., 2024, *"FinBen: A Holistic Financial Benchmark for Large Language Models"*), whose FPB task, prompt and scoring this repo follows; PIXIU / FinMA ([The-FinAI](https://github.com/The-FinAI)); Financial PhraseBank (Malo et al., 2014, *"Good debt or bad debt: Detecting semantic orientations in economic texts"*); [Unsloth](https://github.com/unslothai/unsloth) for QLoRA training; Google's Gemma 4.
