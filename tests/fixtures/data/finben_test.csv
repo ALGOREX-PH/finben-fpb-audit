@@ -1,0 +1,25 @@
+id,query,answer,text,choices,gold
+toy0,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Quillmark Tools raised its full-year sales outlook after strong spring orders .
+Answer:",positive,Quillmark Tools raised its full-year sales outlook after strong spring orders .,"[""positive"", ""neutral"", ""negative""]",0
+toy1,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Brenholt Shipping will publish its interim report on 12 March .
+Answer:",neutral,Brenholt Shipping will publish its interim report on 12 March .,"[""positive"", ""neutral"", ""negative""]",1
+toy2,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Operating loss at Velmora Foods widened as raw material costs rose .
+Answer:",negative,Operating loss at Velmora Foods widened as raw material costs rose .,"[""positive"", ""neutral"", ""negative""]",2
+toy3,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: The Tarnvik plant employs about 140 people .
+Answer:",neutral,The Tarnvik plant employs about 140 people .,"[""positive"", ""neutral"", ""negative""]",1
+toy4,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Ostrand Paper will cut 60 jobs at its northern mill .
+Answer:",negative,Ostrand Paper will cut 60 jobs at its northern mill .,"[""positive"", ""neutral"", ""negative""]",2
+toy5,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Net sales of Kelloway Systems increased by 18 % to EUR 42 million .
+Answer:",positive,Net sales of Kelloway Systems increased by 18 % to EUR 42 million .,"[""positive"", ""neutral"", ""negative""]",0
+toy6,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Pellinor Group signed a service agreement with a regional utility .
+Answer:",positive,Pellinor Group signed a service agreement with a regional utility .,"[""positive"", ""neutral"", ""negative""]",0
+toy7,"Analyze the sentiment of this statement extracted from a financial news article. Provide your answer as either negative, positive, or neutral.
+Text: Dravik Media's chief executive will step down at the end of the year .
+Answer:",neutral,Dravik Media's chief executive will step down at the end of the year .,"[""positive"", ""neutral"", ""negative""]",1
