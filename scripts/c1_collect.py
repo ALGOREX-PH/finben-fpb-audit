@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 rows.append({"text": s, "company": company, "date": date.date().isoformat(), "url": it["link"]})
         print(f"\rpage {page}: {len(seen_links)} releases, {len(rows)} candidate sentences (oldest {oldest.date() if oldest else '-'})",
               end="", flush=True)
-        if oldest is not None and oldest < MIN_DATE:
+        if oldest is not None and oldest < min_date:
             break
         time.sleep(1)                                                # be polite to the server
     print()
