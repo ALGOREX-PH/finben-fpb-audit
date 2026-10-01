@@ -19,7 +19,7 @@ from pathlib import Path
 
 import numpy as np
 from scipy.stats import binomtest
-from sklearn.metrics import f1_score
+from sklearn.metrics import confusion_matrix, f1_score
 
 import config_b as config
 import preds
@@ -238,6 +238,22 @@ if __name__ == "__main__":
               f"resampled as in c4_report.py): below the {MIN_SHRINK} rule, so **inconclusive** on this reference. The Part C "
               f"verdict therefore depends on our re-run's {wf['FinMA-7B']:.3f}, which is itself unexplained "
               f"({100 * (wf['FinMA-7B'] - pub):.1f} points above the published score; see ANALYSIS.md, Part B).", ""]
+
+    # ---- e) confusion matrices on the fresh set
+    lines += ["## e) Confusion matrices on the fresh set", "", "Rows: gold label (AI-made). Columns: the model's parsed answer.", ""]
+    for k in ["FinMA-7B", "Ours, 3-seed ensemble", "E4B-it zero-shot"]:
+        cm = confusion_matrix(g, fresh[k], labels=CLASSES)[:len(LABELS)]
+        lines += [f"**{k}** (wF1 {wf1(g, fresh[k]):.4f})", "",
+                  "| gold \\ predicted | " + " | ".join(CLASSES) + " | total |", "|---" * (len(CLASSES) + 2) + "|",
+                  *[f"| {lab} | " + " | ".join(str(v) for v in row) + f" | {row.sum()} |" for lab, row in zip(LABELS, cm)],
+                  f"| total | " + " | ".join(str(v) for v in cm.sum(0)) + f" | {cm.sum()} |", ""]
+    cell = lambda k, gl, pl: int(np.sum((g == gl) & (fresh[k] == pl)))
+    lines += [f"*Neutral sentences called positive: FinMA {cell('FinMA-7B', 'neutral', 'positive')}, ours "
+              f"{cell('Ours, 3-seed ensemble', 'neutral', 'positive')}, zero-shot {cell('E4B-it zero-shot', 'neutral', 'positive')}. "
+              f"Positive sentences called neutral: FinMA {cell('FinMA-7B', 'positive', 'neutral')}, ours "
+              f"{cell('Ours, 3-seed ensemble', 'positive', 'neutral')}, zero-shot {cell('E4B-it zero-shot', 'positive', 'neutral')}. "
+              "The neutral/positive border is where the labels matter most: whether a mildly upbeat corporate statement "
+              "counts as neutral (PhraseBank's convention) or positive decides much of the FinMA gap (section c).*", ""]
 
     args.out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
