@@ -26,9 +26,10 @@ from sklearn.metrics import accuracy_score, f1_score, matthews_corrcoef
 import config_a as config  # noqa: F401
 from config_a import DATA_DIR, LABELS, PRED_DIR, RESULTS_DIR, TASK_DIR
 from ftlib.metrics import expected_calibration_error
+import preds as pred_files
 
 cont = pd.read_csv(DATA_DIR / "contamination.csv")
-preds = {f.stem: pd.read_csv(f, keep_default_na=False) for f in sorted(PRED_DIR.glob("*.csv"))}
+preds = {f.stem: pred_files.read(f) for f in sorted(PRED_DIR.glob("*.csv"))}   # gold joined from data/ by id
 partial = sorted(k for k, v in preds.items() if len(v) != len(cont))
 preds = {k: v for k, v in preds.items() if len(v) == len(cont)}
 if not preds:
