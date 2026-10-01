@@ -215,5 +215,29 @@ if __name__ == "__main__":
               f"{int(np.sum(g == 'neutral'))} neutral-labelled sentences; a human disagreeing with the AI on "
               f"{first_rule} of them, all in FinMA's favour, would make the result inconclusive.*", ""]
 
+    # ---- d) FinMA's drop against its PUBLISHED FinBen score instead of our re-run
+    pub = config.FINMA_PUBLISHED_F1
+    w = {k: wf1(g, fresh[k]) for k in ["FinMA-7B", "Ours, 3-seed ensemble", "E4B-it zero-shot"]}
+    wf = {k: wf1(fg, fin[k]) for k in w}
+    lead_pub = pub - wf["Ours, 3-seed ensemble"]
+    shrink_pub = lead_pub - lead
+    sh_b = (pub - boot_wf1(FG, fin_o, I_c4)) - (boot_wf1(G, finma, J_c4) - boot_wf1(G, ours, J_c4))
+    lo_p, hi_p = np.quantile(sh_b, [0.025, 0.975])
+    lines += ["## d) FinMA's drop measured from its published score", "",
+              f"Part C measures FinMA's drop from our re-run (FinBen test {wf['FinMA-7B']:.3f}). FinMA's own paper "
+              f"reports {pub:.2f}. Measured from that, the drop is much smaller:", "",
+              "| System | FinBen FPB reference | Fresh wF1 | Drop |", "|---|---|---|---|",
+              f"| FinMA-7B, from our re-run | {wf['FinMA-7B']:.4f} | {w['FinMA-7B']:.4f} | {w['FinMA-7B'] - wf['FinMA-7B']:+.4f} |",
+              f"| FinMA-7B, from the published score | {pub:.2f} | {w['FinMA-7B']:.4f} | **{w['FinMA-7B'] - pub:+.4f}** |",
+              f"| Ours, 3-seed ensemble | {wf['Ours, 3-seed ensemble']:.4f} | {w['Ours, 3-seed ensemble']:.4f} | "
+              f"**{w['Ours, 3-seed ensemble'] - wf['Ours, 3-seed ensemble']:+.4f}** |",
+              f"| E4B-it zero-shot | {wf['E4B-it zero-shot']:.4f} | {w['E4B-it zero-shot']:.4f} | "
+              f"{w['E4B-it zero-shot'] - wf['E4B-it zero-shot']:+.4f} |", "",
+              f"With the published number as FinMA's FinBen score, FinMA's FinBen lead is {lead_pub:+.4f} and the shrink is "
+              f"**{shrink_pub:+.4f}**, 95% CI [{lo_p:+.3f}, {hi_p:+.3f}] (published score held fixed, everything else "
+              f"resampled as in c4_report.py): below the {MIN_SHRINK} rule, so **inconclusive** on this reference. The Part C "
+              f"verdict therefore depends on our re-run's {wf['FinMA-7B']:.3f}, which is itself unexplained "
+              f"({100 * (wf['FinMA-7B'] - pub):.1f} points above the published score; see ANALYSIS.md, Part B).", ""]
+
     args.out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
