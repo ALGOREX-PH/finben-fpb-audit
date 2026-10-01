@@ -149,7 +149,7 @@ if __name__ == "__main__":
         lines.append(f"| {k} | {wf1(g, p):.4f} | {wf1(g, p) - wf1(g, fresh['FinMA-7B']):+.4f} | {x} / {y} | {pv:.2g} |")
     ours_p = {k: mcnemar(g, p, fresh["FinMA-7B"])[0] for k, p in fresh.items() if k.startswith("Ours")}
     seeds_w = [wf1(g, p) for k, p in fresh.items() if k.startswith("Ours, seed")]
-    lines += ["", f"*{'None' if max(ours_p.values()) >= 0.05 and min(ours_p.values()) >= 0.05 else 'Not all'} of our models "
+    lines += ["", f"*{'None' if min(ours_p.values()) >= 0.05 else 'Not all'} of our models "
                   f"differ significantly from FinMA on the fresh set (smallest p = {min(ours_p.values()):.2g}). Our seeds "
                   f"span {max(seeds_w) - min(seeds_w):.3f} wF1 among themselves, about the size of the FinMA gap.*", ""]
 
