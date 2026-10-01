@@ -105,6 +105,11 @@ if __name__ == "__main__":
     if args.skip_existing and out.exists() and len(pd.read_csv(out)) == len(data):
         print(f"skip: {args.split}/{out.name} exists")
         raise SystemExit(0)
+    frozen = out.resolve().is_relative_to(config.PRED_DIR.resolve())
+    if frozen and args.adapter and args.adapter_dir.resolve() != config.ADAPTERS_DIR.resolve():
+        raise SystemExit("control adapters must not write into results/partB -- pass --pred-dir results/partD/predictions")
+    if frozen and out.exists() and not args.limit:
+        raise SystemExit(f"{out} is a frozen Part B result -- not overwriting it")
     if args.split == "test" and args.adapter and not config.SELECTED.exists():
         print("NOTE: scoring an adapter on TEST before selected_config.json exists -- only do this for smoke tests.")
     if args.limit:
