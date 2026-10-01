@@ -101,7 +101,7 @@ if __name__ == "__main__":
             except (TypeError, ValueError):
                 continue
             oldest = date
-            if date < MIN_DATE or it["link"] in seen_links:
+            if not min_date <= date < max_date or it["link"] in seen_links:
                 continue
             seen_links.add(it["link"])
             company = (re.search(r"news\.cision\.com/([^/]+)/", it["link"]) or [None, "?"])[1]
