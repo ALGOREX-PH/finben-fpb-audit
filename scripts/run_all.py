@@ -12,6 +12,9 @@ Part B  beat FinMA-7B, choosing on VALIDATION only:
           FinMA-7B on the same test (official prompt + raw-prompt check) + the memorisation check
 Part C  fresh 2026 sentences FinMA can't have seen: collect -> label blind (c2_label.py) -> models -> verdict
           (the shipped gold labels were made by Claude (AI); a human spot-check is pending: c2_label.py --spotcheck 40)
+Part D  controls: did FinMA's drop come from seeing the test set or from training harder? 2 x 2 of
+          contaminated (train+validation+TEST) vs clean, 2 vs 15 epochs; pre-registered in ANALYSIS.md.
+            uv run python scripts/run_all.py --part-d                (Part D only, ~9.5 h; --all-seeds ~24 h)
 Then    harness parity check + one combined results/REPORT.md
 """
 import argparse
