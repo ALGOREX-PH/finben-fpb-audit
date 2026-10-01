@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from scipy.stats import binomtest
 from sklearn.metrics import f1_score
 
 import config_b as config
@@ -36,6 +37,13 @@ def wf1(g, p):
 
 def ensemble(dfs):
     return np.array(LABELS)[np.mean([d[[f"p_{l}" for l in LABELS]].values for d in dfs], axis=0).argmax(1)]
+
+
+def mcnemar(g, a, b):
+    """c4_report.py's exact McNemar: binomial test on the sentences exactly one of the two systems gets right."""
+    a, b = np.asarray(a) == np.asarray(g), np.asarray(b) == np.asarray(g)
+    x, y = int(np.sum(a & ~b)), int(np.sum(~a & b))
+    return (binomtest(x, x + y, 0.5).pvalue if x + y else 1.0), x, y
 
 
 def codes(labels):
@@ -127,6 +135,21 @@ if __name__ == "__main__":
               f"and scores both systems on the same draw; percentile interval; numpy `default_rng({BOOT_SEED})` drawing "
               f"fresh indices only. Drawing them as the fresh half of c4_report.py's two-set stream instead gives "
               f"[{lo4:+.3f}, {hi4:+.3f}]: the endpoints carry about ±0.002 of Monte Carlo noise.*", ""]
+
+    # ---- b) each of our seeds vs FinMA, McNemar on the same fresh sentences
+    lines += ["## b) Each system vs FinMA-7B on the fresh set (McNemar)", "",
+              "| System | Fresh wF1 | wF1 − FinMA | Only this right / only FinMA right | McNemar p (exact) |",
+              "|---|---|---|---|---|"]
+    for k, p in fresh.items():
+        if k == "FinMA-7B":
+            continue
+        pv, x, y = mcnemar(g, p, fresh["FinMA-7B"])
+        lines.append(f"| {k} | {wf1(g, p):.4f} | {wf1(g, p) - wf1(g, fresh['FinMA-7B']):+.4f} | {x} / {y} | {pv:.2g} |")
+    ours_p = {k: mcnemar(g, p, fresh["FinMA-7B"])[0] for k, p in fresh.items() if k.startswith("Ours")}
+    seeds_w = [wf1(g, p) for k, p in fresh.items() if k.startswith("Ours, seed")]
+    lines += ["", f"*{'None' if max(ours_p.values()) >= 0.05 and min(ours_p.values()) >= 0.05 else 'Not all'} of our models "
+                  f"differ significantly from FinMA on the fresh set (smallest p = {min(ours_p.values()):.2g}). Our seeds "
+                  f"span {max(seeds_w) - min(seeds_w):.3f} wF1 among themselves, about the size of the FinMA gap.*", ""]
 
     args.out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
