@@ -20,6 +20,7 @@ from sklearn.metrics import accuracy_score, f1_score, matthews_corrcoef
 
 import config_b as config
 import b3_select as selection
+import preds
 from config_b import LABELS
 
 P = config.PRED_DIR
@@ -27,7 +28,7 @@ P = config.PRED_DIR
 
 def read(split, name):
     f = P / split / f"{name}.csv"
-    return pd.read_csv(f, keep_default_na=False) if f.exists() else None
+    return preds.read(f)   # None if missing; gold joined from data/ by id
 
 
 def m(gold, pred):
