@@ -36,7 +36,7 @@ Our model and zero-shot lose the same ~8 points moving from PhraseBank's older n
 - **Scoring identical to FinBen's code.** [`b4_harness_parity.py`](scripts/b4_harness_parity.py) re-scores every output with PIXIU's `flare.py` logic, copied verbatim: identical predictions and metrics for all systems.
 - **Pre-registered predictions and decision rules.** Numeric predictions (with tolerances, so they could fail) and Part C's decision rule were written *before* the results; see [`ANALYSIS.md`](ANALYSIS.md). Several Part B predictions failed and are reported as failed.
 
-## Why we think FinMA memorised the test set (Parts B and C)
+## Evidence consistent with FinMA having seen the test set (Parts B and C)
 
 FinMA-7B's training data ([PIXIU](https://github.com/The-FinAI/PIXIU)'s FIT) lists all 4,845 Financial PhraseBank sentences; FinBen's FPB test set is a subset of them. Three independent signals:
 
