@@ -1,4 +1,4 @@
-# Task 02: FinBen FPB with base Gemma 4 E4B-it -- from contamination check to beating FinMA-7B
+# FinBen FPB with base Gemma 4 E4B-it -- from contamination check to beating FinMA-7B
 
 One benchmark (FinBen's Financial PhraseBank split: 3,100 train / 776 validation / 970 test), two questions:
 - **Part A:** does FinBen's own train split leak into its test split, and does that inflate a fine-tune's score? *(done)*
