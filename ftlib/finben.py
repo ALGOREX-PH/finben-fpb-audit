@@ -28,3 +28,18 @@ def attach_gold(pred, gold):
     out = pred.copy()
     out.insert(out.columns.get_loc("id") + 1, "gold", gold.loc[out["id"]].to_numpy())
     return out
+
+
+AGREEMENT_LEVELS = ["AllAgree", "75Agree", "66Agree", "50Agree"]   # PhraseBank: share of annotators who agreed
+
+
+def accuracy_by_agreement(pred, gold, agreement, levels=AGREEMENT_LEVELS):
+    """Accuracy per PhraseBank annotator-agreement level, {level: (accuracy, n)} (the b5_report section 4b check).
+    On 50Agree sentences the annotators split, so a model that never saw the gold label can't do much better
+    than the label's own ambiguity allows; one that memorised it can."""
+    pred, gold, agreement = (pd.Series(x).to_numpy() for x in (pred, gold, agreement))
+    out = {}
+    for level in levels:
+        m = agreement == level
+        out[level] = (float((pred[m] == gold[m]).mean()) if m.any() else float("nan"), int(m.sum()))
+    return out
