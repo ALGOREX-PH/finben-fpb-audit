@@ -1,6 +1,6 @@
 # finben-fpb-audit
 
-**Fine-tuning Gemma 4 E4B on FinBen FPB on an 8 GB laptop GPU: 0.890 weighted F1, verified free of train/test contamination, plus evidence that FinMA-7B's benchmark lead comes from test-set memorisation.**
+**Fine-tuning Gemma 4 E4B on FinBen FPB on an 8 GB laptop GPU: 0.890 weighted F1, verified free of train/test contamination, plus evidence consistent with FinMA-7B's benchmark lead being partly due to test-set memorisation (controls pending).**
 
 FinBen's FPB task (Financial PhraseBank sentiment: positive / negative / neutral) is a standard financial-NLP benchmark. This repo fine-tunes a small, modern model on it, and audits the numbers on three fronts:
 
