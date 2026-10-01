@@ -8,7 +8,7 @@ Rules:
     CHEAPER one wins (fewer epochs, then lower rank, then learning rate closest to the baseline).
     Picking the top number among ties would just be fitting noise in the validation set.
   * decoding (generated reply vs label-probability argmax) and seed-ensembling are chosen the same way.
-freeze() writes results/selected_config.json -- after that, the test split may be scored once.
+freeze() writes results/partB/selected_config.json -- after that, the test split may be scored once.
 """
 import json
 import re
