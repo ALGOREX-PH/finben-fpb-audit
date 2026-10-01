@@ -169,7 +169,7 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 
 **5. Our scoring equals FinBen's official scoring.** Re-scoring all 7 systems' outputs with PIXIU's `flare.py` code gives identical predictions and metrics.
 
-**What would settle the FinMA question:** a test set FinMA can't have seen, e.g. new financial sentences labelled with PhraseBank's guidelines. If FinMA drops toward our level there and we don't, it was memorisation.
+**What would settle the FinMA question:** a test set FinMA can't have seen, e.g. new financial sentences labelled with PhraseBank's guidelines. If FinMA drops toward our level there and we don't, that points to memorisation (or to over-specialisation from heavier training, which Part D tests).
 
 ### Limitations
 - One benchmark, one test split of 970 sentences: a ~2-point difference is roughly the smallest that McNemar can detect here.
