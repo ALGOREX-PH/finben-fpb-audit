@@ -41,7 +41,7 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=config.BASE["lr"])
     ap.add_argument("--rank", type=int, default=config.BASE["rank"])
     ap.add_argument("--seed", type=int, default=config.SEARCH_SEED)
-    ap.add_argument("--data", choices=["train", "trainval"], default="train")
+    ap.add_argument("--data", choices=list(DATA_SUFFIX), default="train")
     ap.add_argument("--max-steps", type=int, default=-1)
     ap.add_argument("--skip-existing", action="store_true")
     args = ap.parse_args()
@@ -56,6 +56,10 @@ if __name__ == "__main__":
     train, valid = load("train"), load("validation")
     if args.data == "trainval":
         train, valid = pd.concat([train, valid], ignore_index=True), None
+    elif args.data == "trainvaltest":
+        train, valid = pd.concat([train, valid, load("test")], ignore_index=True), None
+        print("\n" + "!" * 72 + "\n!!  CONTAMINATED CONTROL: test split is in training (Part D only)  !!\n"
+              "!!  Never report this model's test score as a benchmark result.        !!\n" + "!" * 72 + "\n")
     print(f"run {name}: {len(train)} train / {0 if valid is None else len(valid)} validation  "
           f"(epochs {args.epochs}, lr {args.lr:g}, rank {args.rank}, seed {args.seed})")
 
