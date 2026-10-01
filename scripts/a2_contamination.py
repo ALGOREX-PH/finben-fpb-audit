@@ -23,7 +23,7 @@ from ftlib.contamination import contamination_table
 
 need = [DATA_DIR / f"finben_{s}.csv" for s in ("train", "test")]
 if not all(p.exists() for p in need):
-    raise SystemExit("FinBen splits missing -- run 01_download.py first")
+    raise SystemExit("FinBen splits missing -- run a1_download.py first")
 train, test = pd.read_csv(need[0]), pd.read_csv(need[1])
 valid_file = DATA_DIR / config.VALID_FILE
 valid = pd.read_csv(valid_file) if valid_file.exists() else train.head(0)
