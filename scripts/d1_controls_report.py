@@ -69,3 +69,30 @@ def wf1(g, p):
     rec = np.divide(tp, support, out=np.zeros(K), where=support > 0)
     f1 = np.divide(2 * prec * rec, prec + rec, out=np.zeros(K), where=prec + rec > 0)
     return float((f1 * support).sum() / support.sum())
+
+
+class Scored:
+    """One system's FinBen test and fresh predictions, with bootstrap replicates on the shared indices."""
+
+    def __init__(self, test_g, test_p, fresh_g, fresh_p, idx_test, idx_fresh):
+        self.test, self.fresh = wf1(test_g, test_p), wf1(fresh_g, fresh_p)
+        self.test_boot = np.array([wf1(test_g[i], test_p[i]) for i in idx_test])
+        self.fresh_boot = np.array([wf1(fresh_g[j], fresh_p[j]) for j in idx_fresh])
+
+    @property
+    def drop(self):
+        return self.fresh - self.test
+
+    @property
+    def drop_boot(self):
+        return self.fresh_boot - self.test_boot
+
+
+def ci(values):
+    lo, hi = np.quantile(values, [0.025, 0.975])
+    return float(lo), float(hi)
+
+
+def fmt_ci(point, values):
+    lo, hi = ci(values)
+    return f"{point:.4f} [{lo:.3f}, {hi:.3f}]"
