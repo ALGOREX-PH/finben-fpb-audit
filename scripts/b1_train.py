@@ -8,7 +8,7 @@
 --data trainval  trains on train + validation (final phase, after the config is frozen). The validation
                  split has done its job (choosing the config), so using it for training is legitimate and
                  standard; there is then no held-out loss to watch, which is why the config must be fixed first.
-Adapter -> models/task03/<run name>, e.g. e2_lr0.0002_r16_s3407 (+ _tv for trainval).
+Adapter -> models/adapters/<run name>, e.g. e2_lr0.0002_r16_s3407 (+ _tv for trainval).
 """
 import argparse
 import json
