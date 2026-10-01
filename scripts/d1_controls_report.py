@@ -184,6 +184,22 @@ if __name__ == "__main__":
               "*Every model trained on the train sample, so its gap is train-vs-test familiarity. Contaminated cells "
               "(B, D) also trained on the test sentences: their gap should be near 0, like a model that saw both.*", ""]
 
+    # ---- 2. accuracy by annotator agreement (FinBen test)
+    agree = test.set_index("id").agreement.reindex(test_ids).values
+    lines += ["## 2. FinBen test accuracy by annotator agreement", "",
+              "| Cell | Seed | " + " | ".join(AGREEMENT_LEVELS) + " |", "|---|---|" + "---|" * len(AGREEMENT_LEVELS)]
+
+    def agree_row(label, seed, d):
+        by = accuracy_by_agreement(d.pred, d.gold, agree)
+        return f"| {label} | {seed} | " + " | ".join(f"{by[lv][0]:.3f}" for lv in AGREEMENT_LEVELS) + " |"
+
+    for (cell, seed), s in systems.items():
+        lines.append(agree_row(f"**{cell}**", seed, s["test"]))
+    n_by = accuracy_by_agreement(finma["test"].pred, finma["test"].gold, agree)
+    lines += [agree_row("FinMA-7B", "—", finma["test"]), "",
+              "*n per level: " + ", ".join(f"{lv} {n_by[lv][1]}" for lv in AGREEMENT_LEVELS) + ". On 50Agree the "
+              "annotators split, so a high score there means the model knows the label rather than reads it off.*", ""]
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
