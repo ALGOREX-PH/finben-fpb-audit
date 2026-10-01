@@ -200,6 +200,31 @@ if __name__ == "__main__":
               "*n per level: " + ", ".join(f"{lv} {n_by[lv][1]}" for lv in AGREEMENT_LEVELS) + ". On 50Agree the "
               "annotators split, so a high score there means the model knows the label rather than reads it off.*", ""]
 
+    # ---- 3. contrasts, seed-matched
+    def contrast(x, y, seeds=None):
+        """mean over common seeds of drop(x) - drop(y), its bootstrap CI and the seeds used (None if no common seed)."""
+        common = [s for s in config.SEEDS if (x, s) in scored and (y, s) in scored and (seeds is None or s in seeds)]
+        if not common:
+            return None
+        point = np.mean([scored[(x, s)].drop - scored[(y, s)].drop for s in common])
+        boot = np.mean([scored[(x, s)].drop_boot - scored[(y, s)].drop_boot for s in common], axis=0)
+        return float(point), ci(boot), common
+
+    contrasts = [("DiD15 = drop(C) − drop(D)", "C", "D", "contamination effect at 15 epochs (primary)"),
+                 ("DiD2 = drop(A) − drop(B)", "A", "B", "contamination effect at 2 epochs (secondary)"),
+                 ("Intensity = drop(A) − drop(C)", "A", "C", "cost of training 15 vs 2 epochs, clean models")]
+    lines += ["## 3. Contrasts (positive DiD = training on the test set inflated the FinBen score)", "",
+              "| Contrast | Meaning | Seed 3407 [95% CI] | Seed-matched mean [95% CI] (seeds) |", "|---|---|---|---|"]
+    results = {}
+    for label, x, y, meaning in contrasts:
+        primary, matched = contrast(x, y, [PRIMARY_SEED]), contrast(x, y)
+        results[label] = primary
+        show = lambda r: "*not run yet*" if r is None else f"{r[0]:+.4f} [{r[1][0]:+.3f}, {r[1][1]:+.3f}]"
+        seeds = "" if matched is None else f" ({', '.join(map(str, matched[2]))})"
+        lines.append(f"| {label} | {meaning} | {show(primary)} | {show(matched)}{seeds} |")
+    lines += ["", f"*FinMA's own drop: {finma_scored.drop:+.4f}. FinMA-sized = drop ≤ {FINMA_SIZED}. Bootstrap CIs "
+                  "cover sentence sampling only, not seed-to-seed variation (cell A's seeds alone span several points).*", ""]
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
