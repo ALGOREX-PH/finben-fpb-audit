@@ -50,8 +50,9 @@ def divergence(losses):
         return "non-finite train loss"
     k = max(1, len(losses) // 10)
     early, late = sum(losses[:k]) / k, sum(losses[-k:]) / k
-    if max(losses) > 3 * early:
-        return f"train loss spiked to {max(losses):.3f} (early level {early:.3f})"
+    later = losses[k:]   # the first logs ARE the early level; a long run's starting loss is not a spike
+    if later and max(later) > 3 * early:
+        return f"train loss spiked to {max(later):.3f} (early level {early:.3f})"
     if late > early:
         return f"train loss ended above its early level ({late:.3f} > {early:.3f})"
     return None
