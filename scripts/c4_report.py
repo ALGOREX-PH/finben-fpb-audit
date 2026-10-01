@@ -121,7 +121,7 @@ else:
     lo, hi = np.quantile(sh, [0.025, 0.975])
     p, x, y = mcnemar(g, finma, ours)
     if shrink >= MIN_SHRINK and lo > 0:
-        verdict = "memorisation SUPPORTED"
+        verdict = "memorisation CONSISTENT (preliminary: AI labels)" if ai_gold else "memorisation CONSISTENT"
     elif lead_fresh >= MIN_SHRINK and p < 0.05:
         verdict = "memorisation NOT supported"
     else:
