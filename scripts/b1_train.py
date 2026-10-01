@@ -128,8 +128,13 @@ if __name__ == "__main__":
     model.save_pretrained(str(out_dir))
     tokenizer.save_pretrained(str(out_dir))
     val_curve = [(round(h["epoch"], 2), round(h["eval_loss"], 4)) for h in trainer.state.log_history if "eval_loss" in h]
+    train_curve = [(round(h["epoch"], 2), round(h["loss"], 4)) for h in trainer.state.log_history if "loss" in h]
+    diverged = divergence([l for _, l in train_curve])
     info = {"run": name, "epochs": args.epochs, "lr": args.lr, "rank": args.rank, "seed": args.seed, "data": args.data,
-            "train_examples": len(train_ds), "seconds": round(time.time() - t0), "train_loss": stats.metrics["train_loss"],
+            "train_examples": len(train_ds), "seconds": round(time.time() - t0), "resumed": bool(resume),
+            "train_loss": stats.metrics["train_loss"], "train_loss_curve": train_curve, "divergence": diverged,
             "val_loss_curve": val_curve, "peak_vram_gb": round(torch.cuda.max_memory_reserved() / 1024**3, 2)}
+    if diverged:
+        print("\n" + "#" * 72 + f"\n##  WARNING, possible divergence: {diverged}\n" + "#" * 72)
     (out_dir / "train_info.json").write_text(json.dumps(info, indent=2))
     print(f"\n{info}\nAdapter saved to {out_dir}")
