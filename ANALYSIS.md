@@ -232,6 +232,7 @@ FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and
 - **Memorisation supported:** the lead shrinks by ≥ 0.03 on fresh sentences, with a 95% bootstrap CI excluding 0.
 - **Memorisation not supported:** FinMA still leads by ≥ 0.03 on fresh sentences, with McNemar p < 0.05.
 - **Inconclusive:** anything else.
+- *Label renamed on 2026-10-01, after the result: "memorisation supported" became "memorisation consistent (preliminary: AI labels)", because this rule can't tell memorisation from over-specialisation and the labels aren't human-checked. The thresholds and numbers are unchanged.*
 
 ### Predictions (before any fresh result; numbers with tolerances)
 
