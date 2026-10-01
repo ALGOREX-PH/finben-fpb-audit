@@ -279,6 +279,19 @@ if __name__ == "__main__":
               "memorisation and over-training do to OUR model; it can show memorisation can produce FinMA's pattern, "
               "not that it did for FinMA.*", ""]
 
+    # ---- 6. training health of the control runs
+    infos = sorted(config.CONTROLS_DIR.glob("*/train_info.json")) if config.CONTROLS_DIR.exists() else []
+    infos = [json.loads(f.read_text()) for f in infos if not f.parent.name.endswith("_smoke")]
+    if infos:
+        lines += ["## 6. Control training runs", "", "| Run | Examples | Hours | Final train loss | Divergence check |",
+                  "|---|---|---|---|---|"]
+        for i in infos:
+            curve = i.get("train_loss_curve") or []
+            last = f"{curve[-1][1]:.4f}" if curve else "—"
+            lines.append(f"| {i['run']} | {i['train_examples']} | {i['seconds'] / 3600:.1f}{' (resumed)' if i.get('resumed') else ''}"
+                         f" | {last} | {i.get('divergence') or 'ok'} |")
+        lines.append("")
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
