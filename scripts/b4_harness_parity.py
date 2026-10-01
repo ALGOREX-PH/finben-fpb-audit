@@ -1,6 +1,7 @@
 """Phase 4: is our scoring identical to FinBen's official harness? No GPU, seconds.
 
   uv run python scripts/b4_harness_parity.py
+  uv run python scripts/b4_harness_parity.py --data-dir tests/fixtures/data --pred-dir tests/fixtures/predictions/test --out <file>
 
 FinBen's published FPB numbers come from PIXIU's `src/tasks/flare.py` (class FPB -> Classification).
 Running that old harness itself on Gemma 4 E4B in 8 GB isn't possible (it predates the architecture and
@@ -9,7 +10,9 @@ code, copied verbatim below, and checks that every prediction and every metric m
 If they match, the only difference from the official harness is how the model is loaded -- not how
 it is prompted, decoded or scored.
 """
+import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -56,11 +59,17 @@ def pixiu_aggregate(items):
             "missing": np.mean([r["missing"] for r in items])}
 
 
-test = pd.read_csv(config.DATA_DIR / config.SPLIT_FILES["test"])
+ap = argparse.ArgumentParser()
+ap.add_argument("--data-dir", type=Path, default=config.DATA_DIR, help="folder with the FinBen test CSV")
+ap.add_argument("--pred-dir", type=Path, default=config.PRED_DIR / "test", help="test-set prediction CSVs to re-score")
+ap.add_argument("--out", type=Path, default=config.RESULTS_DIR / "harness_parity.json")
+args = ap.parse_args()
+
+test = pd.read_csv(args.data_dir / config.SPLIT_FILES["test"])
 docs = [{"choices": json.loads(c), "gold": int(g)} for c, g in zip(test.choices, test.gold)]
 test_gold = test.set_index("id").answer.str.strip().str.lower()     # shipped predictions carry ids only
 rows = []
-for f in sorted((config.PRED_DIR / "test").glob("*.csv")):
+for f in sorted(args.pred_dir.glob("*.csv")):
     ours = preds.read(f, test_gold)
     if len(ours) != len(test) or "raw" not in ours:
         continue
@@ -76,8 +85,8 @@ print(f"{'system':28} {'same pred':>9} {'same gold':>9} {'PIXIU wF1':>9} {'our w
 for r in rows:
     print(f"{r[0]:28} {r[1]:9.1%} {r[2]:9.1%} {r[3]:9.4f} {r[4]:8.4f} {r[5]:6.3f} {r[6]:6.3f} {r[7]:7.1%}")
 if not rows:   # all([]) is True -- never report parity on zero systems
-    raise SystemExit(print("no complete test predictions in results/partB/predictions/test yet -- nothing to check") or 0)
+    raise SystemExit(print(f"no complete test predictions in {args.pred_dir} yet -- nothing to check") or 0)
 ok = all(r[1] == 1 and r[2] == 1 and abs(r[3] - r[4]) < 1e-9 for r in rows)
-out = config.RESULTS_DIR / "harness_parity.json"
+out = args.out
 out.write_text(json.dumps({"identical_to_pixiu_scoring": ok, "systems": [r[0] for r in rows]}, indent=2))
 print(f"\nScoring identical to FinBen's official PIXIU code on every system: {ok}  -> {out.name}")
