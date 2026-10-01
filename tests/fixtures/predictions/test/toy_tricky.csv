@@ -1,0 +1,9 @@
+id,raw,pred
+toy0,Positive.,positive
+toy1,  neutral  ,neutral
+toy2,"Negative, not neutral.",neutral
+toy3,The statement is neutral.,neutral
+toy4,not positive,positive
+toy5,I cannot tell.,missing
+toy6,positive or negative,positive
+toy7,nonneutral,neutral
