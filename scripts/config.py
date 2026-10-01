@@ -2,6 +2,8 @@
 
   Part A (a*.py): how much of FinBen's test set leaks from its own train split, and does it inflate scores?
   Part B (b*.py): improve the fine-tune to beat FinMA-7B -- choosing only on validation, testing once.
+  Part C (c*.py): a fresh 2026 test set no model can have seen -- does FinMA's lead survive?
+  Part D (d*.py): contamination x training-intensity controls for Part C's memorisation reading.
 Part-specific settings live in config_a.py / config_b.py (both start from this file).
 """
 from pathlib import Path
