@@ -1,0 +1,15 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+python        3.12.13 (Windows 11)
+torch         2.11.0+cu128
+unsloth       2026.9.12
+transformers  5.5.0
+trl           0.24.0
+peft          0.21.1
+bitsandbytes  0.50.2
+accelerate    1.15.0
+datasets      4.3.0
+cuda (torch)  12.8
+cudnn         91900
+gpu           NVIDIA GeForce RTX 5060 Laptop GPU (8.0 GB)
+nvidia driver 577.13
