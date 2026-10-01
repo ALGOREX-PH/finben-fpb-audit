@@ -44,7 +44,7 @@ FinMA-7B's training data ([PIXIU](https://github.com/The-FinAI/PIXIU)'s FIT) lis
 2. **It aces the sentences humans disagree on.** On test sentences where PhraseBank's annotators split (50% agreement), FinMA scores 0.79. Our model scores 0.61 on such sentences it never saw and 0.88 on ones it trained on.
 3. **Its lead vanishes on unseen data.** On fresh 2026 sentences, FinMA's 4.7-point lead turns into a 2.1-point deficit (shrink +6.8, 95% CI +2.5 to +11.0).
 
-This is behavioural evidence, not proof: FinMA's exact training split can't be inspected. The alternative explanation (FinMA simply generalises better) is hard to square with signals 2 and 3.
+This is behavioural evidence, not proof: FinMA's exact training split can't be inspected. The alternative explanation (FinMA simply generalises better) is hard to square with signals 2 and 3. A second alternative is **not yet ruled out**: FinMA trained far longer on PhraseBank-style data (15 epochs vs our 2), and heavy training alone could produce a large drop on new-domain sentences. Part D trains our model with and without the test sentences, at 2 and 15 epochs, to separate the two.
 
 ## Reproduce it
 
