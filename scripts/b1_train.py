@@ -49,6 +49,8 @@ if __name__ == "__main__":
     args = ap.parse_args()
 
     name = run_name(args.epochs, args.lr, args.rank, args.seed, args.data)
+    if args.max_steps > 0:   # smoke run: its own folder, so --skip-existing never mistakes it for the real run
+        name += "_smoke"
     control = args.control or args.data == "trainvaltest"
     out_dir = (config.CONTROLS_DIR if control else config.ADAPTERS_DIR) / name
     if args.skip_existing and (out_dir / "train_info.json").exists():
