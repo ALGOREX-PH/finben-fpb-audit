@@ -28,8 +28,11 @@ from datasets import Dataset  # noqa: E402
 from trl import SFTConfig, SFTTrainer  # noqa: E402
 
 
+DATA_SUFFIX = {"train": "", "trainval": "_tv", "trainvaltest": "_tvt"}
+
+
 def run_name(epochs, lr, rank, seed, data):
-    return f"e{epochs}_lr{lr:g}_r{rank}_s{seed}" + ("_tv" if data == "trainval" else "")
+    return f"e{epochs}_lr{lr:g}_r{rank}_s{seed}" + DATA_SUFFIX[data]
 
 
 if __name__ == "__main__":
