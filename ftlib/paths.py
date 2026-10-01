@@ -2,7 +2,14 @@
 transformers, datasets or kagglehub) -- most of these settings are read once, at import time."""
 import logging
 import os
+import sys
 from pathlib import Path
+
+# Reports print "−", "±", "→": on a Windows console (cp1252), or when run_all.py captures output, that
+# would crash the script after its file is written. Print UTF-8 instead.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
 MODELS_DIR = ROOT / "models"
