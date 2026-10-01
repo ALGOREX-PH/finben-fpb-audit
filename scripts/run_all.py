@@ -27,6 +27,8 @@ import b3_select as selection  # noqa: E402
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--dry-run", action="store_true")
+ap.add_argument("--part-d", action="store_true", help="run ONLY Part D, the contamination x intensity controls")
+ap.add_argument("--all-seeds", action="store_true", help="Part D: also train cells C and D on seeds 42 and 7")
 args = ap.parse_args()
 PY = [sys.executable]
 
@@ -74,6 +76,9 @@ if not args.dry_run:
                               capture_output=True, text=True).stdout.strip() or 0)
     if used > 1500:
         raise SystemExit(f"GPU already has {used} MiB in use -- close that program first.")
+if args.part_d:
+    part_d()
+    raise SystemExit(0)
 
 # ================================ PART A: contamination =====================================
 if not all((config.DATA_DIR / f).exists() for f in config.SPLIT_FILES.values()):
@@ -147,6 +152,9 @@ for seed in config.SEEDS:
     run(f"C3. our final model seed {seed} on fresh sentences", "c3_eval.py", "--system", "ours", "--seed", seed)
 run("C3. FinMA-7B on fresh sentences (official prompt)", "c3_eval.py", "--system", "finma")
 run("C4. Part C report (needs data/fresh/labels.csv)", "c4_report.py", skip=False)
+
+# ================================ PART D: saw the test set, or trained harder? ================
+part_d()
 
 # ================================ checks + the one report ====================================
 run("B4. parity with FinBen's official scoring code", "b4_harness_parity.py", skip=False)
