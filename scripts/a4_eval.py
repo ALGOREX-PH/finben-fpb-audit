@@ -10,7 +10,7 @@ FinBen's evaluation settings (PIXIU src/tasks/flare.py):
   prompt  the dataset's `query` field, verbatim (sent as the user turn of Gemma's chat template)
   parse   lower-case the reply, take the FIRST choice (in the dataset's `choices` order) that appears
           anywhere in it, else "missing"
-  metrics accuracy, weighted F1 (their headline "F1"), macro F1, MCC, missing rate   -> 05_report.py
+  metrics accuracy, weighted F1 (their headline "F1"), macro F1, MCC, missing rate   -> a5_report.py
 Each prediction file also keeps a strict parse (reply is exactly one label) and the first-token
 label probabilities, for calibration.
 """
