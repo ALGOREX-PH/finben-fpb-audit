@@ -1,0 +1,29 @@
+# CPU-only checks: unit tests + FinBen harness parity on a synthetic fixture.
+# Deliberately does NOT install the project (torch, unsloth, CUDA wheels): the tested code needs pandas-level
+# libraries only, and the gated FinBen data is never available here.
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: .
+      UV_RUN: uv run --isolated --no-project --python 3.12 --with pandas --with numpy --with scikit-learn --with scipy --with matplotlib --with pytest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7  # v10.2.0
+      - name: Unit tests
+        run: $UV_RUN pytest -q tests
+      - name: Harness parity on the fixture
+        run: >-
+          $UV_RUN python scripts/b4_harness_parity.py --strict
+          --data-dir tests/fixtures/data --pred-dir tests/fixtures/predictions/test
+          --out "$RUNNER_TEMP/harness_parity.json"
