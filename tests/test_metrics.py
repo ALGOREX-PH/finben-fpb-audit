@@ -28,3 +28,19 @@ def test_core_metrics():
     assert out["macro_f1"] == pytest.approx(11 / 15)
     np.testing.assert_array_equal(out["confusion"], [[1, 1], [0, 2]])   # rows = gold, columns = predicted
     assert "precision" in out["report"]
+
+
+def test_bootstrap_ci_is_deterministic_and_brackets_the_score():
+    rng = np.random.default_rng(1)
+    gold = rng.choice(AB, 200)
+    pred = np.where(rng.random(200) < 0.8, gold, rng.choice(AB, 200))
+    lo, hi = metrics.bootstrap_ci(gold, pred, AB, n_resamples=300, seed=5)
+    assert (lo, hi) == metrics.bootstrap_ci(gold, pred, AB, n_resamples=300, seed=5)
+    assert isinstance(lo, float) and isinstance(hi, float)
+    assert lo <= metrics.macro_f1(gold, pred, AB) <= hi
+    assert (lo, hi) != metrics.bootstrap_ci(gold, pred, AB, n_resamples=300, seed=6)
+
+
+def test_bootstrap_ci_of_perfect_predictions_is_a_point():
+    gold = ["a", "b"] * 20
+    assert metrics.bootstrap_ci(gold, gold, AB, n_resamples=50) == (1.0, 1.0)
