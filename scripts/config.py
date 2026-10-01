@@ -1,4 +1,4 @@
-"""Task 02 shared settings: FinBen FPB with base Gemma 4 E4B-it.
+"""Shared settings: FinBen FPB with base Gemma 4 E4B-it.
 
   Part A (a*.py): how much of FinBen's test set leaks from its own train split, and does it inflate scores?
   Part B (b*.py): improve the fine-tune to beat FinMA-7B -- choosing only on validation, testing once.
