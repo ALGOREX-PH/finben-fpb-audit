@@ -2,6 +2,7 @@
 
   finben_parse   FinBen/PIXIU's answer parser
   attach_gold    re-attach gold labels to a shipped prediction file (ids only, no dataset text or labels)
+  accuracy_by_agreement   accuracy per PhraseBank annotator-agreement level (the memorisation diagnostic)
 """
 import pandas as pd
 
