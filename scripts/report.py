@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent
 RESULTS = HERE.parent / "results"
 
 for script, needs in [("a5_report.py", RESULTS / "partA" / "predictions"), ("b5_report.py", RESULTS / "partB" / "predictions"),
-                      ("c4_report.py", RESULTS / "partC" / "predictions")]:
+                      ("c4_report.py", RESULTS / "partC" / "predictions"), ("d1_controls_report.py", RESULTS / "partD" / "predictions")]:
     if needs.exists():
         subprocess.run([sys.executable, str(HERE / script)], stdout=subprocess.DEVNULL, check=False)
 
