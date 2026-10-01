@@ -84,7 +84,11 @@ if __name__ == "__main__":
     ap.add_argument("--enrich-negative", type=int, default=0,
                     help="ADD this many sentences containing negative-leaning words to the existing candidates.csv "
                          "(press releases are mostly good news; without this the negative class is too small to measure)")
+    ap.add_argument("--min-date", default="2026-06-30", help="oldest release date kept (default: the shipped set's window)")
+    ap.add_argument("--max-date", default="2026-09-30", help="newest release date kept, inclusive")
     args = ap.parse_args()
+    min_date = pd.Timestamp(args.min_date, tz="UTC")
+    max_date = pd.Timestamp(args.max_date, tz="UTC") + pd.Timedelta(days=1)     # inclusive of the whole last day
 
     rows, seen_links, oldest = [], set(), None
     for page in range(1, args.max_pages + 1):
