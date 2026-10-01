@@ -119,7 +119,7 @@ run("C3. zero-shot on fresh sentences", "c3_eval.py", "--system", "zeroshot")
 for seed in config.SEEDS:
     run(f"C3. our final model seed {seed} on fresh sentences", "c3_eval.py", "--system", "ours", "--seed", seed)
 run("C3. FinMA-7B on fresh sentences (official prompt)", "c3_eval.py", "--system", "finma")
-run("C4. Part C report (needs your labels)", "c4_report.py", skip=False)
+run("C4. Part C report (needs data/fresh/labels.csv)", "c4_report.py", skip=False)
 
 # ================================ checks + the one report ====================================
 run("B4. parity with FinBen's official scoring code", "b4_harness_parity.py", skip=False)
