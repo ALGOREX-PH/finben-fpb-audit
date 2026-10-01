@@ -63,6 +63,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--data-dir", type=Path, default=config.DATA_DIR, help="folder with the FinBen test CSV")
 ap.add_argument("--pred-dir", type=Path, default=config.PRED_DIR / "test", help="test-set prediction CSVs to re-score")
 ap.add_argument("--out", type=Path, default=config.RESULTS_DIR / "harness_parity.json")
+ap.add_argument("--strict", action="store_true", help="exit 1 on any mismatch or on zero systems (CI)")
 args = ap.parse_args()
 
 test = pd.read_csv(args.data_dir / config.SPLIT_FILES["test"])
@@ -85,8 +86,10 @@ print(f"{'system':28} {'same pred':>9} {'same gold':>9} {'PIXIU wF1':>9} {'our w
 for r in rows:
     print(f"{r[0]:28} {r[1]:9.1%} {r[2]:9.1%} {r[3]:9.4f} {r[4]:8.4f} {r[5]:6.3f} {r[6]:6.3f} {r[7]:7.1%}")
 if not rows:   # all([]) is True -- never report parity on zero systems
-    raise SystemExit(print(f"no complete test predictions in {args.pred_dir} yet -- nothing to check") or 0)
+    raise SystemExit(print(f"no complete test predictions in {args.pred_dir} yet -- nothing to check") or int(args.strict))
 ok = all(r[1] == 1 and r[2] == 1 and abs(r[3] - r[4]) < 1e-9 for r in rows)
 out = args.out
 out.write_text(json.dumps({"identical_to_pixiu_scoring": ok, "systems": [r[0] for r in rows]}, indent=2))
 print(f"\nScoring identical to FinBen's official PIXIU code on every system: {ok}  -> {out.name}")
+if args.strict and not ok:
+    raise SystemExit(1)
