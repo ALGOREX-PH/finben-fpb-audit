@@ -1,4 +1,4 @@
-"""Builds the ONE combined report: results/REPORT.md = analysis.md + Parts A, B, C. No GPU, seconds.
+"""Builds the ONE combined report: results/REPORT.md = ANALYSIS.md + Parts A, B, C. No GPU, seconds.
 
   uv run python scripts/report.py
 
