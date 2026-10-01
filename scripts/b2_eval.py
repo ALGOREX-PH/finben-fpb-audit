@@ -26,18 +26,13 @@ import pandas as pd  # noqa: E402
 import torch  # noqa: E402
 
 from config_b import LABELS  # noqa: E402
+from ftlib.finben import finben_parse  # noqa: E402,F401  (c3_eval.py uses it as b2.finben_parse)
 
 
 def load_split(split):
     if split == "train_sample":
         return pd.read_csv(config.DATA_DIR / config.SPLIT_FILES["train"]).sample(config.MEMO_SAMPLE, random_state=0).reset_index(drop=True)
     return pd.read_csv(config.DATA_DIR / config.SPLIT_FILES[split])
-
-
-def finben_parse(raw, choices):
-    """FinBen/PIXIU rule: first choice (dataset order) contained in the lower-cased reply, else 'missing'."""
-    low = raw.lower()
-    return next((c.lower() for c in choices if c.lower() in low), "missing")
 
 
 def run_gemma(queries, adapter=None, batch=16):
