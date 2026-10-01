@@ -1,9 +1,10 @@
-# Task 02: FinBen FPB with base Gemma 4 E4B-it -- from contamination check to beating FinMA-7B
+# FinBen FPB with base Gemma 4 E4B-it -- from contamination check to beating FinMA-7B
 
 One benchmark (FinBen's Financial PhraseBank split: 3,100 train / 776 validation / 970 test), two questions:
 - **Part A:** does FinBen's own train split leak into its test split, and does that inflate a fine-tune's score? *(done)*
 - **Part B:** can a laptop fine-tune of Gemma 4 E4B-it beat FinMA-7B (published 0.88), choosing only on validation? *(done: behind FinMA's re-run, which shows signs of test contamination)*
-- **Part C:** on fresh 2026 sentences FinMA can't have seen, does its lead survive? *(done: no. FinMA drops twice as much as we do; memorisation supported. Labels are AI-made.)*
+- **Part C:** on fresh 2026 sentences FinMA can't have seen, does its lead survive? *(done, preliminary: apparently not. FinMA drops about twice as much as we do, consistent with memorisation; labels are AI-made and the Part D controls are pending.)*
+- **Part D:** is FinMA's bigger drop caused by seeing the test sentences, or by training much longer on PhraseBank? A 2 x 2 of our own models (with/without the test set x 2/15 epochs). *(pre-registered; not run yet)*
 
 ## Part A: contamination
 
@@ -88,8 +89,8 @@ Source: FinBen Tables 3 and 7. Caveats: self-reported (FinBen's prompt, parser a
 **6 of 6 confirmed is itself a warning:** the predictions may have been too safe. Next time, predict exact numbers with a tolerance (e.g. "inflation +0.5 ± 0.3 points") so a prediction can actually fail.
 
 ### Open questions worth a follow-up
-- **Prompt effect:** zero-shot here (0.794 wF1, FinBen prompt) is well below Task 01's zero-shot on PhraseBank sentences (0.875 macro-F1, Task 01 prompt). How much is FinBen's prompt and how much is the harder test mix (all agreement levels)? Running zero-shot with Task 01's prompt on this test set would answer it in 1 minute.
-- **Where are the remaining 13% of errors?** Task 01 found mostly labeling convention and debatable gold labels. The 3 true copies with conflicting labels here suggest the same ceiling.
+- **Prompt effect:** zero-shot here (0.794 wF1, FinBen prompt) is well below the zero-shot score in an earlier experiment on PhraseBank sentences (0.875 macro-F1, a different prompt; that work isn't in this repo). How much is FinBen's prompt and how much is the harder test mix (all agreement levels)? Running zero-shot with that prompt on this test set would answer it in 1 minute.
+- **Where are the remaining 13% of errors?** The earlier experiment found mostly labeling convention and debatable gold labels. The 3 true copies with conflicting labels here suggest the same ceiling.
 
 ### Limitations
 - One benchmark split (FinBen's). Other papers' FPB splits and agreement levels differ.
@@ -109,8 +110,8 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 
 ### Method in one paragraph
 - The baseline is Part A's fine-tune: 0.867 ± 0.009 test wF1, 1 epoch, lr 2e-4, rank 16.
-- Every change was chosen on FinBen's **validation** split (776 sentences), one knob at a time: epochs, then learning rate, then LoRA rank. The top 2 configurations were re-run with 3 seeds.
-- The choice was frozen in `results/selected_config.json` with a written rule, before the test set was touched.
+- Every change was chosen on FinBen's **validation** split (776 sentences), one knob at a time: epochs, then learning rate, then LoRA rank. The top 2 configurations were re-run with 3 seeds (`FINALISTS = 2`). A third configuration, rank 32, got 3 seeds only later, after the test set had been scored; see the tie-rule audit below.
+- The choice was frozen in `results/partB/selected_config.json` with a written rule, before the test set was touched.
 - The frozen configuration was retrained on train + validation (3 seeds) and scored on the 970 test sentences **once**.
 - FinMA-7B was re-run by us with the same parser and metric, and with **its own official prompt wrapper** (`Human: … Assistant:`, from PIXIU's `model_prompt.py`), so it isn't handicapped. The comparison is a McNemar test on identical sentences.
 - A memorisation check compares each model's accuracy on training sentences vs test sentences.
@@ -140,7 +141,7 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 | + 3-seed ensemble | 0.899 |
 
 - A third epoch hurts: validation loss climbs 0.125 → 0.203, a textbook overfitting curve.
-- Rank 32 scored 0.897 on one seed, but within the tie tolerance; the rule kept the cheaper rank 16.
+- Rank 32 (lr 2e-4) scored 0.897 on one seed during the search, within the tie tolerance of rank 16 (0.899), so the rule kept the cheaper rank 16. It then missed the 3-seed finalist round by 0.00004 (0.89669 vs lr 4e-4's 0.89673): the finalist cut takes the top 2 by raw score, with no tie rule. With 3 seeds, added after the freeze, it scores 0.899; see the tie-rule audit below.
 
 **2. The final model: 0.885 ± 0.006 test wF1 (0.890 as an ensemble).**
 - That's up from 0.867 in Part A, and it beats FinMA's **published** 0.88.
@@ -168,7 +169,7 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 
 **5. Our scoring equals FinBen's official scoring.** Re-scoring all 7 systems' outputs with PIXIU's `flare.py` code gives identical predictions and metrics.
 
-**What would settle the FinMA question:** a test set FinMA can't have seen, e.g. new financial sentences labelled with PhraseBank's guidelines. If FinMA drops toward our level there and we don't, it was memorisation.
+**What would settle the FinMA question:** a test set FinMA can't have seen, e.g. new financial sentences labelled with PhraseBank's guidelines. If FinMA drops toward our level there and we don't, that points to memorisation (or to over-specialisation from heavier training, which Part D tests).
 
 ### Limitations
 - One benchmark, one test split of 970 sentences: a ~2-point difference is roughly the smallest that McNemar can detect here.
@@ -176,12 +177,29 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 - The search is greedy (one knob at a time), not a full grid, so interactions between knobs are not explored.
 - The FinMA contamination evidence is circumstantial: we can't inspect its training data, only its behaviour.
 
+### Tie-rule audit (added 2026-10-01, after the results)
+Run today, `b3_select.py`'s coded rule would choose **2 epochs, lr 2e-4, rank 32** (validation wF1 0.8992 over 3 seeds), not the frozen **2 epochs, lr 4e-4, rank 16** (0.8959). The gap, 0.0033, is just over `TIE_TOLERANCE` (0.003). The file timestamps show why the two disagree:
+
+| Time (2026-10-01) | Event |
+|---|---|
+| 00:30 | Learning-rate search ends: lr 2e-4 0.8987, lr 4e-4 0.8967 (1 seed each; tie → lr 2e-4) |
+| 01:02 | Rank search at lr 2e-4: rank 32 0.8967 vs rank 16 0.8987 (tie → rank 16) |
+| 01:33–03:04 | Finalists, 3 seeds each: lr 2e-4 / rank 16 (mean 0.8903) and lr 4e-4 / rank 16 (0.8959). Rank 32 missed the top 2 by 0.00004 |
+| **03:04** | **`selected_config.json` frozen**: lr 4e-4 / rank 16, the right pick among configs that had 3 seeds |
+| 03:29–04:32 | Final models trained on train + validation and scored on **test** |
+| 08:30–09:32 | `run_all.py` resumed: rank 32 at lr 4e-4 (0.8901), then rank 32 / lr 2e-4 seeds 42 and 7 (0.8993, 0.9017) |
+
+- **The freeze was correct when it was made.** At 03:04 only the two finalists had 3 seeds, and `freeze()` on exactly those predictions reproduces the frozen choice.
+- **The extra runs came from resuming the pipeline.** `run_all.py` re-derives the adaptive search from whatever validation predictions exist. After the finalists' extra seeds lowered lr 2e-4 / rank 16 to 0.8903, the recomputed search picked lr 4e-4 for the rank step and put rank 32 into the top 2, so it trained three new runs. The frozen file wasn't touched, because `run_all.py` reuses it once it exists.
+- **Rank 32 was never scored on test, and won't be.** Doing so now would be choosing on test. Whether rank 32 would score higher on test is unknown; on validation the two are 0.3 points apart, about 2 sentences.
+- **Process fixes, not applied:** apply the tie rule to the finalist cut as well, and make a resumed run reuse the search decisions already made instead of re-deriving them. Section 1 of the Part B report lists every validation run, including the three post-freeze ones.
+
 
 ## Part C: a fresh test set FinMA can't have seen
 
 **Answer.** On 349 fresh sentences from July–September 2026 press releases, FinMA's lead disappears. Our 3-seed ensemble scores **0.811** wF1 and FinMA **0.791**; the difference isn't significant (p = 0.3). So: **matched or slightly ahead, not a clear win.**
 
-FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and zero-shot (**7.8**) fall only by the general shift to 2026 press releases. FinMA's lead shrinks by **6.8 points, 95% CI [+2.5, +11.0]**. By the pre-registered rule, the verdict is **memorisation supported**: most of FinMA's FinBen advantage came from having seen the test sentences.
+FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and zero-shot (**7.8**) fall only by the general shift to 2026 press releases. FinMA's lead shrinks by **6.8 points, 95% CI [+2.5, +11.0]**. By the pre-registered rule, the verdict is **memorisation consistent (preliminary: AI labels)**: the pattern fits most of FinMA's FinBen advantage coming from having seen the test sentences. It doesn't rule out the other cause, FinMA's much longer training on PhraseBank-style text; Part D separates the two.
 
 **Caveat:** the answer key was made by an LLM (Claude), and no human has checked it yet (`c2_label.py --spotcheck 40`).
 
@@ -214,6 +232,7 @@ FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and
 - **Memorisation supported:** the lead shrinks by ≥ 0.03 on fresh sentences, with a 95% bootstrap CI excluding 0.
 - **Memorisation not supported:** FinMA still leads by ≥ 0.03 on fresh sentences, with McNemar p < 0.05.
 - **Inconclusive:** anything else.
+- *Label renamed on 2026-10-01, after the result: "memorisation supported" became "memorisation consistent (preliminary: AI labels)", because this rule can't tell memorisation from over-specialisation and the labels aren't human-checked. The thresholds and numbers are unchanged.*
 
 ### Predictions (before any fresh result; numbers with tolerances)
 
@@ -231,9 +250,73 @@ FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and
 - 2026 press releases differ from PhraseBank's 2004–2008 news in style, so every model shifts domain. The comparison relies on FinMA's drop *relative to ours*.
 - The negative class is enriched by keyword, so the class mix isn't the natural one. Results are also reported on the random 300 alone.
 
+## Part D: separating "saw the test set" from "trained harder" (pre-registered 2026-10-01, before any Part D model was trained)
+
+Part C found that FinMA-7B drops 14.7 points from FinBen's test to the fresh 2026 sentences, against our 7.9. Two stories fit that gap:
+- **Memorisation:** FinMA trained on the FinBen test sentences, so its FinBen score is inflated and the inflation vanishes on fresh data.
+- **Over-specialisation:** FinMA trained much longer (15 epochs) on PhraseBank-style text and transfers worse to 2026 press releases, whether or not it saw the test sentences.
+
+Part D trains our own models in a 2 x 2 design where we *know* which ones saw the test set, so the two causes can be separated.
+
+### Design
+Frozen recipe from Part B for every cell: learning rate 4e-4, LoRA rank 16, batch 4 x 4, FinBen's prompt format, seeds 3407 / 42 / 7.
+
+| Cell | Training data | Epochs | Seeds | Run names |
+|---|---|---|---|---|
+| **A** clean, 2 epochs | train + validation | 2 | 3407, 42, 7 | existing final models `e2_lr0.0004_r16_s*_tv` (predictions reused) |
+| **B** contaminated, 2 epochs | train + validation + **test** | 2 | 3407, 42, 7 | `e2_lr0.0004_r16_s*_tvt` |
+| **C** clean, 15 epochs | train + validation | 15 | 3407 (42, 7 if time allows) | `e15_lr0.0004_r16_s*_tv` |
+| **D** contaminated, 15 epochs | train + validation + **test** | 15 | 3407 (42, 7 if time allows) | `e15_lr0.0004_r16_s*_tvt` |
+
+- Every model is scored on FinBen's test (970), the memorisation train sample (970 train sentences, `MEMO_SAMPLE`) and the fresh set (349 usable sentences), with FinBen's exact template, parser and metric.
+- Control adapters go to `models/controls/`, control predictions to `results/partD/predictions/{test,train_sample,fresh}/`. Nothing in Parts A–C is re-scored or overwritten, and the Part B/C report globs can't see these files.
+- Cell A's test and fresh predictions are the shipped Part B/C files. Its train-sample predictions don't exist yet and are produced into `results/partD/`.
+- Report: `scripts/d1_controls_report.py` -> `results/partD/REPORT.md`.
+
+### Quantities
+- **drop(X)** = fresh wF1 − FinBen test wF1 for cell X (negative = worse on fresh data).
+- **Contamination effect at 15 epochs:** **DiD15 = drop(C) − drop(D)**. At 2 epochs: **DiD2 = drop(A) − drop(B)**.
+  - **Sign, corrected from the brief:** the brief wrote DiD = drop(D) − drop(C) ≥ 0.03. Memorisation inflates D's FinBen score, which makes drop(D) *more negative*, so that form would be ≤ −0.03. Here DiD is defined the other way round, so **memorisation makes DiD positive**.
+- **Intensity effect on clean models:** drop(A) − drop(C); positive means longer training costs transfer.
+- **Seed matching (primary):** each contrast uses only the seeds present in both cells, averaging the per-seed differences. With C and D on seed 3407 only, the 15-epoch contrasts are single-seed (seed 3407).
+  - Seed-mean and 3-seed-ensemble versions are secondary, reported when all seeds exist.
+  - Seed noise is real: cell A's per-seed drops are −5.4 (seed 3407), −8.0 (42) and −9.0 (7). The bootstrap CI does not include seed variance, so a single-seed DiD is weaker evidence than its CI suggests.
+- **CIs:** 2,000 bootstrap draws (seed 0). Within a test set, both cells share the same resampled indices (paired). FinBen test and fresh set are resampled independently of each other, as in `c4_report.py`.
+- **Gold labels:** fresh = `data/fresh/labels.csv`, which is **AI-made (Claude); human spot-check pending**. The report takes `--labels` so the same analysis re-runs on human labels.
+  - Any verdict on AI labels is **preliminary**.
+  - If the verdict changes between the two label sets, the result is reported as label-dependent.
+
+### Predictions (numbers with tolerances, so they can fail)
+I adjusted the brief's proposed numbers using what already exists:
+- Cell A's seed-3407 model scores 0.878 on test (seeds range 0.878–0.889).
+- Our train-only twin scores 0.966 accuracy on train sentences it saw for 2 epochs.
+- FinMA scores 0.937.
+
+| # | Prediction | Why it was changed from the brief |
+|---|---|---|
+| D1 | **D** test wF1 **≥ 0.97** (seed 3407) | The brief's ≥ 0.93 is too easy: 2 epochs on a sentence already gives ~0.97 accuracy on it, and 15 epochs should do at least as well |
+| D2 | **B** test wF1 **0.96 ± 0.02**, between A and D (A < B ≤ D) | Brief kept; the number comes from the twin's 0.966 on seen sentences |
+| D3 | **C** test wF1 within **0.02** of A, matched seed (0.878 for seed 3407) | Brief's 0.01 is tighter than A's own seed spread (0.011) |
+| D4 | Train-sample gap (train acc − test acc): **B and D within ±0.02 of 0** (test also seen); **C ≥ A** (A's twin: +0.083) | New: checks contamination worked as intended |
+| D5 | 50Agree test accuracy: **D ≥ 0.90**; **C within 0.07 of A** (A seed 3407: 0.597; FinMA: 0.791) | New: the agreement-level signal from Part B, section 4b |
+| D6 | drop(C) = **−0.08 ± 0.04** | Brief's ±3 widened to ±4: A's seeds already span −5.4 to −9.0 |
+| D7 | DiD15 = drop(C) − drop(D) **≥ +0.05** with CI excluding 0; DiD2 ≥ +0.04 with CI excluding 0 | The brief's form had the wrong sign. Expected size ≈ D's inflation on FinBen (D1 − D3 ≈ +0.09) |
+
+### Decision rule (primary = seed-3407 15-epoch contrasts, AI labels until human labels exist)
+FinMA's drop is −0.147, so "FinMA-sized" is defined as drop ≤ −0.117 (within 3 points of FinMA, or worse).
+- **MEMORISATION explains the pattern:** DiD15 ≥ 0.03 with 95% CI excluding 0, **and** drop(D) is FinMA-sized, **and** drop(C) is not (drop(C) > −0.117).
+- **OVER-SPECIALISATION explains it:** DiD15's CI includes 0, **and** drop(C) and drop(D) are both FinMA-sized.
+- **INCONCLUSIVE:** anything else, including "both". For example, DiD15 > 0 with drop(C) also FinMA-sized would mean both causes contribute and Part D can't apportion them.
+- DiD2 is reported as a secondary check. It doesn't change the verdict.
+
+### Limits written before the run
+- Part D shows what memorisation and over-training do **to our model**. It can show that memorisation *can* produce FinMA's pattern, not that it *did* for FinMA, whose training data and recipe differ (7B LLaMA, full fine-tune, instruction mix).
+- 15 epochs at lr 4e-4 is our stand-in for "heavy training". It is not FinMA's exact recipe.
+- C and D may run on one seed only (see seed matching above).
+
 ---
 
-*Everything below is generated from `results/` by `report.py` (Part A: `a5_report.py`, Part B: `b5_report.py`).*
+*Everything below is generated from `results/` by `report.py` (Part A: `a5_report.py`, Part B: `b5_report.py`, Part C: `c4_report.py`).*
 
 # Part A: contamination (generated by `a5_report.py`)
 
@@ -444,9 +527,11 @@ Gold labels used: 349 sentences (negative 27, neutral 210, positive 112); 11 exc
 - FinMA's lead on the fresh sentences: **-0.0209** (McNemar p = 0.3; only FinMA right 19, only ours right 27)
 - Shrink: **+0.0680**, 95% CI [+0.025, +0.110]
 
-**Verdict: memorisation SUPPORTED.**
+**Verdict: memorisation CONSISTENT (preliminary: AI labels).**
 
-*Rule: supported if the lead shrinks by ≥ 0.03 with a CI excluding 0; not supported if FinMA still leads by ≥ 0.03 with p < 0.05; otherwise inconclusive.*
+*Missing check: no human has labelled or spot-checked these sentences; the gold labels are an AI's (see section 4). Treat the verdict as preliminary until `c2_label.py --spotcheck 40` is done.*
+
+*Rule: consistent with memorisation if the lead shrinks by ≥ 0.03 with a CI excluding 0; not supported if FinMA still leads by ≥ 0.03 with p < 0.05; otherwise inconclusive.*
 
 ## 3. Breakdowns
 
