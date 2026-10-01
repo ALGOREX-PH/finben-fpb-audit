@@ -12,7 +12,7 @@ for memory, not skill. This script measures that, using ftlib.contamination:
   loose        = also counts 8-gram overlap: over-fires on newswire boilerplate, so its extra hits are
                  printed for you to judge by eye
 It also writes a DECONTAMINATED training set (train minus every sentence that near-copies a test
-sentence), so 03_train_qlora.py --decontaminate can train a model that never saw them.
+sentence), so a3_train.py --decontaminate can train a model that never saw them.
 Outputs: data/contamination.csv (per test sentence), data/finben_train_decontam.csv
 """
 import config_a as config  # noqa: F401
