@@ -177,6 +177,23 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 - The search is greedy (one knob at a time), not a full grid, so interactions between knobs are not explored.
 - The FinMA contamination evidence is circumstantial: we can't inspect its training data, only its behaviour.
 
+### Tie-rule audit (added 2026-10-01, after the results)
+Run today, `b3_select.py`'s coded rule would choose **2 epochs, lr 2e-4, rank 32** (validation wF1 0.8992 over 3 seeds), not the frozen **2 epochs, lr 4e-4, rank 16** (0.8959). The gap, 0.0033, is just over `TIE_TOLERANCE` (0.003). The file timestamps show why the two disagree:
+
+| Time (2026-10-01) | Event |
+|---|---|
+| 00:30 | Learning-rate search ends: lr 2e-4 0.8987, lr 4e-4 0.8967 (1 seed each; tie → lr 2e-4) |
+| 01:02 | Rank search at lr 2e-4: rank 32 0.8967 vs rank 16 0.8987 (tie → rank 16) |
+| 01:33–03:04 | Finalists, 3 seeds each: lr 2e-4 / rank 16 (mean 0.8903) and lr 4e-4 / rank 16 (0.8959). Rank 32 missed the top 2 by 0.00004 |
+| **03:04** | **`selected_config.json` frozen**: lr 4e-4 / rank 16, the right pick among configs that had 3 seeds |
+| 03:29–04:32 | Final models trained on train + validation and scored on **test** |
+| 08:30–09:32 | `run_all.py` resumed: rank 32 at lr 4e-4 (0.8901), then rank 32 / lr 2e-4 seeds 42 and 7 (0.8993, 0.9017) |
+
+- **The freeze was correct when it was made.** At 03:04 only the two finalists had 3 seeds, and `freeze()` on exactly those predictions reproduces the frozen choice.
+- **The extra runs came from resuming the pipeline.** `run_all.py` re-derives the adaptive search from whatever validation predictions exist. After the finalists' extra seeds lowered lr 2e-4 / rank 16 to 0.8903, the recomputed search picked lr 4e-4 for the rank step and put rank 32 into the top 2, so it trained three new runs. The frozen file wasn't touched, because `run_all.py` reuses it once it exists.
+- **Rank 32 was never scored on test, and won't be.** Doing so now would be choosing on test. Whether rank 32 would score higher on test is unknown; on validation the two are 0.3 points apart, about 2 sentences.
+- **Process fixes, not applied:** apply the tie rule to the finalist cut as well, and make a resumed run reuse the search decisions already made instead of re-deriving them. Section 1 of the Part B report lists every validation run, including the three post-freeze ones.
+
 
 ## Part C: a fresh test set FinMA can't have seen
 
