@@ -3,6 +3,8 @@
   uv run python scripts/c3_eval.py --system zeroshot
   uv run python scripts/c3_eval.py --system ours --seed 3407     # the frozen Part B final model
   uv run python scripts/c3_eval.py --system finma                # official 'Human:/Assistant:' wrapper
+  uv run python scripts/c3_eval.py --system control --adapter e15_lr0.0004_r16_s3407_tvt \
+      --adapter-dir models/controls --pred-dir results/partD/predictions/fresh   # Part D control
   add --limit 8 for a smoke test
 
 Predictions don't depend on the labels, so this can run before or after labelling.
