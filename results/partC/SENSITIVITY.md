@@ -28,11 +28,11 @@ Candidates: the **22** fresh sentences labelled *neutral* that FinMA calls *posi
 
 | k relabelled | FinMA lead, fresh | Shrink | 95% CI | c4 verdict |
 |---|---|---|---|---|
-| 0 | -0.0209 | **+0.0680** | [+0.025, +0.110] | memorisation SUPPORTED |
-| 1 | -0.0153 | **+0.0624** | [+0.020, +0.105] | memorisation SUPPORTED |
-| 2 | -0.0096 | **+0.0567** | [+0.014, +0.099] | memorisation SUPPORTED |
-| 3 | -0.0040 | **+0.0511** | [+0.008, +0.095] | memorisation SUPPORTED |
-| 4 | +0.0017 | **+0.0454** | [+0.003, +0.089] | memorisation SUPPORTED |
+| 0 | -0.0209 | **+0.0680** | [+0.025, +0.110] | memorisation CONSISTENT (preliminary: AI labels) |
+| 1 | -0.0153 | **+0.0624** | [+0.020, +0.105] | memorisation CONSISTENT (preliminary: AI labels) |
+| 2 | -0.0096 | **+0.0567** | [+0.014, +0.099] | memorisation CONSISTENT (preliminary: AI labels) |
+| 3 | -0.0040 | **+0.0511** | [+0.008, +0.095] | memorisation CONSISTENT (preliminary: AI labels) |
+| 4 | +0.0017 | **+0.0454** | [+0.003, +0.089] | memorisation CONSISTENT (preliminary: AI labels) |
 | 5 | +0.0073 | **+0.0398** | [-0.004, +0.082] | INCONCLUSIVE |
 | 6 | +0.0130 | **+0.0341** | [-0.009, +0.076] | INCONCLUSIVE |
 | 7 | +0.0187 | **+0.0284** | [-0.016, +0.070] | INCONCLUSIVE |
