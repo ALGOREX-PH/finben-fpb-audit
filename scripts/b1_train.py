@@ -9,6 +9,15 @@
                  split has done its job (choosing the config), so using it for training is legitimate and
                  standard; there is then no held-out loss to watch, which is why the config must be fixed first.
 Adapter -> models/adapters/<run name>, e.g. e2_lr0.0002_r16_s3407 (+ _tv for trainval).
+
+Part D controls (see ANALYSIS.md, Part D):
+  uv run python scripts/b1_train.py --epochs 15 --lr 4e-4 --rank 16 --seed 3407 --data trainval --control
+  uv run python scripts/b1_train.py --epochs 2 --lr 4e-4 --rank 16 --seed 3407 --data trainvaltest
+--data trainvaltest  CONTAMINATED CONTROL: train + validation + TEST (suffix _tvt). Never a benchmark result.
+--control            adapter -> models/controls/ (implied by trainvaltest), checkpoints -> results/partD/checkpoints/
+                     every half epoch, and a rerun resumes from the last one. train_info.json logs the train-loss
+                     curve and flags divergence.
+Smoke runs (--max-steps) save to <run name>_smoke, so --skip-existing never mistakes one for the real run.
 """
 import argparse
 import json
