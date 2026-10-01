@@ -1,0 +1,361 @@
+id,raw,pred,pred_argmax,p_negative,p_neutral,p_positive
+fresh000,neutral,neutral,neutral,1.0444822e-09,0.8354835,0.16451645
+fresh001,positive,positive,positive,1.6304992e-09,4.4951817e-06,0.9999955
+fresh002,neutral,neutral,neutral,2.0071118e-08,0.9947798,0.0052201254
+fresh003,positive,positive,positive,1.1134073e-08,0.0007554056,0.9992446
+fresh004,neutral,neutral,neutral,1.5381708e-07,0.99999833,1.5534976e-06
+fresh005,Answer: neutral,neutral,neutral,9.042069e-08,0.9999573,4.264746e-05
+fresh006,positive,positive,positive,4.5856592e-07,0.0014103579,0.9985892
+fresh007,positive,positive,positive,6.0580634e-09,7.57115e-07,0.9999993
+fresh008,positive,positive,positive,9.131698e-10,0.0015978455,0.9984021
+fresh009,neutral,neutral,neutral,1.8100519e-09,0.99997246,2.7535694e-05
+fresh010,positive,positive,positive,1.1436179e-08,0.0052201254,0.9947798
+fresh011,neutral,neutral,neutral,2.902172e-06,0.9999488,4.8325503e-05
+fresh012,positive,positive,positive,1.8187228e-09,0.00013135182,0.9998687
+fresh013,positive,positive,positive,2.9585113e-08,0.16451646,0.83548355
+fresh014,neutral,neutral,neutral,9.042443e-08,0.99999875,1.2098656e-06
+fresh015,Answer: neutral,neutral,neutral,6.584617e-08,0.705785,0.29421496
+fresh016,neutral,neutral,neutral,1.1137693e-08,0.9995695,0.0004305571
+fresh017,positive,positive,positive,1.659346e-08,0.053403333,0.9465967
+fresh018,**Positive**,positive,positive,6.0525482e-09,0.0009110512,0.99908894
+fresh019,neutral,neutral,neutral,4.501972e-09,0.99999964,3.0590223e-07
+fresh020,positive,positive,positive,3.0951302e-09,0.40733337,0.59266657
+fresh021,neutral,neutral,neutral,1.3572942e-07,0.99989754,0.00010229984
+fresh022,positive,positive,positive,2.9934444e-08,0.011687258,0.9883128
+fresh023,positive,positive,positive,1.2598538e-08,0.0021827165,0.9978173
+fresh024,positive,positive,positive,1.1652697e-09,8.3152804e-07,0.99999917
+fresh025,neutral,neutral,neutral,4.3880005e-10,0.9998977,0.00010229985
+fresh026,neutral,neutral,neutral,9.0045127e-10,1.0,1.1206298e-09
+fresh027,Answer: positive,positive,positive,4.840031e-08,9.51625e-06,0.9999904
+fresh028,neutral,neutral,neutral,2.5359105e-07,0.99995714,4.2647454e-05
+fresh029,neutral,neutral,neutral,2.380877e-07,0.9993734,0.000626334
+fresh030,neutral,neutral,neutral,5.484506e-08,0.99999624,3.726639e-06
+fresh031,neutral,neutral,neutral,4.8640942e-08,0.9740426,0.025957355
+fresh032,neutral,neutral,neutral,4.270369e-08,0.99976945,0.0002305067
+fresh033,positive,positive,positive,2.8001623e-10,7.967301e-05,0.9999203
+fresh034,neutral,neutral,neutral,3.44913e-10,0.99986863,0.0001313518
+fresh035,neutral,neutral,neutral,4.271352e-08,0.9999995,3.9278618e-07
+fresh036,neutral,neutral,neutral,1.0145327e-08,0.9999974,2.5612821e-06
+fresh037,positive,positive,positive,2.1241739e-08,0.010986944,0.9890131
+fresh038,positive,positive,positive,1.520712e-08,0.0015011823,0.99849886
+fresh039,neutral,neutral,neutral,3.4309778e-08,0.9996646,0.0003353501
+fresh040,neutral,neutral,neutral,8.491568e-08,0.99964297,0.0003569706
+fresh041,positive,positive,positive,3.053558e-08,0.4073334,0.59266657
+fresh042,**Positive**,positive,positive,3.0531268e-07,0.22270006,0.7772996
+fresh043,neutral,neutral,neutral,3.432129e-08,1.0,4.8765825e-10
+fresh044,neutral,neutral,neutral,4.295803e-09,0.9999976,2.4061023e-06
+fresh045,neutral,neutral,neutral,2.6363218e-09,0.8807971,0.11920292
+fresh046,positive,positive,positive,2.3723723e-09,4.7379058e-07,0.9999995
+fresh047,neutral,neutral,neutral,5.06072e-09,0.9465967,0.053403333
+fresh048,neutral,neutral,neutral,5.9640723e-09,0.9999878,1.2219075e-05
+fresh049,Answer: positive,positive,positive,1.4879761e-07,0.0019267342,0.9980731
+fresh050,positive,positive,positive,2.7734741e-09,4.0063685e-05,0.99995995
+fresh051,neutral,neutral,neutral,8.151926e-09,0.99998856,1.1478768e-05
+fresh052,positive,positive,positive,9.667111e-09,0.0014103585,0.99858963
+fresh053,positive,positive,positive,5.152229e-08,1.2878952e-06,0.9999986
+fresh054,Positive,positive,positive,1.9663906e-09,0.00019110432,0.9998089
+fresh055,positive,positive,positive,4.1472865e-09,0.04208773,0.9579122
+fresh056,neutral,neutral,neutral,2.3588642e-08,0.9999995,4.7379055e-07
+fresh057,neutral,neutral,neutral,2.6729284e-08,0.9999938,6.1441747e-06
+fresh058,positive,positive,positive,9.146313e-10,2.9356553e-08,1.0
+fresh059,neutral,neutral,neutral,4.7923123e-09,0.99999726,2.7264703e-06
+fresh060,neutral,neutral,neutral,7.7343735e-08,0.99999374,6.144174e-06
+fresh061,neutral,neutral,neutral,4.0124398e-08,0.99996877,3.120191e-05
+fresh062,positive,positive,positive,4.6453454e-09,0.24508502,0.754915
+fresh063,neutral,neutral,neutral,9.433675e-10,0.999685,0.0003150387
+fresh064,neutral,neutral,neutral,2.4579907e-07,0.99999857,1.1365634e-06
+fresh065,Answer: positive,positive,neutral,3.4433083e-07,0.79818654,0.20181315
+fresh066,positive,positive,positive,1.0685511e-07,0.020332351,0.97966754
+fresh067,positive,positive,positive,1.1490221e-08,0.0005193048,0.99948066
+fresh068,neutral,neutral,neutral,6.475948e-07,0.99999934,2.590705e-08
+fresh069,neutral,neutral,neutral,3.466242e-07,0.9999753,2.430023e-05
+fresh070,Answer: positive,positive,positive,8.483344e-08,0.0013250223,0.9986749
+fresh071,positive,positive,positive,2.4092723e-09,0.0001911043,0.9998089
+fresh072,neutral,neutral,neutral,4.7379044e-07,0.9999992,3.059021e-07
+fresh073,neutral,neutral,neutral,1.30268605e-08,0.99999756,2.406102e-06
+fresh074,positive,positive,positive,2.4096705e-09,2.5867432e-05,0.99997413
+fresh075,neutral,neutral,neutral,4.6444057e-09,0.9998977,0.00010229985
+fresh076,neutral,neutral,neutral,4.1752898e-07,0.99858916,0.0014103579
+fresh077,neutral,neutral,neutral,4.8400437e-08,0.999993,6.962256e-06
+fresh078,positive,positive,positive,1.4986547e-08,0.00048785718,0.99951214
+fresh079,neutral,neutral,neutral,4.3686196e-10,0.9984021,0.0015978456
+fresh080,positive,positive,positive,7.053771e-09,0.0040701376,0.99592984
+fresh081,positive,positive,positive,2.0154275e-08,0.0010987311,0.9989013
+fresh082,neutral,neutral,neutral,4.0278408e-10,0.97702265,0.022977373
+fresh083,Answer: positive,positive,positive,1.8429733e-07,0.00669285,0.99330693
+fresh084,positive,positive,positive,4.3625175e-09,0.00021654404,0.99978346
+fresh085,neutral,neutral,neutral,2.0936046e-09,0.99999654,3.5008547e-06
+fresh086,positive,positive,positive,4.6448374e-09,9.516252e-06,0.99999046
+fresh087,neutral,neutral,neutral,3.2979997e-08,0.9914225,0.008577485
+fresh088,neutral,neutral,neutral,1.386963e-10,0.9968273,0.003172683
+fresh089,Neutral,neutral,neutral,1.0831094e-09,0.99719906,0.002800927
+fresh090,**Positive**,positive,neutral,1.198006e-08,0.5,0.5
+fresh091,positive,positive,positive,1.1205287e-09,9.0280395e-05,0.99990976
+fresh092,neutral,neutral,neutral,1.22189595e-05,0.9999783,9.516136e-06
+fresh093,Answer: positive,positive,positive,7.236243e-08,0.0040701376,0.9959298
+fresh094,neutral,neutral,neutral,1.5803289e-09,0.99999213,7.889262e-06
+fresh095,neutral,neutral,neutral,0.001032231,0.99896777,3.0257166e-08
+fresh096,positive,positive,positive,2.646547e-09,1.0129989e-05,0.99998987
+fresh097,neutral,neutral,neutral,2.8733913e-07,0.9998974,0.000102299826
+fresh098,neutral,neutral,neutral,2.4994243e-08,0.9953904,0.0046095722
+fresh099,positive,positive,positive,1.1493371e-08,0.00024536948,0.9997546
+fresh100,Answer: positive,positive,positive,5.0206306e-09,0.00033535014,0.9996646
+fresh101,neutral,neutral,neutral,6.4120286e-08,0.9999949,5.093705e-06
+fresh102,neutral,neutral,neutral,1.1118955e-09,0.9999878,1.2219076e-05
+fresh103,neutral,neutral,neutral,8.494406e-08,0.9999771,2.2827997e-05
+fresh104,positive,positive,positive,1.144995e-09,0.11920292,0.8807971
+fresh105,neutral,neutral,neutral,3.769094e-08,0.99990386,9.610242e-05
+fresh106,neutral,neutral,neutral,3.3264417e-08,0.99997246,2.753569e-05
+fresh107,Answer: negative,negative,negative,0.53120667,0.46878824,5.0551444e-06
+fresh108,neutral,neutral,neutral,4.6911644e-08,0.99999994,9.1463126e-10
+fresh109,positive,positive,positive,5.346189e-09,6.962256e-06,0.999993
+fresh110,Answer: neutral,neutral,positive,1.4451243e-07,0.24508496,0.75491494
+fresh111,neutral,neutral,neutral,3.8891077e-08,0.999999,1.0030142e-06
+fresh112,positive,positive,positive,2.7577713e-08,7.889262e-06,0.99999213
+fresh113,neutral,neutral,neutral,4.4230997e-09,0.86703575,0.13296424
+fresh114,positive,positive,positive,6.023522e-08,8.39807e-06,0.9999915
+fresh115,neutral,neutral,neutral,3.3263625e-08,0.99994856,5.1442217e-05
+fresh116,neutral,neutral,neutral,1.4005086e-07,0.99998975,1.012999e-05
+fresh117,positive,positive,positive,9.581378e-10,0.0004044815,0.9995955
+fresh118,neutral,neutral,neutral,8.233102e-08,0.9999821,1.7778551e-05
+fresh119,**negative**,negative,neutral,0.4073334,0.59266657,5.0344664e-08
+fresh120,Answer: neutral,neutral,neutral,1.4906402e-07,0.99986005,0.00013982206
+fresh121,neutral,neutral,neutral,2.2377694e-07,0.99988383,0.00011591932
+fresh122,positive,positive,positive,3.560816e-10,1.8738754e-06,0.99999815
+fresh123,neutral,neutral,neutral,6.023244e-08,0.99994516,5.4759766e-05
+fresh124,positive,positive,positive,1.9555655e-08,1.3709572e-06,0.9999986
+fresh125,Answer: positive,positive,neutral,1.9256904e-06,0.8519511,0.14804693
+fresh126,neutral,neutral,neutral,3.2241704e-08,0.9999949,5.093705e-06
+fresh127,positive,positive,positive,1.1095709e-10,2.5612821e-06,0.99999744
+fresh128,neutral,neutral,neutral,7.422499e-09,0.99999994,4.9937178e-08
+fresh129,Answer: positive,positive,neutral,2.857503e-07,0.49999985,0.49999985
+fresh130,neutral,neutral,neutral,6.41155e-08,0.99992025,7.9673e-05
+fresh131,positive,positive,positive,9.881785e-09,0.037326884,0.96267307
+fresh132,neutral,neutral,neutral,5.6526352e-09,0.9740426,0.025957355
+fresh133,neutral,neutral,neutral,1.1447723e-10,0.99997985,2.014569e-05
+fresh134,**neutral**,neutral,neutral,0.0008843698,0.9698294,0.029286306
+fresh135,positive,positive,positive,7.4168924e-09,0.00075540564,0.99924463
+fresh136,neutral,neutral,neutral,2.6729099e-08,0.99998695,1.3007128e-05
+fresh137,neutral,neutral,neutral,7.0825963e-09,0.9999997,3.156126e-07
+fresh138,Answer: positive,positive,positive,2.0706318e-08,0.37754065,0.62245935
+fresh139,Answer: positive,positive,positive,2.321152e-06,0.29421428,0.70578337
+fresh140,neutral,neutral,neutral,3.1201842e-05,0.99996656,2.260254e-06
+fresh141,positive,positive,positive,4.295797e-09,3.7266398e-06,0.9999963
+fresh142,Neutral,neutral,neutral,1.1051109e-07,0.98201364,0.017986208
+fresh143,positive,positive,positive,5.904528e-10,0.0001313518,0.99986863
+fresh144,neutral,neutral,neutral,1.02118456e-07,0.9966233,0.0033766122
+fresh145,neutral,neutral,neutral,1.3156429e-07,0.99997973,2.014569e-05
+fresh146,Neutral,neutral,neutral,3.4517762e-09,0.9999981,1.8738754e-06
+fresh147,positive,positive,positive,4.271182e-08,4.0063685e-05,0.9999598
+fresh148,neutral,neutral,neutral,2.5866673e-05,0.9999448,2.9310779e-05
+fresh149,neutral,neutral,neutral,1.2073355e-09,0.99640644,0.0035936027
+fresh150,neutral,neutral,neutral,1.0245459e-07,0.9999038,9.6102405e-05
+fresh151,Positive,positive,positive,5.019706e-09,0.0005193048,0.9994807
+fresh152,neutral,neutral,neutral,3.0288035e-08,0.999987,1.3007129e-05
+fresh153,negative,negative,negative,0.9669121,0.033085912,1.9287322e-06
+fresh154,positive,positive,positive,2.3586388e-08,9.610241e-05,0.99990386
+fresh155,**negative**,negative,neutral,0.20059192,0.42465308,0.37475505
+fresh156,neutral,neutral,neutral,6.2041814e-05,0.9997981,0.0001398134
+fresh157,positive,positive,positive,2.8599447e-09,0.00058840885,0.9994116
+fresh158,Answer: positive,positive,positive,1.7803586e-08,0.00011591935,0.99988407
+fresh159,positive,positive,positive,6.8608954e-09,0.00055277866,0.9994472
+fresh160,neutral,neutral,neutral,4.4169237e-09,0.8933094,0.1066906
+fresh161,neutral,neutral,neutral,8.1445934e-09,0.999089,0.00091105123
+fresh162,positive,positive,positive,3.211856e-08,0.0038244836,0.99617547
+fresh163,Answer: positive,positive,neutral,8.17092e-08,0.5312093,0.46879056
+fresh164,Answer: positive,positive,neutral,1.0717916e-08,0.53120935,0.4687906
+fresh165,positive,positive,positive,3.4320678e-08,1.7778553e-05,0.99998224
+fresh166,neutral,neutral,neutral,3.465972e-07,0.99989736,0.000102299826
+fresh167,positive,positive,positive,1.4295737e-08,0.0008040859,0.9991959
+fresh168,neutral,neutral,neutral,5.6578326e-08,0.9998601,0.00013982208
+fresh169,Positive,positive,positive,2.5201856e-09,0.0013250224,0.998675
+fresh170,neutral,neutral,neutral,2.98158e-08,0.9998977,0.00010229985
+fresh171,**Negative**,negative,neutral,0.022873877,0.972622,0.004504133
+fresh172,neutral,neutral,neutral,1.0391474e-08,0.93991333,0.060086645
+fresh173,neutral,neutral,neutral,3.326532e-08,0.9999996,3.8070144e-07
+fresh174,positive,positive,positive,2.8452774e-08,2.014569e-05,0.99997985
+fresh175,neutral,neutral,neutral,1.44498e-07,0.9999998,4.993717e-08
+fresh176,neutral,neutral,neutral,1.5612304e-08,0.90465057,0.09534946
+fresh177,neutral,neutral,neutral,3.6856952e-06,0.98900944,0.010986903
+fresh178,positive,positive,positive,2.5025203e-08,0.0033766124,0.9966234
+fresh179,positive,positive,positive,2.126571e-09,5.0937056e-06,0.99999493
+fresh180,neutral,neutral,neutral,1.2098573e-06,0.9999919,6.962248e-06
+fresh181,neutral,neutral,neutral,3.7910386e-09,0.9999991,9.422447e-07
+fresh182,neutral,neutral,neutral,5.4965854e-10,0.99858963,0.0014103585
+fresh183,Answer: positive,positive,positive,3.6748665e-07,0.0040701358,0.99592954
+fresh184,neutral,neutral,neutral,6.6524847e-10,0.99999887,1.1015953e-06
+fresh185,positive,positive,positive,6.313533e-09,0.0055549247,0.994445
+fresh186,**Neutral**,neutral,neutral,0.0008501771,0.9924627,0.0066871615
+fresh187,neutral,neutral,neutral,7.9799335e-08,0.99999934,6.08359e-07
+fresh188,neutral,neutral,neutral,5.1013638e-09,0.9999921,7.889262e-06
+fresh189,Positive,positive,positive,7.2039896e-10,0.0043315017,0.9956685
+fresh190,positive,positive,positive,4.0990864e-09,1.7603433e-06,0.9999983
+fresh191,positive,positive,positive,2.9692385e-10,4.539787e-05,0.9999546
+fresh192,neutral,neutral,neutral,2.672942e-08,0.99999905,9.422445e-07
+fresh193,positive,positive,positive,2.426909e-09,0.0007096704,0.99929035
+fresh194,positive,positive,positive,6.4020025e-09,0.060086653,0.9399134
+fresh195,neutral,neutral,neutral,1.7257825e-08,0.99999976,2.6165202e-07
+fresh196,neutral,neutral,neutral,9.146301e-10,0.9999987,1.2878952e-06
+fresh197,positive,positive,positive,4.2938653e-09,0.02931223,0.9706878
+fresh198,neutral,neutral,neutral,1.2751882e-07,0.9999981,1.760343e-06
+fresh199,**Positive**,positive,positive,0.0013616111,0.14784561,0.85079277
+fresh200,neutral,neutral,neutral,2.9356551e-08,0.99999994,7.042271e-08
+fresh201,positive,positive,positive,1.9061743e-09,4.2647465e-05,0.9999574
+fresh202,positive,positive,positive,3.1248913e-08,3.120191e-05,0.99996877
+fresh203,positive,positive,positive,8.95298e-09,2.9311539e-05,0.99997073
+fresh204,positive,positive,positive,6.6534493e-09,5.4222182e-06,0.9999946
+fresh205,neutral,neutral,neutral,1.00338875e-08,0.9890131,0.010986943
+fresh206,Positive,positive,positive,5.25198e-10,5.8291258e-05,0.9999417
+fresh207,neutral,neutral,neutral,5.7806235e-09,0.99999577,4.222833e-06
+fresh208,neutral,neutral,neutral,4.492518e-10,0.99999994,1.0571701e-07
+fresh209,neutral,neutral,neutral,2.8113462e-10,1.0,1.060991e-09
+fresh210,neutral,neutral,neutral,4.1630144e-10,0.9999978,2.2603244e-06
+fresh211,neutral,neutral,neutral,8.314617e-07,0.9999195,7.967294e-05
+fresh212,Answer: positive,positive,positive,2.4944509e-06,0.08509883,0.91489863
+fresh213,**Positive**,positive,positive,1.0303114e-08,0.05340333,0.9465967
+fresh214,neutral,neutral,neutral,3.1249858e-08,0.9999989,1.0677029e-06
+fresh215,**Negative**,negative,neutral,0.03732685,0.96267223,8.521167e-07
+fresh216,Positive,positive,positive,8.7958224e-10,1.1478767e-05,0.9999885
+fresh217,Answer: positive,positive,positive,1.3625755e-08,0.22270013,0.7772998
+fresh218,neutral,neutral,neutral,4.092122e-09,0.9982993,0.0017007225
+fresh219,positive,positive,positive,4.5018496e-09,2.7535692e-05,0.99997246
+fresh220,Neutral,neutral,positive,2.2513259e-08,0.46879062,0.53120935
+fresh221,Positive,positive,positive,1.6990127e-08,8.398072e-06,0.9999916
+fresh222,Answer: positive,positive,neutral,5.1635087e-08,0.56217647,0.4378235
+fresh223,neutral,neutral,neutral,0.025957068,0.97403175,1.1180813e-05
+fresh224,positive,positive,positive,5.1445014e-08,0.0015011821,0.99849874
+fresh225,Answer: positive,positive,positive,4.0117985e-08,0.0001911043,0.99980885
+fresh226,Answer: neutral,neutral,neutral,7.0048564e-08,0.62245923,0.37754062
+fresh227,Positive,positive,positive,6.5462302e-09,0.00062633416,0.9993737
+fresh228,positive,positive,positive,9.888828e-10,7.031184e-05,0.9999296
+fresh229,neutral,neutral,neutral,4.3629877e-09,0.9998911,0.000108896915
+fresh230,neutral,neutral,neutral,6.893606e-07,0.99999875,5.7150004e-07
+fresh231,neutral,neutral,neutral,2.6729442e-08,0.9999998,1.9750534e-07
+fresh232,positive,positive,positive,5.871485e-09,3.3214194e-05,0.9999668
+fresh233,positive,positive,positive,7.1911894e-09,0.015906392,0.9840936
+fresh234,neutral,neutral,neutral,3.576355e-07,0.9999987,9.422442e-07
+fresh235,positive,positive,positive,1.178993e-09,1.1478769e-05,0.99998856
+fresh236,Answer: positive,positive,positive,1.7257788e-08,2.4061023e-06,0.9999976
+fresh237,**Neutral**,neutral,positive,4.927054e-08,0.43782347,0.56217647
+fresh238,positive,positive,positive,2.1815259e-08,3.1201915e-05,0.9999688
+fresh239,positive,positive,positive,1.602971e-06,0.24508463,0.7549138
+fresh240,neutral,neutral,neutral,6.8060624e-09,0.9241418,0.07585818
+fresh241,Neutral,neutral,neutral,2.0619293e-09,0.93245333,0.06754669
+fresh242,Positive,positive,positive,2.2286093e-09,1.3007128e-05,0.999987
+fresh243,Positive,positive,positive,4.3633976e-09,1.4738981e-05,0.9999853
+fresh244,neutral,neutral,neutral,2.4552532e-08,0.6513548,0.34864512
+fresh245,neutral,neutral,neutral,5.539149e-07,0.99999523,4.222831e-06
+fresh246,positive,positive,positive,3.561339e-09,4.2228335e-06,0.99999577
+fresh247,neutral,neutral,neutral,3.4324717e-08,0.75491494,0.245085
+fresh248,neutral,neutral,neutral,8.133082e-09,0.9976768,0.0023231623
+fresh249,neutral,neutral,neutral,3.7471747e-08,0.9940889,0.0059110685
+fresh250,positive,positive,positive,1.6891569e-07,0.000115919334,0.99988395
+fresh251,Answer: positive,positive,neutral,1.3772528e-10,0.99736834,0.002631674
+fresh252,neutral,neutral,neutral,5.4222164e-06,0.9999941,5.0434465e-07
+fresh253,neutral,neutral,neutral,5.4303837e-09,0.99999386,6.144175e-06
+fresh254,neutral,neutral,neutral,7.19413e-09,0.9999995,5.0434744e-07
+fresh255,positive,positive,positive,4.863359e-09,0.0009110513,0.999089
+fresh256,positive,positive,positive,5.3972872e-08,0.01590639,0.9840935
+fresh257,neutral,neutral,neutral,5.6027765e-09,0.9999965,3.5008547e-06
+fresh258,positive,positive,positive,2.7735683e-09,6.1441747e-06,0.99999386
+fresh259,positive,positive,positive,1.7257806e-08,1.2878952e-06,0.9999987
+fresh260,positive,positive,positive,1.5711493e-08,0.00012339457,0.9998766
+fresh261,Answer: positive,positive,neutral,3.981546e-07,0.86703545,0.1329642
+fresh262,neutral,neutral,neutral,2.0816907e-08,0.9999998,2.1024334e-07
+fresh263,Positive,positive,positive,4.3289714e-09,0.00012339458,0.9998766
+fresh264,neutral,neutral,neutral,0.00012339403,0.99987215,4.4946273e-06
+fresh265,neutral,neutral,neutral,6.02348e-08,0.99998426,1.568955e-05
+fresh266,positive,positive,positive,7.664187e-10,0.0049054055,0.9950946
+fresh267,positive,positive,positive,5.951617e-10,5.0434744e-07,0.99999946
+fresh268,positive,positive,positive,7.4203017e-09,0.0002959571,0.999704
+fresh269,neutral,neutral,neutral,5.745029e-10,0.9959299,0.0040701376
+fresh270,positive,positive,positive,3.9729153e-09,1.5689551e-05,0.9999843
+fresh271,positive,positive,positive,6.550163e-09,2.5867432e-05,0.99997413
+fresh272,Answer: neutral,neutral,neutral,2.9679194e-08,0.70578504,0.29421493
+fresh273,Answer: positive,positive,neutral,9.512052e-08,0.6791786,0.3208213
+fresh274,positive,positive,positive,4.2291575e-09,1.30071285e-05,0.999987
+fresh275,neutral,neutral,neutral,1.1496143e-08,0.9999958,4.2228335e-06
+fresh276,neutral,neutral,neutral,6.214782e-08,0.9999999,6.825602e-08
+fresh277,positive,positive,positive,1.597664e-08,0.34864518,0.6513549
+fresh278,Answer: positive,positive,positive,4.6856773e-08,0.0011695103,0.99883044
+fresh279,positive,positive,positive,2.3125472e-10,1.2482709e-06,0.99999875
+fresh280,positive,positive,positive,9.734838e-10,0.00013982208,0.99986017
+fresh281,Answer: positive,positive,positive,5.8776797e-09,0.03732689,0.9626731
+fresh282,negative,negative,negative,0.9626723,0.037326857,8.5211684e-07
+fresh283,**Positive**,positive,neutral,4.460597e-09,0.62245935,0.37754065
+fresh284,neutral,neutral,neutral,1.1860114e-08,0.9999152,8.481104e-05
+fresh285,positive,positive,positive,1.2047004e-08,7.484623e-05,0.99992514
+fresh286,Answer: neutral,neutral,neutral,4.271243e-08,0.9999741,2.5867432e-05
+fresh287,positive,positive,positive,1.2898348e-09,1.7603431e-06,0.9999982
+fresh288,neutral,neutral,neutral,2.6729447e-08,1.0,2.833396e-10
+fresh289,neutral,neutral,neutral,2.394312e-08,0.99929035,0.00070967036
+fresh290,Neutral,neutral,neutral,1.622525e-10,0.99719906,0.0028009273
+fresh291,positive,positive,positive,4.7172803e-09,0.00015843622,0.9998415
+fresh292,positive,positive,positive,4.465052e-08,0.01798621,0.9820138
+fresh293,**Positive**,positive,positive,6.290927e-08,0.10669059,0.89330935
+fresh294,neutral,neutral,neutral,3.8848388e-08,0.99890125,0.0010987311
+fresh295,Answer: positive,positive,positive,4.5453074e-08,0.00033535014,0.99966466
+fresh296,positive,positive,positive,4.0334474e-09,0.0005193048,0.9994807
+fresh297,neutral,neutral,neutral,5.7806484e-09,1.0,2.2862908e-08
+fresh298,positive,positive,positive,2.2112168e-09,3.535625e-05,0.99996465
+fresh299,Answer: positive,positive,positive,1.4166065e-09,1.5534978e-06,0.99999845
+fresh300,positive,positive,positive,1.9550246e-08,0.00027803096,0.99972194
+fresh301,neutral,neutral,neutral,2.5854e-05,0.9994549,0.0005192915
+fresh302,Answer: negative,negative,negative,0.98409337,0.015906388,2.6566372e-07
+fresh303,neutral,neutral,neutral,9.966687e-10,0.99995995,4.0063685e-05
+fresh304,Answer: negative,negative,negative,0.9840919,0.015906366,1.7323426e-06
+fresh305,positive,positive,positive,1.7670732e-08,0.007577241,0.99242276
+fresh306,Answer: negative,negative,negative,0.9859363,0.0140636265,9.198286e-08
+fresh307,**positive**,positive,positive,9.328336e-09,0.11920293,0.8807971
+fresh308,positive,positive,positive,7.1940276e-09,1.4738982e-05,0.9999853
+fresh309,Answer: negative,negative,negative,0.989012,0.010986932,1.0559721e-06
+fresh310,Answer: positive,positive,positive,5.3157773e-08,1.4593761e-06,0.99999845
+fresh311,positive,positive,positive,7.464853e-10,2.0145693e-05,0.99997985
+fresh312,Answer: neutral,neutral,neutral,8.0994374e-07,0.9740418,0.025957339
+fresh313,Answer: negative,negative,neutral,0.022730658,0.9665322,0.010737204
+fresh314,Answer: negative,negative,neutral,0.43782032,0.56217235,7.312344e-06
+fresh315,negative,negative,negative,0.62221664,0.37739345,0.00038995972
+fresh316,Answer: negative,negative,negative,0.83548325,0.16451639,3.4933134e-07
+fresh317,neutral,neutral,neutral,0.00029595595,0.99970007,3.9658116e-06
+fresh318,Answer: negative,negative,negative,0.7510945,0.24384466,0.0050608343
+fresh319,positive,positive,positive,3.6174348e-09,6.6815164e-07,0.9999993
+fresh320,neutral,neutral,neutral,3.1125946e-08,0.8519528,0.14804718
+fresh321,positive,positive,positive,5.36003e-09,0.005220126,0.9947799
+fresh322,neutral,neutral,neutral,0.00026119023,0.9997385,2.8729346e-07
+fresh323,**Positive**,positive,positive,7.19119e-09,0.015906392,0.9840936
+fresh324,Answer: negative,negative,negative,0.7772852,0.22269592,1.8888677e-05
+fresh325,neutral,neutral,neutral,0.00037998383,0.9996182,1.8731633e-06
+fresh326,negative,negative,negative,0.83545184,0.16451022,3.7929458e-05
+fresh327,neutral,neutral,neutral,2.935655e-08,0.9999999,1.1253516e-07
+fresh328,positive,positive,positive,5.1711275e-09,0.13296424,0.86703575
+fresh329,Answer: positive,positive,positive,3.7825137e-07,0.09534943,0.9046502
+fresh330,positive,positive,positive,5.1813975e-09,6.605214e-05,0.99993396
+fresh331,Positive,positive,positive,5.170574e-10,5.4759766e-05,0.9999453
+fresh332,neutral,neutral,neutral,3.7859085e-09,0.99087435,0.009125638
+fresh333,positive,positive,positive,2.0459321e-08,0.0017007226,0.9982993
+fresh334,neutral,neutral,neutral,2.0776817e-08,0.8807971,0.11920292
+fresh335,positive,positive,positive,1.090724e-07,3.7266389e-06,0.9999961
+fresh336,Answer: negative,negative,negative,0.99028784,0.00970844,3.6904594e-06
+fresh337,neutral,neutral,neutral,1.522998e-08,1.0,3.7910417e-09
+fresh338,neutral,neutral,neutral,0.04208409,0.9578294,8.648103e-05
+fresh339,neutral,neutral,neutral,8.937988e-06,0.99979997,0.0001911026
+fresh340,neutral,neutral,neutral,0.0012448434,0.99875516,5.3049926e-10
+fresh341,neutral,neutral,neutral,0.067546375,0.9324489,4.7496437e-06
+fresh342,Answer: negative,negative,negative,0.75484896,0.24506357,8.751173e-05
+fresh343,neutral,neutral,neutral,1.209863e-06,0.99999654,2.2603217e-06
+fresh344,neutral,neutral,neutral,4.6911136e-08,0.99998915,1.0783312e-05
+fresh345,Answer: positive,positive,positive,7.668079e-08,0.008577486,0.9914224
+fresh346,**Positive**,positive,neutral,9.267539e-08,0.79818666,0.20181319
+fresh347,neutral,neutral,neutral,2.123375e-06,0.99999624,1.6536861e-06
+fresh348,positive,positive,positive,1.2085364e-06,0.0010987298,0.9989001
+fresh349,neutral,neutral,neutral,4.2647458e-05,0.99995714,2.1690794e-07
+fresh350,positive,positive,positive,1.09072694e-07,1.0677027e-06,0.9999988
+fresh351,positive,positive,positive,2.0659177e-08,0.0075772405,0.99242276
+fresh352,negative,negative,negative,0.9840935,0.01590639,1.10745134e-07
+fresh353,positive,positive,positive,1.3856579e-08,0.00075540564,0.9992446
+fresh354,Answer: neutral,neutral,neutral,4.2223733e-06,0.9998868,0.00010889645
+fresh355,Answer: negative,negative,negative,0.9980731,0.0019267343,1.7396204e-07
+fresh356,Answer: neutral,neutral,neutral,4.166162e-07,0.996406,0.0035936013
+fresh357,neutral,neutral,neutral,1.9750487e-07,0.99999744,2.4061017e-06
+fresh358,Answer: neutral,neutral,neutral,6.023572e-08,0.9999997,2.1024334e-07
+fresh359,Neutral,neutral,neutral,9.325811e-10,0.99990386,9.610241e-05

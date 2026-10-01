@@ -1,0 +1,14 @@
+{
+  "epochs": 2,
+  "lr": 0.0004,
+  "rank": 16,
+  "decoding": "generated",
+  "ensemble": true,
+  "validation": {
+    "wf1_generated": 0.8959,
+    "std": 0.0014,
+    "wf1_argmax": 0.8932,
+    "wf1_ensemble": 0.8993
+  },
+  "rule": "max validation weighted F1 over 3 seeds; ties within 0.003 -> cheaper config"
+}

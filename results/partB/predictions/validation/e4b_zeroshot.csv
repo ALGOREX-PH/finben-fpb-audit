@@ -1,0 +1,777 @@
+id,raw,pred,pred_argmax,p_negative,p_neutral,p_positive
+fpb3100,**Positive**,positive,positive,3.1013318e-08,0.4687906,0.5312093
+fpb3101,positive,positive,positive,5.833802e-08,0.2689414,0.73105854
+fpb3102,Answer: neutral,neutral,neutral,2.5109792e-08,0.9999921,7.889262e-06
+fpb3103,neutral,neutral,neutral,2.1691083e-07,0.99997044,2.9311532e-05
+fpb3104,neutral,neutral,neutral,6.412037e-08,0.9999962,3.726639e-06
+fpb3105,neutral,neutral,neutral,5.6450837e-08,0.966914,0.033085976
+fpb3106,neutral,neutral,neutral,1.2878951e-06,0.9999985,1.8553888e-07
+fpb3107,positive,positive,positive,1.6583385e-08,0.008577485,0.9914225
+fpb3108,**negative**,negative,negative,0.8978959,0.057400562,0.044703603
+fpb3109,positive,positive,positive,3.7644615e-08,0.0013250224,0.9986749
+fpb3110,**neutral**,neutral,neutral,0.0052014645,0.99122363,0.0035749106
+fpb3111,positive,positive,positive,6.346067e-09,0.00043055706,0.9995694
+fpb3112,**positive**,positive,positive,1.7982802e-07,1.4738979e-05,0.99998504
+fpb3113,neutral,neutral,neutral,1.4449769e-07,0.9999976,2.260324e-06
+fpb3114,neutral,neutral,neutral,1.5803414e-09,1.0,2.1477714e-08
+fpb3115,neutral,neutral,neutral,0.09534926,0.90464854,2.1766823e-06
+fpb3116,neutral,neutral,neutral,1.1253506e-07,0.999999,8.8515685e-07
+fpb3117,neutral,neutral,neutral,5.505308e-09,0.8807971,0.11920293
+fpb3118,positive,positive,positive,7.979858e-08,1.0129989e-05,0.9999898
+fpb3119,neutral,neutral,neutral,0.004609559,0.99538755,2.8889338e-06
+fpb3120,neutral,neutral,neutral,4.8750994e-09,0.97068775,0.029312233
+fpb3121,neutral,neutral,neutral,3.6744034e-09,0.99999994,7.0422715e-08
+fpb3122,neutral,neutral,neutral,9.833132e-09,0.99999154,8.398071e-06
+fpb3123,positive,positive,positive,5.267326e-07,0.10669053,0.89330894
+fpb3124,neutral,neutral,neutral,5.422217e-06,0.9999942,3.4663074e-07
+fpb3125,**Positive**,positive,neutral,4.5687578e-08,0.91490096,0.08509905
+fpb3126,positive,positive,positive,6.550274e-09,8.939696e-06,0.99999106
+fpb3127,neutral,neutral,neutral,1.9750294e-07,0.9999876,1.2219073e-05
+fpb3128,**Positive**,positive,positive,7.1565784e-09,0.005220126,0.9947799
+fpb3129,neutral,neutral,neutral,2.9356535e-08,0.9999994,6.083591e-07
+fpb3130,positive,positive,positive,4.4062425e-08,0.00015843622,0.9998416
+fpb3131,neutral,neutral,neutral,1.3574298e-07,0.9999973,2.561282e-06
+fpb3132,Answer: neutral,neutral,positive,3.8590468e-07,0.1329642,0.8670354
+fpb3133,neutral,neutral,neutral,7.3492573e-10,0.9999983,1.7603434e-06
+fpb3134,neutral,neutral,neutral,2.0531245e-06,0.96691203,0.033085912
+fpb3135,Answer: neutral,neutral,neutral,1.759854e-06,0.99972016,0.0002780305
+fpb3136,neutral,neutral,neutral,1.1032553e-09,0.9999993,7.33821e-07
+fpb3137,neutral,neutral,neutral,1.2697658e-09,0.9999417,5.8291265e-05
+fpb3138,positive,positive,positive,2.1265798e-09,7.8114834e-07,0.99999917
+fpb3139,neutral,neutral,neutral,1.06579655e-07,0.59266657,0.40733337
+fpb3140,**positive**,positive,positive,1.0622679e-07,0.08509904,0.9149009
+fpb3141,Answer: positive,positive,positive,3.911317e-09,1.6701422e-05,0.9999833
+fpb3142,negative,negative,negative,0.99970216,0.0002959566,1.8733208e-06
+fpb3143,neutral,neutral,neutral,1.12535e-07,0.99999833,1.5534977e-06
+fpb3144,neutral,neutral,neutral,2.2380235e-07,0.9999974,2.4061017e-06
+fpb3145,negative,negative,negative,0.99020296,0.009707609,8.940399e-05
+fpb3146,neutral,neutral,neutral,3.5061403e-09,0.99999994,9.042454e-08
+fpb3147,Answer: negative,negative,negative,0.9923988,0.007577058,2.4116114e-05
+fpb3148,neutral,neutral,neutral,5.4927805e-11,0.99999857,1.4593762e-06
+fpb3149,neutral,neutral,neutral,0.0007096552,0.99926895,2.142973e-05
+fpb3150,neutral,neutral,neutral,1.1610689e-07,0.9999954,4.4951807e-06
+fpb3151,positive,positive,positive,6.023509e-08,1.0783312e-05,0.99998915
+fpb3152,**positive**,positive,positive,1.0209622e-07,0.0035936025,0.9964064
+fpb3153,neutral,neutral,neutral,7.496459e-08,0.99999994,1.11424905e-08
+fpb3154,neutral,neutral,neutral,1.9977375e-09,0.99999964,3.6898848e-07
+fpb3155,neutral,neutral,neutral,2.0935944e-09,0.9999916,8.398071e-06
+fpb3156,Answer: negative,negative,negative,0.9978112,0.002182703,6.1307633e-06
+fpb3157,Answer: negative,negative,negative,0.93233913,0.06753842,0.00012248052
+fpb3158,neutral,neutral,neutral,0.042087205,0.95790035,1.24596945e-05
+fpb3159,positive,positive,positive,2.0815621e-08,6.2050494e-05,0.99993795
+fpb3160,neutral,neutral,neutral,2.6055278e-09,0.9999945,5.4222182e-06
+fpb3161,Answer: positive,positive,positive,4.1371777e-08,0.00066670234,0.9993333
+fpb3162,**Negative**,negative,neutral,0.008577486,0.99142253,1.483403e-09
+fpb3163,neutral,neutral,neutral,5.4736196e-05,0.99951476,0.00043053355
+fpb3164,negative,negative,negative,0.99928874,0.00070966926,1.5523952e-06
+fpb3165,neutral,neutral,neutral,6.023573e-08,0.99999976,2.1024333e-07
+fpb3166,neutral,neutral,neutral,6.758252e-09,0.9999985,1.4593761e-06
+fpb3167,neutral,neutral,neutral,1.0467403e-08,1.0,5.1014046e-09
+fpb3168,negative,negative,negative,0.99964,0.0003569695,3.0883914e-06
+fpb3169,positive,positive,positive,2.8453314e-08,1.2098657e-06,0.9999988
+fpb3170,neutral,neutral,neutral,1.1979198e-07,0.99999094,8.939695e-06
+fpb3171,neutral,neutral,neutral,2.4579896e-07,0.9999982,1.5534974e-06
+fpb3172,neutral,neutral,neutral,8.232975e-08,0.9999667,3.3214186e-05
+fpb3173,Answer: negative,negative,negative,0.88078237,0.119200945,1.6669253e-05
+fpb3174,**negative**,negative,neutral,0.32079604,0.67912525,7.873287e-05
+fpb3175,neutral,neutral,neutral,1.7932699e-07,0.9971989,0.0028009266
+fpb3176,**Negative**,negative,neutral,0.40733317,0.59266627,5.584371e-07
+fpb3177,positive,positive,positive,3.094148e-09,3.288749e-06,0.9999967
+fpb3178,positive,positive,positive,6.5267938e-09,0.003593603,0.9964064
+fpb3179,neutral,neutral,neutral,1.5867487e-07,0.99984145,0.00015843619
+fpb3180,neutral,neutral,neutral,5.3157244e-08,0.9999885,1.1478767e-05
+fpb3181,neutral,neutral,neutral,3.326531e-08,0.9999993,6.8936106e-07
+fpb3182,neutral,neutral,neutral,1.4005222e-07,0.99999946,3.9278612e-07
+fpb3183,neutral,neutral,neutral,6.4758405e-07,0.99998266,1.6701411e-05
+fpb3184,Answer: positive,positive,positive,2.672912e-08,1.2219076e-05,0.9999877
+fpb3185,negative,negative,negative,0.97702193,0.022977352,7.169597e-07
+fpb3186,neutral,neutral,neutral,2.8453346e-08,0.99999994,1.7805649e-08
+fpb3187,positive,positive,positive,5.780127e-09,9.0280395e-05,0.99990976
+fpb3188,neutral,neutral,neutral,5.6036875e-08,0.9902915,0.009708476
+fpb3189,neutral,neutral,neutral,2.757792e-08,0.99999964,2.873685e-07
+fpb3190,Answer: positive,positive,positive,9.581272e-08,0.004609572,0.9953903
+fpb3191,neutral,neutral,neutral,1.0677018e-06,0.999998,1.003013e-06
+fpb3192,positive,positive,positive,3.7687357e-08,0.00019110431,0.99980885
+fpb3193,neutral,neutral,neutral,2.3823503e-07,0.9999919,7.88926e-06
+fpb3194,Answer: positive,positive,positive,6.3487984e-09,2.3090712e-07,0.99999976
+fpb3195,Answer: positive,positive,positive,1.8370677e-08,1.0129993e-05,0.9999899
+fpb3196,neutral,neutral,neutral,1.0571668e-07,0.9999968,3.0894942e-06
+fpb3197,positive,positive,positive,2.1915207e-09,0.0011695102,0.9988305
+fpb3198,neutral,neutral,neutral,3.094042e-09,0.9999624,3.7636448e-05
+fpb3199,Answer: negative,negative,negative,0.98515475,0.014052478,0.00079278654
+fpb3200,Answer: negative,negative,negative,0.9579104,0.042087644,1.9107763e-06
+fpb3201,positive,positive,positive,1.9215394e-08,0.22270013,0.7772999
+fpb3202,**Positive**,positive,neutral,2.1739177e-07,0.56217635,0.4378234
+fpb3203,neutral,neutral,neutral,0.0006262811,0.999289,8.475792e-05
+fpb3204,positive,positive,positive,2.6729175e-08,1.0129989e-05,0.99998987
+fpb3205,Answer: positive,positive,positive,3.4636867e-07,0.2689413,0.7310583
+fpb3206,**positive**,positive,positive,2.9614387e-07,0.00116951,0.9988302
+fpb3207,neutral,neutral,neutral,2.6729444e-08,0.99999994,2.5109987e-08
+fpb3208,neutral,neutral,neutral,8.233247e-08,0.99999976,1.2751903e-07
+fpb3209,neutral,neutral,neutral,1.955568e-08,1.0,3.8047433e-11
+fpb3210,neutral,neutral,neutral,2.7852712e-07,0.9999997,2.817262e-09
+fpb3211,**positive**,positive,positive,3.7620885e-07,0.32082117,0.6791784
+fpb3212,neutral,neutral,neutral,4.7850617e-06,0.99998826,6.962223e-06
+fpb3213,neutral,neutral,neutral,2.3823688e-07,0.9999997,5.658622e-08
+fpb3214,neutral,neutral,neutral,1.0246444e-07,0.9999999,4.9937178e-08
+fpb3215,neutral,neutral,neutral,7.9799044e-08,0.9999957,4.222833e-06
+fpb3216,**Positive**,positive,positive,3.8283368e-09,0.22270013,0.7772999
+fpb3217,neutral,neutral,neutral,6.1887034e-10,0.99999976,2.8736852e-07
+fpb3218,neutral,neutral,neutral,1.1032308e-09,0.9999772,2.2827997e-05
+fpb3219,neutral,neutral,neutral,3.8891038e-08,0.999998,1.9947297e-06
+fpb3220,neutral,neutral,neutral,7.871217e-07,0.9465959,0.053403288
+fpb3221,neutral,neutral,neutral,8.398072e-06,0.9999916,2.2286197e-09
+fpb3222,neutral,neutral,neutral,1.9552171e-08,0.9998205,0.00017952797
+fpb3223,negative,negative,negative,0.9980707,0.0019267298,2.5563475e-06
+fpb3224,**positive**,positive,positive,7.1688206e-08,0.43782347,0.56217647
+fpb3225,neutral,neutral,neutral,2.6729394e-08,0.99999803,1.99473e-06
+fpb3226,Answer: positive,positive,positive,9.700583e-08,0.16451645,0.8354835
+fpb3227,negative,negative,negative,0.99949425,0.00035691747,0.00014878534
+fpb3228,neutral,neutral,neutral,6.852862e-07,0.99408823,0.005911065
+fpb3229,**Positive**,positive,positive,5.070282e-08,0.01590639,0.98409355
+fpb3230,positive,positive,positive,2.0176147e-08,1.4738981e-05,0.9999853
+fpb3231,neutral,neutral,neutral,2.9356146e-08,0.9999861,1.3846005e-05
+fpb3232,neutral,neutral,neutral,3.9278618e-07,0.9999996,1.2237628e-08
+fpb3233,neutral,neutral,neutral,1.9750522e-07,0.99999917,6.276703e-07
+fpb3234,neutral,neutral,neutral,4.8882976e-07,0.99999845,1.0677024e-06
+fpb3235,positive,positive,positive,3.0585667e-07,0.00014883843,0.99985087
+fpb3236,neutral,neutral,neutral,7.4659475e-08,0.9959298,0.0040701376
+fpb3237,Neutral,neutral,neutral,2.432696e-08,0.9995694,0.00043055703
+fpb3238,**positive**,positive,positive,1.6116399e-08,0.0059110695,0.99408895
+fpb3239,positive,positive,positive,6.548511e-09,0.00027803096,0.99972194
+fpb3240,Answer: negative,negative,negative,0.99327636,0.0066926437,3.0993087e-05
+fpb3241,Answer: negative,negative,negative,0.9991935,0.000804084,2.4041678e-06
+fpb3242,neutral,neutral,neutral,1.7207736e-09,0.99919593,0.0008040859
+fpb3243,neutral,neutral,neutral,6.1502723e-09,0.9994807,0.0005193049
+fpb3244,positive,positive,positive,8.543072e-09,2.0145691e-05,0.9999798
+fpb3245,**negative**,negative,negative,0.9874747,0.006653552,0.005871739
+fpb3246,**positive**,positive,neutral,1.6538547e-06,0.75491375,0.24508461
+fpb3247,Answer: negative,negative,negative,0.9796609,0.020332215,6.820698e-06
+fpb3248,neutral,neutral,neutral,1.47389355e-05,0.9999822,3.089449e-06
+fpb3249,neutral,neutral,neutral,2.6880622e-09,0.9999297,7.031185e-05
+fpb3250,Answer: positive,positive,neutral,0.0010401161,0.9456121,0.053347785
+fpb3251,neutral,neutral,neutral,7.658115e-09,1.0,3.028843e-08
+fpb3252,Answer: negative,negative,negative,0.9982886,0.0017007042,1.0764973e-05
+fpb3253,neutral,neutral,neutral,3.8794948e-08,0.99752736,0.002472623
+fpb3254,Answer: negative,negative,negative,0.9947222,0.005219823,5.7986992e-05
+fpb3255,neutral,neutral,neutral,0.0013250224,0.998675,1.2609368e-08
+fpb3256,neutral,neutral,neutral,4.5397817e-05,0.99995345,1.2098109e-06
+fpb3257,neutral,neutral,neutral,8.718497e-08,0.9947798,0.0052201254
+fpb3258,positive,positive,positive,2.2337152e-07,0.22270009,0.77729964
+fpb3259,Answer: negative,negative,negative,0.6224528,0.37753674,1.0396021e-05
+fpb3260,Answer: positive,positive,positive,1.44186325e-08,0.16451648,0.83548355
+fpb3261,neutral,neutral,neutral,3.653482e-08,1.0,6.4342746e-11
+fpb3262,neutral,neutral,neutral,3.7636448e-05,0.9999624,3.695306e-10
+fpb3263,neutral,neutral,neutral,2.037742e-07,0.9999967,3.0894937e-06
+fpb3264,Answer: negative,negative,neutral,0.022977212,0.97701603,6.802283e-06
+fpb3265,neutral,neutral,neutral,7.734421e-08,0.99999994,1.0527341e-09
+fpb3266,**Positive**,positive,positive,1.2480267e-09,0.0017007224,0.99829924
+fpb3267,negative,negative,negative,0.7772852,0.22269595,1.8888677e-05
+fpb3268,Answer: positive,positive,neutral,8.0517786e-08,0.7981867,0.2018132
+fpb3269,**negative**,negative,neutral,0.03732504,0.96262544,4.9522132e-05
+fpb3270,neutral,neutral,neutral,9.422278e-07,0.9999812,1.7778537e-05
+fpb3271,neutral,neutral,neutral,4.8400736e-08,0.9999992,6.8936095e-07
+fpb3272,**Positive**,positive,neutral,2.3442313e-05,0.7057685,0.29420808
+fpb3273,neutral,neutral,neutral,7.657466e-09,0.9999152,8.481104e-05
+fpb3274,neutral,neutral,neutral,2.8453346e-08,1.0,5.4304166e-09
+fpb3275,neutral,neutral,neutral,3.059016e-07,0.9999977,1.9947292e-06
+fpb3276,neutral,neutral,neutral,1.2626098e-08,1.0,1.14961916e-08
+fpb3277,positive,positive,positive,4.83964e-08,9.028039e-05,0.99990964
+fpb3278,Answer: negative,negative,negative,0.7310585,0.2689414,9.6183136e-08
+fpb3279,neutral,neutral,neutral,9.422442e-07,0.99999857,4.7379012e-07
+fpb3280,positive,positive,positive,2.1940714e-09,6.962256e-06,0.999993
+fpb3281,neutral,neutral,neutral,0.00024536846,0.9997504,4.221797e-06
+fpb3282,neutral,neutral,neutral,5.0590626e-10,0.99767685,0.0023231625
+fpb3283,neutral,neutral,neutral,1.974391e-07,0.9996644,0.00033535008
+fpb3284,**negative**,negative,neutral,0.14804715,0.85195255,3.143608e-07
+fpb3285,positive,positive,positive,2.9232083e-07,0.014063622,0.98593605
+fpb3286,neutral,neutral,neutral,3.2241868e-08,1.0,5.4304166e-09
+fpb3287,negative,negative,negative,0.9046478,0.09534918,2.9751695e-06
+fpb3288,**Positive**,positive,positive,2.9523946e-09,2.430024e-05,0.9999757
+fpb3289,positive,positive,positive,6.0834947e-07,1.568954e-05,0.99998367
+fpb3290,neutral,neutral,neutral,1.522998e-08,1.0,1.186112e-08
+fpb3291,**neutral**,neutral,neutral,0.0001313518,0.9998687,3.4983172e-10
+fpb3292,neutral,neutral,neutral,2.646535e-09,0.9999853,1.4738982e-05
+fpb3293,neutral,neutral,neutral,1.8553862e-07,0.99999714,2.72647e-06
+fpb3294,Answer: neutral,neutral,neutral,3.059022e-07,0.99999964,5.658621e-08
+fpb3295,**neutral**,neutral,neutral,2.195749e-07,0.89330924,0.10669057
+fpb3296,Answer: negative,negative,negative,0.90464485,0.09534886,6.298413e-06
+fpb3297,neutral,neutral,neutral,1.0045236e-09,0.9999976,2.4061023e-06
+fpb3298,positive,positive,positive,3.1208483e-08,0.0013250224,0.9986749
+fpb3299,neutral,neutral,neutral,2.1477282e-08,0.99997985,2.014569e-05
+fpb3300,neutral,neutral,neutral,2.3823658e-07,0.99999833,1.459376e-06
+fpb3301,neutral,neutral,neutral,7.7343955e-08,0.9999966,3.2887488e-06
+fpb3302,neutral,neutral,neutral,5.270189e-08,0.9914224,0.008577485
+fpb3303,negative,negative,negative,0.9924219,0.0075772344,8.2522735e-07
+fpb3304,positive,positive,positive,1.8553432e-07,2.5867426e-05,0.99997395
+fpb3305,positive,positive,positive,1.5363743e-07,0.00116951,0.9988303
+fpb3306,neutral,neutral,neutral,0.00017951366,0.9997408,7.96587e-05
+fpb3307,positive,positive,positive,8.751091e-08,0.0015011821,0.99849874
+fpb3308,positive,positive,positive,4.5468298e-08,5.043474e-07,0.9999994
+fpb3309,**Positive**,positive,neutral,1.0945058e-06,0.90464956,0.095349364
+fpb3310,Answer: negative,negative,negative,0.9914181,0.008577446,4.456624e-06
+fpb3311,neutral,neutral,neutral,4.4069402e-08,0.9999998,1.6893527e-07
+fpb3312,neutral,neutral,neutral,7.264974e-08,0.999884,0.00011591935
+fpb3313,**Positive**,positive,positive,1.1819388e-07,0.43782347,0.56217647
+fpb3314,neutral,neutral,neutral,6.221096e-09,0.705785,0.29421493
+fpb3315,**positive**,positive,neutral,1.4088657e-06,0.85195166,0.14804697
+fpb3316,**neutral**,neutral,neutral,1.2219075e-05,0.9999878,4.5019184e-09
+fpb3317,neutral,neutral,neutral,9.979516e-09,0.9991441,0.00085590064
+fpb3318,neutral,neutral,neutral,1.1365626e-06,0.99999774,1.0677016e-06
+fpb3319,positive,positive,positive,1.1142371e-08,1.0783312e-05,0.9999892
+fpb3320,Answer: negative,negative,neutral,0.004331497,0.9956673,1.2046253e-06
+fpb3321,positive,positive,positive,1.5229407e-08,3.7636444e-05,0.99996233
+fpb3322,neutral,neutral,neutral,0.053402677,0.946585,1.2312514e-05
+fpb3323,positive,positive,positive,4.9936787e-08,7.889262e-06,0.9999921
+fpb3324,positive,positive,positive,5.3166275e-07,0.009708472,0.990291
+fpb3325,neutral,neutral,neutral,3.689881e-07,0.99999857,1.0677026e-06
+fpb3326,neutral,neutral,neutral,5.484116e-08,0.99992514,7.4846226e-05
+fpb3327,neutral,neutral,neutral,8.4945924e-08,0.99999905,8.8515685e-07
+fpb3328,**Positive**,positive,positive,3.1859258e-07,0.021615325,0.9783844
+fpb3329,neutral,neutral,neutral,0.02931181,0.97067386,1.4306956e-05
+fpb3330,Answer: negative,negative,negative,0.9890025,0.010986825,1.0664838e-05
+fpb3331,neutral,neutral,neutral,1.6701419e-05,0.99998325,6.8254884e-08
+fpb3332,positive,positive,positive,1.18317915e-08,0.0024726233,0.99752736
+fpb3333,neutral,neutral,neutral,8.233111e-08,0.99998325,1.670142e-05
+fpb3334,neutral,neutral,neutral,5.293246e-07,0.98593587,0.01406362
+fpb3335,positive,positive,positive,6.9727446e-09,6.962256e-06,0.9999931
+fpb3336,positive,positive,positive,3.8020356e-09,0.020332353,0.97966766
+fpb3337,Answer: negative,negative,negative,0.9579018,0.04208727,1.099566e-05
+fpb3338,neutral,neutral,neutral,3.33424e-08,0.9867771,0.013222821
+fpb3339,positive,positive,positive,8.15197e-09,6.1441747e-06,0.99999386
+fpb3340,neutral,neutral,neutral,2.4085571e-09,0.99951214,0.00048785712
+fpb3341,neutral,neutral,neutral,8.494281e-08,0.99996233,3.7636444e-05
+fpb3342,neutral,neutral,neutral,2.037725e-07,0.9999883,1.1478766e-05
+fpb3343,positive,positive,positive,1.5378794e-07,0.0001911043,0.9998088
+fpb3344,neutral,neutral,neutral,1.7257827e-08,0.9999998,1.7429785e-07
+fpb3345,neutral,neutral,neutral,9.510661e-10,0.99999994,4.139937e-08
+fpb3346,neutral,neutral,neutral,4.7849853e-06,0.9999724,2.2827888e-05
+fpb3347,neutral,neutral,neutral,6.961283e-06,0.99985325,0.00013982112
+fpb3348,neutral,neutral,neutral,1.3156686e-07,0.99999934,5.715004e-07
+fpb3349,neutral,neutral,neutral,1.4049909e-08,0.98201376,0.01798621
+fpb3350,neutral,neutral,neutral,9.51622e-06,0.9999872,3.2887178e-06
+fpb3351,neutral,neutral,neutral,5.6586238e-08,0.99999994,2.2159487e-08
+fpb3352,Answer: neutral,neutral,neutral,1.9699319e-06,0.98756635,0.012431625
+fpb3353,positive,positive,positive,6.5501284e-09,3.120191e-05,0.99996877
+fpb3354,neutral,neutral,neutral,3.023006e-08,0.7772998,0.22270013
+fpb3355,neutral,neutral,neutral,1.5948747e-07,0.9740425,0.025957352
+fpb3356,Answer: positive,positive,positive,1.5960756e-08,7.889263e-06,0.99999213
+fpb3357,neutral,neutral,neutral,0.0052201254,0.9947798,5.629085e-08
+fpb3358,Answer: neutral,neutral,neutral,7.6440806e-08,0.95791215,0.042087723
+fpb3359,Answer: positive,positive,positive,6.2439187e-09,0.001032231,0.99896777
+fpb3360,positive,positive,positive,1.0861384e-09,1.2219077e-05,0.9999878
+fpb3361,neutral,neutral,neutral,3.124987e-08,0.99999934,6.2767043e-07
+fpb3362,positive,positive,positive,2.90626e-09,0.00014883847,0.9998511
+fpb3363,neutral,neutral,neutral,4.45085e-07,0.9999995,2.299382e-09
+fpb3364,Answer: positive,positive,positive,2.9350584e-08,0.00020342696,0.99979657
+fpb3365,positive,positive,positive,2.0816898e-08,6.475948e-07,0.99999934
+fpb3366,positive,positive,positive,7.9778545e-08,0.0002611903,0.99973875
+fpb3367,neutral,neutral,neutral,0.0066925497,0.99326235,4.5094042e-05
+fpb3368,neutral,neutral,neutral,3.4324717e-08,0.75491494,0.24508499
+fpb3369,negative,negative,negative,0.9044619,0.09532958,0.00020853263
+fpb3370,**positive**,positive,positive,4.1405943e-07,0.009708472,0.9902911
+fpb3371,neutral,neutral,neutral,1.5263302e-08,0.56217647,0.43782347
+fpb3372,neutral,neutral,neutral,1.0571695e-07,0.99999934,5.043473e-07
+fpb3373,**positive**,positive,neutral,1.129616e-08,0.8807971,0.11920292
+fpb3374,neutral,neutral,neutral,0.006692817,0.9933021,5.0596136e-06
+fpb3375,Answer: negative,negative,negative,0.9669117,0.033085898,2.47654e-06
+fpb3376,positive,positive,positive,5.263196e-09,2.7535692e-05,0.9999725
+fpb3377,neutral,neutral,neutral,1.2098656e-06,0.99999875,4.1399325e-08
+fpb3378,neutral,neutral,neutral,9.625532e-08,0.99998844,1.1478768e-05
+fpb3379,Answer: negative,negative,negative,0.9578926,0.042086866,2.0542397e-05
+fpb3380,positive,positive,positive,4.406939e-08,3.6898848e-07,0.9999996
+fpb3381,neutral,neutral,neutral,2.2142613e-08,0.73105854,0.26894143
+fpb3382,Answer: negative,negative,negative,0.88069516,0.119189136,0.00011569609
+fpb3383,Answer: negative,negative,negative,0.754535,0.24496163,0.00050338585
+fpb3384,positive,positive,positive,8.494529e-08,8.398071e-06,0.9999915
+fpb3385,positive,positive,positive,7.264142e-08,0.00023050672,0.99976945
+fpb3386,Answer: neutral,neutral,neutral,0.037326787,0.96267045,2.7939782e-06
+fpb3387,neutral,neutral,neutral,1.4761399e-08,0.9999998,1.4908485e-07
+fpb3388,Positive,positive,positive,7.9752425e-08,0.00058840873,0.9994115
+fpb3389,Answer: positive,positive,neutral,3.4400853e-07,0.5312092,0.4687904
+fpb3390,Answer: neutral,neutral,neutral,1.1142454e-08,0.99999666,3.2887492e-06
+fpb3391,neutral,neutral,neutral,1.6726858e-08,0.9999998,1.7429785e-07
+fpb3392,neutral,neutral,neutral,7.760642e-09,0.99767685,0.0023231625
+fpb3393,neutral,neutral,neutral,0.00023050669,0.9997694,1.0904767e-07
+fpb3394,neutral,neutral,neutral,1.9064962e-07,0.9959297,0.0040701367
+fpb3395,neutral,neutral,neutral,1.3703587e-09,0.99029154,0.009708477
+fpb3396,neutral,neutral,neutral,6.349809e-08,0.9902914,0.009708476
+fpb3397,Answer: positive,positive,neutral,0.00037990225,0.9994036,0.00021646179
+fpb3398,positive,positive,positive,1.0522188e-07,0.29421496,0.705785
+fpb3399,positive,positive,positive,1.1647053e-06,0.037326843,0.962672
+fpb3400,positive,positive,positive,1.9555175e-08,2.5867432e-05,0.99997413
+fpb3401,neutral,neutral,neutral,0.00011591573,0.9998529,3.1198295e-05
+fpb3402,Answer: negative,negative,negative,0.59262043,0.4073017,7.785199e-05
+fpb3403,positive,positive,positive,8.400957e-09,0.0011695102,0.9988305
+fpb3404,**Positive**,positive,neutral,1.0329471e-05,0.9579024,0.04208729
+fpb3405,negative,negative,negative,0.9940829,0.005911033,6.1078567e-06
+fpb3406,positive,positive,positive,2.8170388e-09,7.967301e-05,0.99992037
+fpb3407,Answer: positive,positive,positive,1.9296324e-06,0.2226997,0.77729833
+fpb3408,Answer: positive,positive,neutral,0.00010881401,0.730979,0.2689122
+fpb3409,Answer: positive,positive,neutral,0.04741724,0.95240074,0.00018204268
+fpb3410,**Positive**,positive,neutral,1.5584545e-05,0.9932917,0.0066927467
+fpb3411,**Positive**,positive,positive,1.3013105e-09,0.025957357,0.97404265
+fpb3412,positive,positive,positive,2.9356443e-08,3.7266393e-06,0.99999624
+fpb3413,neutral,neutral,neutral,4.9444293e-09,0.99999577,4.222833e-06
+fpb3414,Answer: negative,negative,negative,0.95213145,0.047403835,0.00046473084
+fpb3415,neutral,neutral,neutral,1.8553911e-07,0.9999998,5.768507e-10
+fpb3416,neutral,neutral,neutral,2.3353686e-09,0.99990386,9.610241e-05
+fpb3417,Answer: positive,positive,positive,3.2937069e-09,2.2603247e-06,0.9999978
+fpb3418,neutral,neutral,neutral,0.08509156,0.9148205,8.7924906e-05
+fpb3419,**positive**,positive,positive,1.6356866e-07,0.0010322309,0.99896765
+fpb3420,positive,positive,positive,2.5651374e-09,3.7266393e-06,0.99999624
+fpb3421,Answer: neutral,neutral,neutral,1.5468917e-08,0.9999417,5.829127e-05
+fpb3422,Answer: negative,negative,negative,0.5619521,0.43764877,0.00039908403
+fpb3423,Answer: negative,negative,neutral,0.09534761,0.904633,1.9400224e-05
+fpb3424,neutral,neutral,neutral,0.00040448044,0.99959296,2.5602462e-06
+fpb3425,positive,positive,positive,1.3028194e-08,0.245085,0.75491494
+fpb3426,Answer: neutral,neutral,neutral,1.4214902e-07,0.9241417,0.075858176
+fpb3427,**positive**,positive,positive,3.3265e-08,1.0129991e-05,0.9999898
+fpb3428,**positive**,positive,positive,5.1773044e-09,0.00085590064,0.99914414
+fpb3429,neutral,neutral,neutral,1.1496153e-08,0.99999666,3.288749e-06
+fpb3430,positive,positive,positive,2.5109914e-08,3.0894944e-06,0.9999969
+fpb3431,neutral,neutral,neutral,5.3157798e-08,0.9999989,1.0030141e-06
+fpb3432,Answer: negative,negative,negative,0.9858863,0.014062911,5.071878e-05
+fpb3433,Answer: neutral,neutral,neutral,4.2712205e-08,0.9999688,3.1201915e-05
+fpb3434,Answer: negative,negative,neutral,0.22236647,0.7761352,0.0014982935
+fpb3435,neutral,neutral,neutral,0.07585715,0.92412925,1.3620925e-05
+fpb3436,positive,positive,positive,1.5948824e-08,0.0007554057,0.9992446
+fpb3437,neutral,neutral,neutral,4.2119987e-09,0.99592984,0.0040701376
+fpb3438,neutral,neutral,neutral,9.042154e-08,0.99996674,3.321419e-05
+fpb3439,neutral,neutral,neutral,3.769454e-08,0.9999994,5.7150044e-07
+fpb3440,neutral,neutral,neutral,1.3026892e-08,1.0,8.410794e-09
+fpb3441,**negative**,negative,negative,0.9840571,0.015905803,3.7037807e-05
+fpb3442,**positive**,positive,positive,1.6330898e-08,0.0005193049,0.99948066
+fpb3443,neutral,neutral,neutral,0.0007554007,0.9992381,6.535496e-06
+fpb3444,positive,positive,positive,3.7674983e-08,0.0005193048,0.99948066
+fpb3445,positive,positive,positive,1.5379582e-07,0.00013982206,0.99986005
+fpb3446,neutral,neutral,neutral,4.1397612e-08,0.9999573,4.264746e-05
+fpb3447,neutral,neutral,neutral,4.1399378e-08,1.0,1.4307242e-08
+fpb3448,neutral,neutral,neutral,6.893609e-07,0.9999991,2.2380273e-07
+fpb3449,Answer: positive,positive,positive,1.5345998e-07,0.0023231618,0.9976766
+fpb3450,neutral,neutral,neutral,8.211908e-07,0.98756754,0.01243164
+fpb3451,Answer: positive,positive,positive,2.3588633e-08,8.31528e-07,0.9999991
+fpb3452,Answer: positive,positive,positive,7.0648343e-07,0.0066928463,0.99330646
+fpb3453,Answer: positive,positive,positive,4.9933437e-08,7.4846226e-05,0.9999251
+fpb3454,neutral,neutral,neutral,6.4120606e-08,0.99999994,3.911382e-09
+fpb3455,neutral,neutral,neutral,3.028843e-08,0.99999994,1.5713432e-08
+fpb3456,neutral,neutral,neutral,5.5159237e-09,0.99999833,1.6536895e-06
+fpb3457,neutral,neutral,neutral,7.0422686e-08,0.99999964,3.256312e-07
+fpb3458,neutral,neutral,neutral,2.144494e-05,0.99997807,4.737804e-07
+fpb3459,negative,negative,negative,0.9952519,0.004608931,0.00013917766
+fpb3460,**positive**,positive,positive,9.656482e-07,0.006692845,0.99330616
+fpb3461,positive,positive,positive,5.343271e-09,0.0005527786,0.9994472
+fpb3462,neutral,neutral,neutral,2.0445137e-08,0.966914,0.033085976
+fpb3463,neutral,neutral,neutral,3.5414306e-08,0.754915,0.24508502
+fpb3464,positive,positive,positive,1.4615694e-09,5.093705e-06,0.9999949
+fpb3465,neutral,neutral,neutral,4.546804e-08,0.9999938,6.144174e-06
+fpb3466,neutral,neutral,neutral,9.152051e-10,0.9986749,0.0013250224
+fpb3467,neutral,neutral,neutral,5.679025e-10,0.99999106,8.939696e-06
+fpb3468,Answer: positive,positive,neutral,4.0835354e-07,0.94659626,0.05340331
+fpb3469,neutral,neutral,neutral,5.368745e-07,0.9999985,9.4224407e-07
+fpb3470,Answer: positive,positive,positive,2.1146844e-08,0.24508502,0.754915
+fpb3471,positive,positive,positive,7.703553e-07,0.18242538,0.81757385
+fpb3472,neutral,neutral,neutral,1.6536831e-06,0.9999944,3.9669794e-06
+fpb3473,neutral,neutral,neutral,8.4946e-08,0.99999994,1.7805649e-08
+fpb3474,positive,positive,positive,3.252504e-07,0.0011695098,0.9988302
+fpb3475,positive,positive,positive,5.859335e-10,2.2603242e-06,0.99999774
+fpb3476,positive,positive,positive,7.7260625e-09,0.037326884,0.96267307
+fpb3477,neutral,neutral,neutral,8.727473e-10,1.0,2.2159488e-08
+fpb3478,neutral,neutral,neutral,7.932769e-08,0.9940889,0.005911068
+fpb3479,neutral,neutral,neutral,5.368746e-07,0.9999987,7.8114795e-07
+fpb3480,neutral,neutral,neutral,3.535625e-05,0.9999646,5.6584238e-08
+fpb3481,positive,positive,positive,2.7735712e-09,5.093705e-06,0.99999493
+fpb3482,neutral,neutral,neutral,3.5763227e-07,0.9999895,1.01299875e-05
+fpb3483,Answer: negative,negative,neutral,0.468696,0.5311021,0.00020188729
+fpb3484,**positive**,positive,positive,1.9703273e-07,0.033085972,0.9669138
+fpb3485,**Neutral**,neutral,neutral,1.29668445e-08,0.9953905,0.0046095727
+fpb3486,Answer: positive,positive,positive,6.954537e-07,0.34864488,0.65135443
+fpb3487,**positive**,positive,positive,1.2900606e-08,0.22270012,0.7772999
+fpb3488,Answer: positive,positive,positive,1.3543189e-08,0.053403333,0.9465967
+fpb3489,neutral,neutral,neutral,7.264338e-08,0.9997965,0.00020342697
+fpb3490,positive,positive,positive,7.193062e-09,0.00014883847,0.99985117
+fpb3491,**Neutral**,neutral,neutral,0.00016864957,0.9998124,1.8921955e-05
+fpb3492,neutral,neutral,neutral,4.1399375e-08,0.99999994,4.691164e-08
+fpb3493,neutral,neutral,neutral,5.315784e-08,0.9999997,2.2380286e-07
+fpb3494,Answer: neutral,neutral,neutral,9.931187e-08,0.9999992,6.475947e-07
+fpb3495,neutral,neutral,neutral,4.271324e-08,0.999993,6.962256e-06
+fpb3496,neutral,neutral,neutral,1.7603423e-06,0.9999977,5.7149947e-07
+fpb3497,neutral,neutral,neutral,1.6212198e-08,0.9999981,1.8738752e-06
+fpb3498,neutral,neutral,neutral,2.8736852e-07,0.9999997,1.9555674e-08
+fpb3499,neutral,neutral,neutral,2.1139542e-08,0.9997546,0.00024536948
+fpb3500,Answer: negative,negative,neutral,0.320816,0.6791675,1.6504335e-05
+fpb3501,Answer: negative,negative,negative,0.9820094,0.017986132,4.4143308e-06
+fpb3502,positive,positive,positive,4.4069267e-08,3.288749e-06,0.9999967
+fpb3503,neutral,neutral,neutral,0.0031726824,0.99682707,2.0957631e-07
+fpb3504,neutral,neutral,neutral,8.103183e-10,0.9999998,1.6373768e-07
+fpb3505,neutral,neutral,neutral,0.00011591935,0.99988395,7.7335244e-08
+fpb3506,neutral,neutral,neutral,2.015806e-08,0.99908894,0.0009110512
+fpb3507,neutral,neutral,neutral,3.8507397e-09,0.9999994,5.7150044e-07
+fpb3508,**Neutral**,neutral,neutral,1.7591697e-06,0.99933153,0.0006667012
+fpb3509,Answer: positive,positive,positive,3.2241743e-08,3.726639e-06,0.99999624
+fpb3510,neutral,neutral,neutral,1.024641e-07,0.9999966,3.2887485e-06
+fpb3511,neutral,neutral,neutral,5.043474e-07,0.99999946,2.358864e-08
+fpb3512,Answer: positive,positive,positive,2.3587189e-08,6.2050494e-05,0.99993795
+fpb3513,Answer: positive,positive,neutral,6.426924e-07,0.53120905,0.46879032
+fpb3514,neutral,neutral,neutral,1.8925142e-05,0.9999808,2.873631e-07
+fpb3515,neutral,neutral,neutral,1.5865854e-07,0.99973863,0.00026119023
+fpb3516,positive,positive,positive,2.8453341e-08,2.5360188e-07,0.99999976
+fpb3517,neutral,neutral,neutral,4.363462e-09,0.99999994,5.4845263e-08
+fpb3518,**positive**,positive,neutral,9.258801e-08,0.9924227,0.0075772405
+fpb3519,neutral,neutral,neutral,1.1253517e-07,0.9999999,2.9462652e-10
+fpb3520,neutral,neutral,neutral,5.8381374e-08,0.999981,1.8925146e-05
+fpb3521,**positive**,positive,neutral,8.884456e-09,0.754915,0.24508497
+fpb3522,neutral,neutral,neutral,3.1249886e-08,0.9999999,9.329493e-08
+fpb3523,neutral,neutral,neutral,3.3455756e-09,0.999998,1.9947297e-06
+fpb3524,neutral,neutral,neutral,4.4321755e-09,0.9999997,3.156126e-07
+fpb3525,neutral,neutral,neutral,1.9750534e-07,0.9999998,1.5713429e-08
+fpb3526,positive,positive,positive,3.8890747e-08,9.516251e-06,0.99999046
+fpb3527,neutral,neutral,neutral,2.561282e-06,0.9999973,1.1610711e-07
+fpb3528,neutral,neutral,neutral,1.5684634e-07,0.95791215,0.042087723
+fpb3529,neutral,neutral,neutral,0.00010882871,0.9992649,0.00062626594
+fpb3530,neutral,neutral,neutral,6.847472e-07,0.9933064,0.006692846
+fpb3531,**Positive**,positive,neutral,7.2484305e-08,0.96691394,0.033085976
+fpb3532,positive,positive,positive,7.2657684e-08,6.540436e-06,0.9999934
+fpb3533,neutral,neutral,neutral,7.658113e-09,0.99999976,2.2380286e-07
+fpb3534,neutral,neutral,neutral,4.052545e-07,0.99999934,2.4579924e-07
+fpb3535,Answer: positive,positive,positive,3.9265447e-07,0.00033535,0.9996643
+fpb3536,neutral,neutral,neutral,5.294149e-08,0.9959298,0.004070137
+fpb3537,positive,positive,positive,1.8551891e-07,0.00010889689,0.9998909
+fpb3538,neutral,neutral,neutral,0.2226944,0.7772798,2.5817579e-05
+fpb3539,positive,positive,positive,2.6729433e-08,4.45085e-07,0.9999995
+fpb3540,Answer: negative,negative,negative,0.8670266,0.13296284,1.0594394e-05
+fpb3541,neutral,neutral,neutral,1.2098344e-06,0.9999729,2.58674e-05
+fpb3542,neutral,neutral,neutral,4.7923243e-09,0.99999976,2.2380287e-07
+fpb3543,Answer: positive,positive,positive,8.7637964e-08,5.144221e-05,0.9999484
+fpb3544,neutral,neutral,neutral,2.0176419e-08,0.9999988,1.1365637e-06
+fpb3545,neutral,neutral,neutral,4.4496127e-07,0.9997215,0.00027803084
+fpb3546,positive,positive,positive,1.5547327e-07,0.02033235,0.9796675
+fpb3547,neutral,neutral,neutral,1.1142487e-08,0.99999976,2.2380286e-07
+fpb3548,neutral,neutral,neutral,1.5364584e-08,0.65135485,0.34864515
+fpb3549,positive,positive,positive,2.3722786e-09,4.006369e-05,0.99995995
+fpb3550,neutral,neutral,neutral,4.7914654e-09,0.9998205,0.00017952797
+fpb3551,Answer: neutral,neutral,neutral,1.6342231e-07,0.8807969,0.1192029
+fpb3552,neutral,neutral,neutral,1.3440372e-08,0.9999972,2.7264703e-06
+fpb3553,Answer: negative,negative,negative,0.97402096,0.025956778,2.2235456e-05
+fpb3554,positive,positive,positive,5.1519162e-08,6.2050494e-05,0.99993795
+fpb3555,neutral,neutral,neutral,7.645013e-09,0.95257413,0.04742587
+fpb3556,neutral,neutral,neutral,7.626946e-09,0.9959299,0.004070138
+fpb3557,neutral,neutral,neutral,7.147702e-08,0.92414176,0.07585817
+fpb3558,neutral,neutral,neutral,2.0377485e-07,0.9999998,8.543243e-09
+fpb3559,Answer: negative,negative,neutral,0.32072142,0.67896724,0.00031132213
+fpb3560,Answer: negative,negative,negative,0.6791775,0.32082066,1.7395696e-06
+fpb3561,neutral,neutral,neutral,8.494598e-08,0.9999997,2.382369e-07
+fpb3562,positive,positive,positive,4.5461555e-08,0.00014883847,0.9998511
+fpb3563,neutral,neutral,neutral,1.5713429e-08,0.9999998,2.0377483e-07
+fpb3564,neutral,neutral,neutral,2.0814001e-08,0.9998601,0.00013982208
+fpb3565,**Positive**,positive,positive,1.626504e-07,0.2018132,0.79818666
+fpb3566,positive,positive,positive,3.451661e-09,3.535625e-05,0.9999646
+fpb3567,Answer: negative,negative,negative,0.99024963,0.009708066,4.223344e-05
+fpb3568,positive,positive,positive,6.3596772e-09,0.18242553,0.8175745
+fpb3569,neutral,neutral,neutral,4.2281076e-09,0.9997388,0.0002611903
+fpb3570,neutral,neutral,neutral,1.606036e-08,0.9984022,0.0015978456
+fpb3571,positive,positive,positive,4.43214e-09,8.398072e-06,0.9999916
+fpb3572,neutral,neutral,neutral,4.1811873e-07,0.9999995,6.796961e-10
+fpb3573,positive,positive,positive,1.8953926e-08,4.785095e-06,0.99999523
+fpb3574,neutral,neutral,neutral,1.6723238e-08,0.9997834,0.00021654404
+fpb3575,Answer: positive,positive,positive,1.1496141e-08,4.4951817e-06,0.9999955
+fpb3576,neutral,neutral,neutral,1.5713432e-08,0.99999994,4.1399378e-08
+fpb3577,**positive**,positive,positive,2.7849867e-07,0.00010229982,0.9998974
+fpb3578,positive,positive,positive,1.1861073e-08,3.966986e-06,0.99999607
+fpb3579,positive,positive,positive,6.825586e-08,2.4061019e-06,0.9999975
+fpb3580,neutral,neutral,neutral,3.8873292e-08,0.99954164,0.0004583129
+fpb3581,neutral,neutral,neutral,6.9487975e-09,0.8933094,0.1066906
+fpb3582,positive,positive,positive,1.3574312e-07,1.4593761e-06,0.9999984
+fpb3583,**positive**,positive,positive,8.028222e-05,0.05339904,0.9465207
+fpb3584,neutral,neutral,neutral,2.8452698e-08,0.9999772,2.2827997e-05
+fpb3585,neutral,neutral,neutral,0.014063604,0.9859348,1.6304328e-06
+fpb3586,**Positive**,positive,positive,1.362134e-06,0.09534933,0.90464926
+fpb3587,positive,positive,positive,2.1476204e-08,7.031185e-05,0.9999297
+fpb3588,positive,positive,positive,8.677749e-09,3.7266393e-06,0.99999624
+fpb3589,positive,positive,positive,9.625626e-08,1.7603431e-06,0.99999815
+fpb3590,neutral,neutral,neutral,3.7694477e-08,0.9999978,2.1233782e-06
+fpb3591,neutral,neutral,neutral,2.2286055e-09,0.9999853,1.4738981e-05
+fpb3592,Answer: negative,negative,neutral,0.053402673,0.94658506,1.2312513e-05
+fpb3593,neutral,neutral,neutral,2.8735175e-07,0.9999414,5.829125e-05
+fpb3594,**neutral**,neutral,neutral,7.889262e-06,0.9999921,1.7907471e-09
+fpb3595,**positive**,positive,positive,1.8698363e-07,0.16451643,0.8354834
+fpb3596,neutral,neutral,neutral,2.9023113e-06,0.99999684,2.873677e-07
+fpb3597,neutral,neutral,neutral,6.893316e-07,0.99995667,4.2647436e-05
+fpb3598,Answer: neutral,neutral,neutral,0.004070113,0.9959238,6.119167e-06
+fpb3599,neutral,neutral,neutral,5.964144e-09,0.99999964,3.059022e-07
+fpb3600,Answer: negative,negative,negative,0.9740268,0.025956936,1.6267904e-05
+fpb3601,neutral,neutral,neutral,9.23745e-09,1.0,2.072957e-10
+fpb3602,neutral,neutral,neutral,3.0894944e-06,0.9999969,2.9066836e-09
+fpb3603,positive,positive,positive,1.5840897e-06,0.04208766,0.9579107
+fpb3604,neutral,neutral,neutral,7.33821e-07,0.9999993,3.028841e-08
+fpb3605,positive,positive,positive,1.00621484e-07,0.017986208,0.98201364
+fpb3606,positive,positive,positive,4.840075e-08,4.45085e-07,0.99999946
+fpb3607,positive,positive,positive,3.4662864e-07,1.14787645e-05,0.9999882
+fpb3608,Answer: negative,negative,negative,0.9953891,0.004609566,1.3646378e-06
+fpb3609,Answer: neutral,neutral,neutral,1.854154e-07,0.99933314,0.00066670217
+fpb3610,positive,positive,positive,3.0278272e-08,0.00033535014,0.99966466
+fpb3611,neutral,neutral,neutral,5.838248e-08,0.99999994,3.6534818e-08
+fpb3612,positive,positive,positive,4.7378398e-07,1.3845998e-05,0.99998564
+fpb3613,Answer: negative,negative,negative,0.9820131,0.0179862,6.5613415e-07
+fpb3614,neutral,neutral,neutral,3.3061093e-05,0.9953575,0.00460942
+fpb3615,neutral,neutral,neutral,1.38670355e-08,0.9999986,1.3709573e-06
+fpb3616,neutral,neutral,neutral,1.7603348e-06,0.9999935,4.7850863e-06
+fpb3617,positive,positive,positive,1.4759581e-08,0.00012339458,0.9998766
+fpb3618,positive,positive,positive,1.2615291e-08,0.00085590064,0.99914414
+fpb3619,Answer: negative,negative,negative,0.9236393,0.07581693,0.00054379745
+fpb3620,Answer: negative,negative,neutral,0.2450837,0.75491107,5.2559203e-06
+fpb3621,neutral,neutral,neutral,4.840075e-08,0.9999995,4.4508502e-07
+fpb3622,neutral,neutral,neutral,4.9953916e-11,0.9988305,0.0011695102
+fpb3623,Answer: negative,negative,neutral,0.2450813,0.7549035,1.52083585e-05
+fpb3624,neutral,neutral,neutral,2.5612271e-06,0.999976,2.1444894e-05
+fpb3625,Answer: neutral,neutral,neutral,2.510301e-08,0.9997219,0.00027803096
+fpb3626,Answer: positive,positive,positive,2.3588566e-08,3.7266395e-06,0.99999624
+fpb3627,neutral,neutral,neutral,3.1428835e-09,0.9999998,1.7429785e-07
+fpb3628,neutral,neutral,neutral,6.112926e-07,0.91490036,0.08509898
+fpb3629,negative,negative,negative,0.9976743,0.0023231565,2.555332e-06
+fpb3630,**neutral**,neutral,neutral,1.2098654e-06,0.9999986,1.4449785e-07
+fpb3631,Answer: negative,negative,negative,0.9769867,0.022976525,3.677169e-05
+fpb3632,positive,positive,positive,7.1931274e-09,0.00013982208,0.99986017
+fpb3633,Answer: positive,positive,positive,6.894299e-07,0.24508485,0.7549144
+fpb3634,**positive**,positive,positive,2.0025722e-08,0.4073334,0.5926666
+fpb3635,**positive**,positive,positive,2.0914585e-07,0.005220125,0.99477965
+fpb3636,neutral,neutral,neutral,4.0990935e-09,0.99999994,5.315785e-08
+fpb3637,positive,positive,positive,9.3510494e-07,0.0075772335,0.9924218
+fpb3638,neutral,neutral,neutral,1.1478767e-05,0.9999884,1.4449635e-07
+fpb3639,neutral,neutral,neutral,3.142878e-09,0.999998,1.99473e-06
+fpb3640,**positive**,positive,neutral,1.233575e-07,0.77729976,0.22270009
+fpb3641,Answer: negative,negative,negative,0.99781114,0.002182703,6.1307637e-06
+fpb3642,**Positive**,positive,neutral,1.2143409e-09,0.56217647,0.43782347
+fpb3643,neutral,neutral,neutral,8.764241e-08,0.99999917,7.3382097e-07
+fpb3644,neutral,neutral,neutral,1.4848294e-08,0.99029154,0.009708477
+fpb3645,Answer: negative,negative,negative,0.9626728,0.037326876,3.134764e-07
+fpb3646,**Positive**,positive,positive,1.0079875e-07,0.075858176,0.9241417
+fpb3647,neutral,neutral,neutral,2.902312e-06,0.9999971,7.04225e-08
+fpb3648,**Neutral**,neutral,neutral,1.235956e-07,0.99999917,7.571149e-07
+fpb3649,neutral,neutral,neutral,1.7353122e-09,0.99979657,0.00020342699
+fpb3650,Answer: negative,negative,negative,0.9669096,0.033085827,4.626776e-06
+fpb3651,neutral,neutral,neutral,1.1142453e-08,0.99999666,3.288749e-06
+fpb3652,Answer: positive,positive,positive,4.0989487e-09,3.535625e-05,0.99996465
+fpb3653,neutral,neutral,neutral,0.014063626,0.9859363,9.198286e-08
+fpb3654,positive,positive,positive,1.5229846e-08,8.939696e-06,0.99999106
+fpb3655,positive,positive,positive,2.214724e-08,0.00055277866,0.9994472
+fpb3656,neutral,neutral,neutral,2.3821792e-07,0.99992007,7.967298e-05
+fpb3657,neutral,neutral,neutral,2.9356194e-08,0.9999878,1.2219075e-05
+fpb3658,negative,negative,negative,0.9990768,0.00091104006,1.2207945e-05
+fpb3659,negative,negative,negative,0.99027044,0.00970827,2.1236754e-05
+fpb3660,positive,positive,positive,1.5229727e-08,1.6701422e-05,0.99998325
+fpb3661,neutral,neutral,neutral,1.4012686e-07,0.9399132,0.06008664
+fpb3662,Answer: neutral,neutral,neutral,0.002472589,0.9975136,1.3811769e-05
+fpb3663,Answer: negative,negative,negative,0.86703235,0.13296372,3.897485e-06
+fpb3664,**positive**,positive,neutral,3.9069937e-07,0.6224591,0.37754053
+fpb3665,neutral,neutral,neutral,5.4739623e-08,0.880797,0.11920291
+fpb3666,neutral,neutral,neutral,0.0066928235,0.993303,4.194571e-06
+fpb3667,**positive**,positive,neutral,3.0446952e-07,0.7057848,0.29421487
+fpb3668,neutral,neutral,neutral,4.424541e-07,0.9940885,0.005911066
+fpb3669,neutral,neutral,neutral,1.3026576e-08,0.99997574,2.4300241e-05
+fpb3670,neutral,neutral,neutral,1.8553911e-07,0.9999997,1.0246442e-07
+fpb3671,Answer: negative,negative,negative,0.8171288,0.18232606,0.00054514507
+fpb3672,Answer: neutral,neutral,neutral,4.163643e-09,0.99999976,2.3090712e-07
+fpb3673,neutral,neutral,neutral,1.7426656e-07,0.9998203,0.00017952794
+fpb3674,neutral,neutral,neutral,6.3487993e-09,0.9999998,1.5870002e-07
+fpb3675,neutral,neutral,neutral,2.4286275e-09,0.99999803,1.9947297e-06
+fpb3676,neutral,neutral,neutral,2.430019e-05,0.9999737,1.9946813e-06
+fpb3677,neutral,neutral,neutral,7.889263e-06,0.99999213,1.3517268e-09
+fpb3678,**positive**,positive,neutral,1.408866e-06,0.8519516,0.14804702
+fpb3679,neutral,neutral,neutral,1.0770702e-05,0.99881977,0.0011694977
+fpb3680,neutral,neutral,neutral,9.547761e-10,0.999987,1.30071285e-05
+fpb3681,neutral,neutral,neutral,0.02033139,0.9796213,4.7343114e-05
+fpb3682,positive,positive,positive,6.9727877e-09,7.8114834e-07,0.9999992
+fpb3683,negative,negative,negative,0.9525665,0.047425494,7.999789e-06
+fpb3684,Answer: positive,positive,positive,2.7252486e-08,0.32082126,0.67917866
+fpb3685,Answer: positive,positive,positive,8.233187e-08,7.4112795e-06,0.9999925
+fpb3686,Answer: positive,positive,positive,0.009205549,0.34543565,0.6453588
+fpb3687,neutral,neutral,neutral,3.0286966e-08,0.9999516,4.8325634e-05
+fpb3688,neutral,neutral,neutral,1.6884535e-10,0.99991524,8.481104e-05
+fpb3689,negative,negative,negative,0.9897822,0.009703484,0.0005142658
+fpb3690,neutral,neutral,neutral,1.5229977e-08,0.9999998,1.5869999e-07
+fpb3691,**positive**,positive,positive,6.6821843e-07,0.24508488,0.7549144
+fpb3692,neutral,neutral,neutral,4.4069154e-08,0.9999942,5.7719194e-06
+fpb3693,neutral,neutral,neutral,1.9947288e-06,0.9999975,5.043464e-07
+fpb3694,neutral,neutral,neutral,1.42718655e-08,0.9975274,0.0024726233
+fpb3695,neutral,neutral,neutral,1.7805649e-08,0.99999994,5.838248e-08
+fpb3696,neutral,neutral,neutral,1.6809862e-08,0.9740426,0.025957357
+fpb3697,neutral,neutral,neutral,3.5410764e-08,0.99999994,6.0235735e-08
+fpb3698,neutral,neutral,neutral,1.2624332e-08,0.99986017,0.00013982209
+fpb3699,neutral,neutral,neutral,2.7577931e-08,0.99999994,6.615602e-08
+fpb3700,neutral,neutral,neutral,8.233248e-08,0.9999998,1.2359567e-07
+fpb3701,Answer: positive,positive,positive,4.7265686e-07,0.03308596,0.96691364
+fpb3702,neutral,neutral,neutral,2.6994823e-07,0.9999644,3.5356243e-05
+fpb3703,**neutral**,neutral,neutral,0.40719134,0.5924599,0.0003488139
+fpb3704,positive,positive,positive,3.326495e-08,1.1478768e-05,0.9999885
+fpb3705,**Neutral**,neutral,neutral,3.4941113e-06,0.880794,0.11920251
+fpb3706,neutral,neutral,neutral,2.2158348e-08,0.9999485,5.1442214e-05
+fpb3707,neutral,neutral,neutral,8.398071e-06,0.99999154,6.348747e-09
+fpb3708,Answer: negative,negative,negative,0.9579099,0.04208762,2.4534838e-06
+fpb3709,neutral,neutral,neutral,8.864762e-10,0.9999833,1.670142e-05
+fpb3710,Answer: negative,negative,negative,0.53120404,0.46878594,1.0053306e-05
+fpb3711,neutral,neutral,neutral,2.4476783e-09,0.9999991,8.851569e-07
+fpb3712,neutral,neutral,neutral,4.5468322e-08,0.99999994,2.6729447e-08
+fpb3713,Answer: negative,negative,negative,0.9796395,0.020331768,2.8715582e-05
+fpb3714,neutral,neutral,neutral,2.6165188e-07,0.99999917,6.083589e-07
+fpb3715,neutral,neutral,neutral,9.319863e-08,0.9989677,0.0010322309
+fpb3716,neutral,neutral,neutral,0.022974925,0.9769187,0.00010639502
+fpb3717,positive,positive,positive,6.6868225e-08,0.020332351,0.9796676
+fpb3718,Answer: negative,negative,negative,0.99142116,0.008577474,1.359198e-06
+fpb3719,positive,positive,positive,1.939277e-08,0.0005527786,0.99944717
+fpb3720,neutral,neutral,neutral,1.6874968e-07,0.9989011,0.001098731
+fpb3721,neutral,neutral,neutral,2.2159485e-08,0.99999976,2.5360188e-07
+fpb3722,Answer: negative,negative,negative,0.99241555,0.0075771865,7.3551237e-06
+fpb3723,neutral,neutral,neutral,2.9311534e-05,0.9999705,2.2379633e-07
+fpb3724,neutral,neutral,neutral,1.3156627e-07,0.9999948,5.093704e-06
+fpb3725,neutral,neutral,neutral,2.565147e-09,1.0,1.8954017e-08
+fpb3726,neutral,neutral,neutral,5.9641434e-09,0.99999964,3.689885e-07
+fpb3727,neutral,neutral,neutral,2.590703e-08,0.99999845,1.4593762e-06
+fpb3728,**positive**,positive,neutral,2.8732578e-07,0.9998508,0.00014883843
+fpb3729,neutral,neutral,neutral,1.0676445e-06,0.9999442,5.4759716e-05
+fpb3730,neutral,neutral,neutral,1.444956e-07,0.9999832,1.6701419e-05
+fpb3731,neutral,neutral,neutral,9.93092e-08,0.99997234,2.7535689e-05
+fpb3732,positive,positive,positive,1.2820352e-08,0.00035697062,0.9996431
+fpb3733,positive,positive,positive,5.7806258e-09,3.9669862e-06,0.99999607
+fpb3734,negative,negative,negative,0.9491031,0.04725306,0.003643765
+fpb3735,negative,negative,negative,0.9901261,0.009706855,0.00016701565
+fpb3736,neutral,neutral,neutral,6.758248e-09,0.9999979,2.1233786e-06
+fpb3737,**neutral**,neutral,neutral,7.811305e-07,0.9999764,2.2827979e-05
+fpb3738,neutral,neutral,neutral,1.4761403e-08,1.0,1.2698398e-09
+fpb3739,neutral,neutral,neutral,6.02262e-08,0.9998415,0.0001584362
+fpb3740,**Positive**,positive,neutral,4.2631218e-08,0.7772998,0.22270015
+fpb3741,neutral,neutral,neutral,3.6898368e-07,0.9999866,1.3007123e-05
+fpb3742,neutral,neutral,neutral,6.758262e-09,0.9999999,1.09072815e-07
+fpb3743,neutral,neutral,neutral,4.4321116e-09,0.9999853,1.4738982e-05
+fpb3744,neutral,neutral,neutral,8.764247e-08,0.9999999,1.2626096e-08
+fpb3745,Answer: positive,positive,positive,4.690466e-08,0.00014883847,0.99985117
+fpb3746,neutral,neutral,neutral,2.2862872e-08,0.99999845,1.5534979e-06
+fpb3747,neutral,neutral,neutral,2.9023122e-06,0.999997,2.286284e-08
+fpb3748,Answer: negative,negative,negative,0.6513547,0.34864506,2.4034247e-07
+fpb3749,neutral,neutral,neutral,7.1123804e-07,0.99999136,7.889256e-06
+fpb3750,positive,positive,positive,4.2292116e-09,2.5360188e-07,0.99999976
+fpb3751,neutral,neutral,neutral,1.5381731e-07,0.9999997,1.6893526e-07
+fpb3752,neutral,neutral,neutral,3.466326e-07,0.9999995,1.27519e-07
+fpb3753,neutral,neutral,neutral,5.421903e-06,0.9999363,5.8290945e-05
+fpb3754,positive,positive,positive,1.03719834e-07,0.10669058,0.8933093
+fpb3755,neutral,neutral,neutral,5.4222187e-06,0.9999945,2.215937e-08
+fpb3756,neutral,neutral,neutral,3.787633e-08,0.9149009,0.08509904
+fpb3757,neutral,neutral,neutral,6.348799e-09,0.9999997,2.8736852e-07
+fpb3758,neutral,neutral,neutral,1.9555651e-08,0.9999985,1.4593761e-06
+fpb3759,positive,positive,positive,2.2505674e-08,0.00012339457,0.9998766
+fpb3760,positive,positive,positive,1.1495731e-08,4.006369e-05,0.99995995
+fpb3761,Answer: negative,negative,negative,0.9963963,0.0035935666,1.00935895e-05
+fpb3762,neutral,neutral,neutral,8.948294e-09,0.9994472,0.00055277866
+fpb3763,neutral,neutral,neutral,3.887092e-08,0.99948066,0.0005193048
+fpb3764,Answer: positive,positive,positive,3.5052252e-09,0.00026119035,0.9997388
+fpb3765,neutral,neutral,neutral,3.4663253e-07,0.99999934,2.5360177e-07
+fpb3766,positive,positive,positive,1.9934805e-06,0.0006263328,0.99937165
+fpb3767,neutral,neutral,neutral,1.8553875e-07,0.9999978,1.9947295e-06
+fpb3768,neutral,neutral,neutral,8.3152514e-07,0.99999565,3.5008518e-06
+fpb3769,neutral,neutral,neutral,1.2619542e-08,0.9994807,0.0005193049
+fpb3770,neutral,neutral,neutral,9.606355e-05,0.9994995,0.00040444263
+fpb3771,neutral,neutral,neutral,1.6352072e-07,0.9986748,0.0013250223
+fpb3772,neutral,neutral,neutral,0.00012338738,0.9998183,5.828407e-05
+fpb3773,neutral,neutral,neutral,3.5968398e-08,0.99999994,4.840077e-08
+fpb3774,neutral,neutral,neutral,1.6701408e-05,0.9999825,7.8113527e-07
+fpb3775,negative,negative,negative,0.67917734,0.3208207,1.9711904e-06
+fpb3776,Answer: negative,negative,neutral,0.008577486,0.9914225,8.162629e-08
+fpb3777,neutral,neutral,neutral,1.4307228e-08,0.9999991,8.851569e-07
+fpb3778,positive,positive,positive,1.3573852e-07,3.5356246e-05,0.9999645
+fpb3779,neutral,neutral,neutral,1.4908485e-07,0.9999998,4.9937174e-08
+fpb3780,neutral,neutral,neutral,1.6373717e-07,0.9999968,3.0894937e-06
+fpb3781,Answer: negative,negative,negative,0.97702134,0.022977341,1.2583027e-06
+fpb3782,positive,positive,positive,1.3548186e-07,0.119202904,0.8807969
+fpb3783,neutral,neutral,neutral,1.5683156e-08,0.9980732,0.0019267347
+fpb3784,Answer: negative,negative,neutral,0.437813,0.562163,2.3975852e-05
+fpb3785,positive,positive,positive,1.4990615e-08,0.00021654405,0.99978346
+fpb3786,neutral,neutral,neutral,3.964926e-06,0.99947673,0.0005193028
+fpb3787,**Positive**,positive,positive,5.703807e-06,0.3208195,0.67917484
+fpb3788,neutral,neutral,neutral,8.410644e-09,0.9999822,1.7778553e-05
+fpb3789,neutral,neutral,neutral,5.0937047e-06,0.9999949,2.510986e-08
+fpb3790,Answer: positive,positive,positive,1.895361e-08,2.1444948e-05,0.9999786
+fpb3791,neutral,neutral,neutral,1.7597888e-06,0.99968326,0.0003150382
+fpb3792,neutral,neutral,neutral,1.1206026e-09,0.9999757,2.430024e-05
+fpb3793,Answer: positive,positive,positive,1.7209492e-08,0.002800927,0.9971991
+fpb3794,neutral,neutral,neutral,7.042271e-08,0.9999999,3.0288426e-08
+fpb3795,neutral,neutral,neutral,4.0110854e-10,0.99992967,7.031184e-05
+fpb3796,neutral,neutral,neutral,3.3265017e-08,0.99999046,9.51625e-06
+fpb3797,Answer: negative,negative,negative,0.9984678,0.0015011356,3.1155076e-05
+fpb3798,positive,positive,positive,1.2686981e-08,0.08509904,0.91490096
+fpb3799,**positive**,positive,positive,8.2718736e-07,0.0052201217,0.99477905
+fpb3800,neutral,neutral,neutral,1.1806446e-08,0.9953904,0.0046095727
+fpb3801,Answer: positive,positive,positive,2.6164437e-07,2.9311528e-05,0.9999704
+fpb3802,Answer: positive,positive,positive,0.00018524425,0.2450396,0.75477517
+fpb3803,**neutral**,neutral,neutral,1.7603434e-06,0.9999983,3.2106526e-10
+fpb3804,**Positive**,positive,positive,0.00029821962,0.053387403,0.9463144
+fpb3805,Answer: negative,negative,neutral,0.0140636265,0.9859363,2.9862463e-08
+fpb3806,Answer: neutral,neutral,neutral,6.540371e-06,0.9999834,1.0129925e-05
+fpb3807,Answer: negative,negative,negative,0.939843,0.06008215,7.4886084e-05
+fpb3808,neutral,neutral,neutral,2.0176435e-08,0.9999996,4.4508502e-07
+fpb3809,**neutral**,neutral,neutral,3.1114516e-05,0.997168,0.0028008395
+fpb3810,positive,positive,positive,2.3572928e-08,0.00066670234,0.9993333
+fpb3811,**positive**,positive,neutral,1.2833492e-05,0.5621693,0.43781793
+fpb3812,neutral,neutral,neutral,2.9356524e-08,0.99999905,9.422446e-07
+fpb3813,positive,positive,positive,2.4577088e-07,0.00011591933,0.99988395
+fpb3814,neutral,neutral,neutral,0.00062633393,0.9993733,3.057106e-07
+fpb3815,neutral,neutral,neutral,3.0588996e-07,0.99995965,4.0063675e-05
+fpb3816,Answer: positive,positive,neutral,1.41384024e-08,0.6791787,0.3208213
+fpb3817,neutral,neutral,neutral,6.9727886e-09,0.99999934,6.8936106e-07
+fpb3818,**Positive**,positive,neutral,2.750567e-06,0.65135306,0.3486442
+fpb3819,positive,positive,positive,2.5907035e-08,1.2878952e-06,0.9999987
+fpb3820,neutral,neutral,neutral,4.2298854e-08,0.99029154,0.009708476
+fpb3821,**Positive**,positive,positive,1.43070045e-08,1.6701422e-05,0.9999833
+fpb3822,positive,positive,positive,3.859643e-08,0.007577241,0.99242276
+fpb3823,neutral,neutral,neutral,3.6898842e-07,0.9999995,1.5381728e-07
+fpb3824,positive,positive,positive,1.269833e-09,5.4222187e-06,0.9999946
+fpb3825,Answer: positive,positive,positive,4.591927e-07,4.5397846e-05,0.9999542
+fpb3826,neutral,neutral,neutral,4.546832e-08,0.9999998,9.329492e-08
+fpb3827,positive,positive,positive,1.1381807e-09,8.481104e-05,0.99991524
+fpb3828,Answer: neutral,neutral,neutral,6.6154676e-08,0.9999798,2.0145688e-05
+fpb3829,neutral,neutral,neutral,2.0377433e-07,0.9999974,2.4061017e-06
+fpb3830,neutral,neutral,neutral,9.702494e-09,0.9944451,0.0055549247
+fpb3831,Answer: negative,negative,negative,0.9985888,0.0014103573,8.3035525e-07
+fpb3832,neutral,neutral,neutral,3.7666087e-08,0.9992446,0.0007554056
+fpb3833,Answer: negative,negative,negative,0.754799,0.24504738,0.00015357773
+fpb3834,neutral,neutral,neutral,4.222827e-06,0.99999434,1.45937e-06
+fpb3835,positive,positive,positive,1.4761395e-08,5.715005e-07,0.99999946
+fpb3836,neutral,neutral,neutral,1.760342e-06,0.9999975,7.338197e-07
+fpb3837,neutral,neutral,neutral,2.5877728e-07,0.9890128,0.010986941
+fpb3838,neutral,neutral,neutral,0.00055220834,0.9984161,0.001031661
+fpb3839,negative,negative,negative,0.90464586,0.09534897,5.2215732e-06
+fpb3840,neutral,neutral,neutral,2.4415425e-07,0.99330693,0.006692849
+fpb3841,neutral,neutral,neutral,3.0209938e-07,0.9875681,0.012431649
+fpb3842,neutral,neutral,neutral,0.00021654401,0.99978334,1.4905258e-07
+fpb3843,Answer: negative,negative,negative,0.92405444,0.07585101,9.454031e-05
+fpb3844,Answer: negative,negative,negative,0.8807958,0.11920275,1.5505055e-06
+fpb3845,neutral,neutral,neutral,7.8892535e-06,0.999991,1.0676945e-06
+fpb3846,neutral,neutral,neutral,8.410793e-09,0.9999999,5.6586234e-08
+fpb3847,positive,positive,positive,4.0687812e-08,0.04742587,0.95257413
+fpb3848,neutral,neutral,neutral,2.6975223e-07,0.7310584,0.26894137
+fpb3849,Answer: neutral,neutral,neutral,1.67264e-08,0.99997246,2.7535692e-05
+fpb3850,Answer: neutral,neutral,neutral,0.0035932127,0.99629825,0.000108505614
+fpb3851,neutral,neutral,neutral,1.4924517e-10,0.9995694,0.00043055706
+fpb3852,neutral,neutral,neutral,2.9994375e-08,0.9902915,0.009708477
+fpb3853,neutral,neutral,neutral,5.093705e-06,0.9999949,7.4964206e-08
+fpb3854,neutral,neutral,neutral,1.4592912e-06,0.9999403,5.8291178e-05
+fpb3855,neutral,neutral,neutral,6.5502705e-09,0.99999046,9.516251e-06
+fpb3856,neutral,neutral,neutral,7.329628e-07,0.9988297,0.0011695095
+fpb3857,positive,positive,positive,1.5229507e-08,3.1201915e-05,0.9999688
+fpb3858,neutral,neutral,neutral,1.056837e-07,0.9996849,0.00031503866
+fpb3859,neutral,neutral,neutral,2.215949e-08,1.0,1.310149e-09
+fpb3860,neutral,neutral,neutral,9.833094e-09,0.9999878,1.2219077e-05
+fpb3861,neutral,neutral,neutral,3.3213673e-05,0.9999511,1.568903e-05
+fpb3862,**positive**,positive,neutral,8.435558e-09,0.65135485,0.34864515
+fpb3863,positive,positive,positive,3.8344165e-08,0.014063626,0.98593634
+fpb3864,neutral,neutral,neutral,1.0907148e-07,0.9999877,1.2219074e-05
+fpb3865,neutral,neutral,neutral,0.009700746,0.98950297,0.00079628575
+fpb3866,Answer: negative,negative,negative,0.9796443,0.020331869,2.3806171e-05
+fpb3867,positive,positive,positive,1.7360655e-07,0.14804716,0.8519527
+fpb3868,positive,positive,positive,1.671341e-08,0.000804086,0.99919593
+fpb3869,**positive**,positive,positive,5.8160576e-06,0.053403024,0.94659114
+fpb3870,neutral,neutral,neutral,0.18242317,0.81756395,1.2827411e-05
+fpb3871,Answer: negative,negative,negative,0.99242115,0.0075772293,1.6411592e-06
+fpb3872,positive,positive,positive,3.1249886e-08,1.2751904e-07,0.9999999
+fpb3873,neutral,neutral,neutral,7.464996e-10,0.999999,1.0677029e-06
+fpb3874,neutral,neutral,neutral,2.8453341e-08,0.99999976,1.7429784e-07
+fpb3875,**Positive**,positive,neutral,2.746365e-09,0.86703575,0.13296424

@@ -1,0 +1,12 @@
+{
+  "identical_to_pixiu_scoring": true,
+  "systems": [
+    "e2_lr0.0004_r16_s3407",
+    "e2_lr0.0004_r16_s3407_tv",
+    "e2_lr0.0004_r16_s42_tv",
+    "e2_lr0.0004_r16_s7_tv",
+    "e4b_zeroshot",
+    "finma_7b",
+    "finma_7b_rawprompt"
+  ]
+}

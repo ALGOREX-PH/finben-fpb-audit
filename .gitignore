@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+unsloth_compiled_cache/
+
+# downloads and caches (models, datasets)
+.cache/
+
+# trained adapters and checkpoints
+models/
+results/*/checkpoints/
+
+# data: FinBen FPB is gated, press-release text is copyrighted -> never commit either.
+# Only the fresh set's URLs + fingerprints + labels are tracked.
+data/*
+!data/fresh/
+data/fresh/*
+!data/fresh/fresh_set.csv
+
+.env
