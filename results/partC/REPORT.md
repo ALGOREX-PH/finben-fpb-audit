@@ -23,9 +23,11 @@ Gold labels used: 349 sentences (negative 27, neutral 210, positive 112); 11 exc
 - FinMA's lead on the fresh sentences: **-0.0209** (McNemar p = 0.3; only FinMA right 19, only ours right 27)
 - Shrink: **+0.0680**, 95% CI [+0.025, +0.110]
 
-**Verdict: memorisation SUPPORTED.**
+**Verdict: memorisation CONSISTENT (preliminary: AI labels).**
 
-*Rule: supported if the lead shrinks by ≥ 0.03 with a CI excluding 0; not supported if FinMA still leads by ≥ 0.03 with p < 0.05; otherwise inconclusive.*
+*Missing check: no human has labelled or spot-checked these sentences; the gold labels are an AI's (see section 4). Treat the verdict as preliminary until `c2_label.py --spotcheck 40` is done.*
+
+*Rule: consistent with memorisation if the lead shrinks by ≥ 0.03 with a CI excluding 0; not supported if FinMA still leads by ≥ 0.03 with p < 0.05; otherwise inconclusive.*
 
 ## 3. Breakdowns
 
