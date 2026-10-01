@@ -51,3 +51,21 @@ def locate(cell, seed, split, sel, pred_root):
     if cell == "A" and split == "fresh":
         return PART_C_PRED / f"{name}.csv"
     return pred_root / split / f"{name}.csv"
+
+
+CODE = {label: i for i, label in enumerate(LABELS)}          # anything else ('missing', '') -> len(LABELS)
+K = len(LABELS) + 1
+
+
+def encode(labels):
+    return np.array([CODE.get(x, len(LABELS)) for x in labels], dtype=np.int64)
+
+
+def wf1(g, p):
+    """Weighted F1 on int-coded labels, identical to sklearn's f1_score(average='weighted', zero_division=0)."""
+    cm = np.bincount(g * K + p, minlength=K * K).reshape(K, K)
+    tp, support, predicted = np.diag(cm), cm.sum(1), cm.sum(0)
+    prec = np.divide(tp, predicted, out=np.zeros(K), where=predicted > 0)
+    rec = np.divide(tp, support, out=np.zeros(K), where=support > 0)
+    f1 = np.divide(2 * prec * rec, prec + rec, out=np.zeros(K), where=prec + rec > 0)
+    return float((f1 * support).sum() / support.sum())
