@@ -25,7 +25,7 @@ All scores: weighted F1 (FinBen's headline metric), FinBen's exact prompt, parse
 | FinMA-7B (our re-run, official prompt) | **0.937** [0.922, 0.952] | 0.791 [0.749, 0.831] | **−14.7** |
 | FinMA-7B (published, FinBen paper) | 0.88 | — | |
 
-Our model and zero-shot lose the same ~8 points moving from PhraseBank's older news to 2026 press releases: that's the cost of the new domain. FinMA loses an extra ~7 points, which is what you'd expect if part of its benchmark score came from having seen the test sentences.
+Our model and zero-shot lose the same ~8 points moving from PhraseBank's older news to 2026 press releases: that's the cost of the new domain. FinMA loses an extra ~7 points, which is what you'd expect if part of its benchmark score came from having seen the test sentences, or from heavier training on PhraseBank-style news (Part D separates the two).
 
 ## What makes these numbers trustworthy
 
