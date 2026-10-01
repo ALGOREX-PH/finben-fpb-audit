@@ -101,3 +101,10 @@ def test_paired_diff_ci_hand_computed():
 def test_paired_diff_ci_of_identical_systems_is_zero():
     same = [1, 0, 1, 1, 0]
     assert metrics.paired_diff_ci(same, same, n_resamples=100) == (0.0, 0.0, 0.0)
+
+
+def test_plots_write_image_files(tmp_path):
+    metrics.plot_reliability({"toy": (ECE_GOLD, ECE_PROBS, ABC)}, tmp_path / "rel.png")
+    metrics.plot_confusion(np.array([[3, 1], [0, 4]]), AB, "toy", tmp_path / "cm.png")
+    assert (tmp_path / "rel.png").stat().st_size > 0
+    assert (tmp_path / "cm.png").stat().st_size > 0
