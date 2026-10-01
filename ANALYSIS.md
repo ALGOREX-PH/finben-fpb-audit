@@ -89,7 +89,7 @@ Source: FinBen Tables 3 and 7. Caveats: self-reported (FinBen's prompt, parser a
 **6 of 6 confirmed is itself a warning:** the predictions may have been too safe. Next time, predict exact numbers with a tolerance (e.g. "inflation +0.5 ± 0.3 points") so a prediction can actually fail.
 
 ### Open questions worth a follow-up
-- **Prompt effect:** zero-shot here (0.794 wF1, FinBen prompt) is well below the zero-shot score in an earlier experiment on PhraseBank sentences (0.875 macro-F1, a different prompt; that work isn't in this repo). How much is FinBen's prompt and how much is the harder test mix (all agreement levels)? Running zero-shot with Task 01's prompt on this test set would answer it in 1 minute.
+- **Prompt effect:** zero-shot here (0.794 wF1, FinBen prompt) is well below the zero-shot score in an earlier experiment on PhraseBank sentences (0.875 macro-F1, a different prompt; that work isn't in this repo). How much is FinBen's prompt and how much is the harder test mix (all agreement levels)? Running zero-shot with that prompt on this test set would answer it in 1 minute.
 - **Where are the remaining 13% of errors?** Task 01 found mostly labeling convention and debatable gold labels. The 3 true copies with conflicting labels here suggest the same ceiling.
 
 ### Limitations
