@@ -8,7 +8,7 @@ drop toward our level on new sentences while our model holds steady.
 
 Source: Cision's public press-release feed (news.cision.com) -- Nordic-listed company announcements,
 the same kind of source Financial PhraseBank was built from (Finnish company news). Only releases
-dated 2025-01-01 or later are used.
+dated --min-date .. --max-date are used (default 2026-06-30 .. 2026-09-30, the shipped set's window).
 Filters: English, 8-45 words, a complete sentence, no contact/disclaimer/legal boilerplate, max 3
 sentences per release (so no single company dominates), and NO near-copy of any FinBen FPB sentence
 (train, validation or test; ftlib.contamination, same detectors as Part A).
