@@ -130,8 +130,9 @@ if __name__ == "__main__":
     lead_ci = lambda J: np.quantile(boot_wf1(G, finma, J) - boot_wf1(G, ours, J), [0.025, 0.975])
     (lo, hi), (lo4, hi4) = lead_ci(J_own), lead_ci(J_c4)
     lines += ["## a) FinMA's lead on the fresh set alone", "",
-              f"FinMA − ours, weighted F1: **{lead:+.4f}**, 95% CI **[{lo:+.3f}, {hi:+.3f}]**. The CI includes 0: "
-              "on fresh data alone, neither system is ahead.", "",
+              f"FinMA − ours, weighted F1: **{lead:+.4f}**, 95% CI **[{lo:+.3f}, {hi:+.3f}]**. "
+              + ("The CI includes 0: on fresh data alone, neither system is ahead." if lo <= 0 <= hi else
+                 f"The CI excludes 0: on fresh data alone, {'FinMA' if lo > 0 else 'our ensemble'} is ahead."), "",
               f"*Paired bootstrap: each of {N_BOOT} replicates resamples the {len(g)} fresh sentences with replacement "
               f"and scores both systems on the same draw; percentile interval; numpy `default_rng({BOOT_SEED})` drawing "
               f"fresh indices only. Drawing them as the fresh half of c4_report.py's two-set stream instead gives "
