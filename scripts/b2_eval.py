@@ -9,7 +9,7 @@ Splits: validation (choosing), test (the final number, once), train_sample (MEMO
 sentences, for the memorisation check: a model does better on sentences it trained on).
 FinMA gets FinBen's `query` inside its official wrapper  Human: \n{query}\n\nAssistant: \n  (PIXIU
 src/model_prompt.py `finma_prompt`), as in FinBen's harness. --finma-raw drops the wrapper (sensitivity only).
-Output: results/predictions/<split>/<system>.csv with the generated reply, FinBen's parse (pred),
+Output: results/partB/predictions/<split>/<system>.csv with the generated reply, FinBen's parse (pred),
 the label-probability argmax (pred_argmax) and p_negative/p_neutral/p_positive.
 """
 import argparse
