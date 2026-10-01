@@ -33,7 +33,7 @@ preds = {f.stem: pred_files.read(f) for f in sorted(PRED_DIR.glob("*.csv"))}   #
 partial = sorted(k for k, v in preds.items() if len(v) != len(cont))
 preds = {k: v for k, v in preds.items() if len(v) == len(cont)}
 if not preds:
-    raise SystemExit("no complete prediction files yet -- run 04_eval.py")
+    raise SystemExit("no complete prediction files yet -- run a4_eval.py")
 subsets = {"full": np.ones(len(cont), bool), "clean": ~cont.contaminated.values, "contaminated": cont.contaminated.values}
 
 
