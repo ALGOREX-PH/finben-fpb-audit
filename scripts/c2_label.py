@@ -15,6 +15,10 @@ Blind: you see only the sentence -- no model output, no AI suggestion -- so your
 anchored by what the models say. Saved after every answer to data/fresh/labels.csv.
 The second annotator (data/fresh/labels_claude.csv) is an independent AI pass, compared only AFTER you
 finish; disagreements are then decided by you (--adjudicate). Your final label is the gold label.
+
+AS SHIPPED, the gold labels were NOT made this way: data/fresh/labels.csv was filled by an AI (Claude) at
+the user's request, following the rule above (its labeled_by column says so). No human has labelled the
+set yet; --spotcheck N measures how often a blind human agrees with that AI answer key.
 """
 import argparse
 
