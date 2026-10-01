@@ -1,7 +1,7 @@
-"""Task 02 pipeline, both parts, in order. RESUMABLE: every train/eval step skips what's done -- stop with
-Ctrl+C any time and rerun.
+"""The finben-fpb-audit pipeline, every part in order. RESUMABLE: every train/eval step skips what's done --
+stop with Ctrl+C any time and rerun.
 
-  uv run python scripts/run_all.py             (~6 h for Part B; Part A is already done)
+  uv run python scripts/run_all.py             (~8 h for Parts A + B from scratch)
   uv run python scripts/run_all.py --dry-run   (print the plan, run nothing)
 
 Part A  contamination study: download, train->test overlap, 3 seeds x (normal, decontaminated) training
