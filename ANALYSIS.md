@@ -199,7 +199,7 @@ Run today, `b3_select.py`'s coded rule would choose **2 epochs, lr 2e-4, rank 32
 
 **Answer.** On 349 fresh sentences from July–September 2026 press releases, FinMA's lead disappears. Our 3-seed ensemble scores **0.811** wF1 and FinMA **0.791**; the difference isn't significant (p = 0.3). So: **matched or slightly ahead, not a clear win.**
 
-FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and zero-shot (**7.8**) fall only by the general shift to 2026 press releases. FinMA's lead shrinks by **6.8 points, 95% CI [+2.5, +11.0]**. By the pre-registered rule, the verdict is **memorisation supported**: most of FinMA's FinBen advantage came from having seen the test sentences.
+FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and zero-shot (**7.8**) fall only by the general shift to 2026 press releases. FinMA's lead shrinks by **6.8 points, 95% CI [+2.5, +11.0]**. By the pre-registered rule, the verdict is **memorisation consistent (preliminary: AI labels)**: the pattern fits most of FinMA's FinBen advantage coming from having seen the test sentences. It doesn't rule out the other cause, FinMA's much longer training on PhraseBank-style text; Part D separates the two.
 
 **Caveat:** the answer key was made by an LLM (Claude), and no human has checked it yet (`c2_label.py --spotcheck 40`).
 
