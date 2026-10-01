@@ -10,7 +10,7 @@ annotator are shown as a sensitivity check.
 DECISION RULE (fixed 2026-10-01, before any fresh-set result existed):
   lead(X) = FinMA wF1 - our 3-seed-ensemble wF1 on test set X
   shrink  = lead(FinBen test) - lead(fresh)
-  "memorisation supported"      shrink >= 0.03 AND the 95% bootstrap CI of shrink excludes 0
+  "memorisation consistent"     shrink >= 0.03 AND the 95% bootstrap CI of shrink excludes 0
   "memorisation not supported"  FinMA still leads by >= 0.03 on fresh AND McNemar p < 0.05
   "inconclusive"                anything else
 """
