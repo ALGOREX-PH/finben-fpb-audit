@@ -17,7 +17,7 @@ for script, needs in [("a5_report.py", RESULTS / "partA" / "predictions"), ("b5_
         subprocess.run([sys.executable, str(HERE / script)], stdout=subprocess.DEVNULL, check=False)
 
 parts = [(HERE.parent / "ANALYSIS.md").read_text(encoding="utf-8").strip(), "", "---", "",
-         "*Everything below is generated from `results/` by `report.py` (Part A: `a5_report.py`, Part B: `b5_report.py`).*", ""]
+         "*Everything below is generated from `results/` by `report.py` (Part A: `a5_report.py`, Part B: `b5_report.py`, Part C: `c4_report.py`).*", ""]
 for sub in ["partA", "partB", "partC"]:
     rep = RESULTS / sub / "REPORT.md"
     if rep.exists():
