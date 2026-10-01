@@ -5,7 +5,7 @@ torch         2.11.0+cu128
 unsloth       2026.9.12
 transformers  5.5.0
 trl           0.24.0
-peft          0.21.1
+peft          0.21.0
 bitsandbytes  0.50.2
 accelerate    1.15.0
 datasets      4.3.0
