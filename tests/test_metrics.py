@@ -90,3 +90,14 @@ def test_bootstrap_ece_is_deterministic_and_ordered():
     lo, hi = metrics.bootstrap_ece(gold, probs, ABC, n_resamples=200, seed=3)
     assert (lo, hi) == metrics.bootstrap_ece(gold, probs, ABC, n_resamples=200, seed=3)
     assert 0.0 <= lo <= hi <= 1.0
+
+
+def test_paired_diff_ci_hand_computed():
+    diff, lo, hi = metrics.paired_diff_ci([1, 1, 1, 0], [1, 0, 0, 0], n_resamples=500)
+    assert diff == pytest.approx(0.5)
+    assert 0.0 <= lo <= diff <= hi <= 1.0
+
+
+def test_paired_diff_ci_of_identical_systems_is_zero():
+    same = [1, 0, 1, 1, 0]
+    assert metrics.paired_diff_ci(same, same, n_resamples=100) == (0.0, 0.0, 0.0)
