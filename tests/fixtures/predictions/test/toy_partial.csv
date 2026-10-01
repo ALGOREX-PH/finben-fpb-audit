@@ -1,0 +1,4 @@
+id,raw,pred
+toy0,positive,positive
+toy1,neutral,neutral
+toy2,negative,negative
