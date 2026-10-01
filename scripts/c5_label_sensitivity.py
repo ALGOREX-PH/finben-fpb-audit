@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 from scipy.stats import binomtest
 from sklearn.metrics import confusion_matrix, f1_score
 
@@ -158,6 +159,9 @@ if __name__ == "__main__":
     fin_f, fin_o = codes(fin["FinMA-7B"]), codes(fin["Ours, 3-seed ensemble"])
     lead_fin = wf1(fg, fin["FinMA-7B"]) - wf1(fg, fin["Ours, 3-seed ensemble"])
     lead_fin_b = boot_wf1(FG, fin_f, I_c4) - boot_wf1(FG, fin_o, I_c4)    # FinBen half of c4's stream
+    lab = pd.read_csv(args.labels, keep_default_na=False, dtype=str)       # c4_report.py's AI-label test and wording
+    ai_gold = "labeled_by" in lab and lab.labeled_by.str.contains("claude", case=False).any()
+    consistent = "memorisation CONSISTENT (preliminary: AI labels)" if ai_gold else "memorisation CONSISTENT"
 
     def shrink_at(Gk):
         """c4_report.py's shrink, its 95% CI and its verdict, with fresh gold labels Gk."""
@@ -167,7 +171,7 @@ if __name__ == "__main__":
         gk = np.array(CLASSES)[Gk]
         p_, _, _ = mcnemar(gk, fresh["FinMA-7B"], fresh["Ours, 3-seed ensemble"])
         shrink = lead_fin - lead_fresh
-        verdict = ("memorisation SUPPORTED" if shrink >= MIN_SHRINK and lo_ > 0 else
+        verdict = (consistent if shrink >= MIN_SHRINK and lo_ > 0 else
                    "memorisation NOT supported" if lead_fresh >= MIN_SHRINK and p_ < 0.05 else "INCONCLUSIVE")
         return lead_fresh, shrink, lo_, hi_, verdict
 
