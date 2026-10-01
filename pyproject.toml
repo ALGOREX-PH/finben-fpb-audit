@@ -21,6 +21,7 @@ dependencies = [
     "scikit-learn",
     "scipy",
     "matplotlib",
+    "sentencepiece",   # FinMA-7B ships only a slow LLaMA tokenizer (tokenizer.model)
 ]
 
 # PyTorch wheels built against CUDA 12.8 (required for RTX 50-series / Blackwell GPUs).
