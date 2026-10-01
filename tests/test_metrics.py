@@ -44,3 +44,21 @@ def test_bootstrap_ci_is_deterministic_and_brackets_the_score():
 def test_bootstrap_ci_of_perfect_predictions_is_a_point():
     gold = ["a", "b"] * 20
     assert metrics.bootstrap_ci(gold, gold, AB, n_resamples=50) == (1.0, 1.0)
+
+
+def test_mcnemar_known_table():
+    # 8 items only A right, 2 only B right, 5 both right, 1 both wrong.
+    # Exact two-sided binomial test on 8 of 10: 2 * P(X >= 8 | n=10, p=0.5) = 2 * (45 + 10 + 1) / 1024
+    gold = ["a"] * 16
+    a = ["a"] * 8 + ["b"] * 2 + ["a"] * 5 + ["b"]
+    b = ["b"] * 8 + ["a"] * 2 + ["a"] * 5 + ["b"]
+    out = metrics.mcnemar(gold, a, b)
+    assert (out["a_only_right"], out["b_only_right"]) == (8, 2)
+    assert out["p_value"] == pytest.approx(112 / 1024)
+
+
+def test_mcnemar_is_symmetric_and_handles_identical_systems():
+    gold = ["a", "b", "a", "b"]
+    a, b = ["a", "a", "a", "b"], ["b", "b", "a", "b"]
+    assert metrics.mcnemar(gold, a, b)["p_value"] == metrics.mcnemar(gold, b, a)["p_value"]
+    assert metrics.mcnemar(gold, a, a) == {"a_only_right": 0, "b_only_right": 0, "p_value": 1.0}
