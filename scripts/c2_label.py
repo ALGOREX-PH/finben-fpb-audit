@@ -3,6 +3,7 @@
   uv run python scripts/c2_label.py                # label (resumes where you stopped)
   uv run python scripts/c2_label.py --compare      # agreement with the second annotator
   uv run python scripts/c2_label.py --adjudicate   # settle each disagreement yourself
+  uv run python scripts/c2_label.py --spotcheck 40 # human check of the shipped (AI-made) gold labels
 
 THE RULE (Financial PhraseBank's annotation guideline, Malo et al. 2014):
   Read the sentence as an INVESTOR. Would this news, on its own, likely make the company's share
