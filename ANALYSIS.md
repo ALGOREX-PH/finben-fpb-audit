@@ -111,7 +111,7 @@ The memorisation diagnostics suggest FinMA's test score is inflated. On the test
 ### Method in one paragraph
 - The baseline is Part A's fine-tune: 0.867 ± 0.009 test wF1, 1 epoch, lr 2e-4, rank 16.
 - Every change was chosen on FinBen's **validation** split (776 sentences), one knob at a time: epochs, then learning rate, then LoRA rank. The top 2 configurations were re-run with 3 seeds.
-- The choice was frozen in `results/selected_config.json` with a written rule, before the test set was touched.
+- The choice was frozen in `results/partB/selected_config.json` with a written rule, before the test set was touched.
 - The frozen configuration was retrained on train + validation (3 seeds) and scored on the 970 test sentences **once**.
 - FinMA-7B was re-run by us with the same parser and metric, and with **its own official prompt wrapper** (`Human: … Assistant:`, from PIXIU's `model_prompt.py`), so it isn't handicapped. The comparison is a McNemar test on identical sentences.
 - A memorisation check compares each model's accuracy on training sentences vs test sentences.
