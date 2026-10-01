@@ -117,7 +117,7 @@ if __name__ == "__main__":
              "> **This is a sensitivity analysis, not a re-labelling.** The fresh-set answer key is unchanged. It was "
              "made by an LLM (Claude), and the human spot-check is still pending. Each section asks how far a "
              "conclusion would move if labels or reference numbers were different.", "",
-             f"Labels: `{args.labels.relative_to(config.ROOT) if args.labels.is_relative_to(config.ROOT) else args.labels}`; "
+             f"Labels: `{(args.labels.relative_to(config.ROOT) if args.labels.is_relative_to(config.ROOT) else args.labels).as_posix()}`; "
              f"{len(g)} labelled sentences (negative {np.sum(g == 'negative')}, neutral {np.sum(g == 'neutral')}, "
              f"positive {np.sum(g == 'positive')}). \"Ours\" = the frozen 3-seed ensemble unless a seed is named.", ""]
 
