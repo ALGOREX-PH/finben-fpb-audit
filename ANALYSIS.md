@@ -230,3 +230,67 @@ FinMA falls **14.7** points from its FinBen score, while our model (**7.9**) and
 - The gold labels come from one AI annotator, not PhraseBank's 16 finance-trained annotators, and an LLM labelling a test for LLMs may favour some of them.
 - 2026 press releases differ from PhraseBank's 2004–2008 news in style, so every model shifts domain. The comparison relies on FinMA's drop *relative to ours*.
 - The negative class is enriched by keyword, so the class mix isn't the natural one. Results are also reported on the random 300 alone.
+
+## Part D: separating "saw the test set" from "trained harder" (pre-registered 2026-10-01, before any Part D model was trained)
+
+Part C found that FinMA-7B drops 14.7 points from FinBen's test to the fresh 2026 sentences, against our 7.9. Two stories fit that gap:
+- **Memorisation:** FinMA trained on the FinBen test sentences, so its FinBen score is inflated and the inflation vanishes on fresh data.
+- **Over-specialisation:** FinMA trained much longer (15 epochs) on PhraseBank-style text and transfers worse to 2026 press releases, whether or not it saw the test sentences.
+
+Part D trains our own models in a 2 x 2 design where we *know* which ones saw the test set, so the two causes can be separated.
+
+### Design
+Frozen recipe from Part B for every cell: learning rate 4e-4, LoRA rank 16, batch 4 x 4, FinBen's prompt format, seeds 3407 / 42 / 7.
+
+| Cell | Training data | Epochs | Seeds | Run names |
+|---|---|---|---|---|
+| **A** clean, 2 epochs | train + validation | 2 | 3407, 42, 7 | existing final models `e2_lr0.0004_r16_s*_tv` (predictions reused) |
+| **B** contaminated, 2 epochs | train + validation + **test** | 2 | 3407, 42, 7 | `e2_lr0.0004_r16_s*_tvt` |
+| **C** clean, 15 epochs | train + validation | 15 | 3407 (42, 7 if time allows) | `e15_lr0.0004_r16_s*_tv` |
+| **D** contaminated, 15 epochs | train + validation + **test** | 15 | 3407 (42, 7 if time allows) | `e15_lr0.0004_r16_s*_tvt` |
+
+- Every model is scored on FinBen's test (970), the memorisation train sample (970 train sentences, `MEMO_SAMPLE`) and the fresh set (349 usable sentences), with FinBen's exact template, parser and metric.
+- Control adapters go to `models/controls/`, control predictions to `results/partD/predictions/{test,train_sample,fresh}/`. Nothing in Parts A–C is re-scored or overwritten, and the Part B/C report globs can't see these files.
+- Cell A's test and fresh predictions are the shipped Part B/C files. Its train-sample predictions don't exist yet and are produced into `results/partD/`.
+- Report: `scripts/d1_controls_report.py` -> `results/partD/REPORT.md`.
+
+### Quantities
+- **drop(X)** = fresh wF1 − FinBen test wF1 for cell X (negative = worse on fresh data).
+- **Contamination effect at 15 epochs:** **DiD15 = drop(C) − drop(D)**. At 2 epochs: **DiD2 = drop(A) − drop(B)**.
+  - **Sign, corrected from the brief:** the brief wrote DiD = drop(D) − drop(C) ≥ 0.03. Memorisation inflates D's FinBen score, which makes drop(D) *more negative*, so that form would be ≤ −0.03. Here DiD is defined the other way round, so **memorisation makes DiD positive**.
+- **Intensity effect on clean models:** drop(A) − drop(C); positive means longer training costs transfer.
+- **Seed matching (primary):** each contrast uses only the seeds present in both cells, averaging the per-seed differences. With C and D on seed 3407 only, the 15-epoch contrasts are single-seed (seed 3407).
+  - Seed-mean and 3-seed-ensemble versions are secondary, reported when all seeds exist.
+  - Seed noise is real: cell A's per-seed drops are −5.4 (seed 3407), −8.0 (42) and −9.0 (7). The bootstrap CI does not include seed variance, so a single-seed DiD is weaker evidence than its CI suggests.
+- **CIs:** 2,000 bootstrap draws (seed 0). Within a test set, both cells share the same resampled indices (paired). FinBen test and fresh set are resampled independently of each other, as in `c4_report.py`.
+- **Gold labels:** fresh = `data/fresh/labels.csv`, which is **AI-made (Claude); human spot-check pending**. The report takes `--labels` so the same analysis re-runs on human labels.
+  - Any verdict on AI labels is **preliminary**.
+  - If the verdict changes between the two label sets, the result is reported as label-dependent.
+
+### Predictions (numbers with tolerances, so they can fail)
+I adjusted the brief's proposed numbers using what already exists:
+- Cell A's seed-3407 model scores 0.878 on test (seeds range 0.878–0.889).
+- Our train-only twin scores 0.966 accuracy on train sentences it saw for 2 epochs.
+- FinMA scores 0.937.
+
+| # | Prediction | Why it was changed from the brief |
+|---|---|---|
+| D1 | **D** test wF1 **≥ 0.97** (seed 3407) | The brief's ≥ 0.93 is too easy: 2 epochs on a sentence already gives ~0.97 accuracy on it, and 15 epochs should do at least as well |
+| D2 | **B** test wF1 **0.96 ± 0.02**, between A and D (A < B ≤ D) | Brief kept; the number comes from the twin's 0.966 on seen sentences |
+| D3 | **C** test wF1 within **0.02** of A, matched seed (0.878 for seed 3407) | Brief's 0.01 is tighter than A's own seed spread (0.011) |
+| D4 | Train-sample gap (train acc − test acc): **B and D within ±0.02 of 0** (test also seen); **C ≥ A** (A's twin: +0.083) | New: checks contamination worked as intended |
+| D5 | 50Agree test accuracy: **D ≥ 0.90**; **C within 0.07 of A** (A seed 3407: 0.597; FinMA: 0.791) | New: the agreement-level signal from Part B, section 4b |
+| D6 | drop(C) = **−0.08 ± 0.04** | Brief's ±3 widened to ±4: A's seeds already span −5.4 to −9.0 |
+| D7 | DiD15 = drop(C) − drop(D) **≥ +0.05** with CI excluding 0; DiD2 ≥ +0.04 with CI excluding 0 | The brief's form had the wrong sign. Expected size ≈ D's inflation on FinBen (D1 − D3 ≈ +0.09) |
+
+### Decision rule (primary = seed-3407 15-epoch contrasts, AI labels until human labels exist)
+FinMA's drop is −0.147, so "FinMA-sized" is defined as drop ≤ −0.117 (within 3 points of FinMA, or worse).
+- **MEMORISATION explains the pattern:** DiD15 ≥ 0.03 with 95% CI excluding 0, **and** drop(D) is FinMA-sized, **and** drop(C) is not (drop(C) > −0.117).
+- **OVER-SPECIALISATION explains it:** DiD15's CI includes 0, **and** drop(C) and drop(D) are both FinMA-sized.
+- **INCONCLUSIVE:** anything else, including "both". For example, DiD15 > 0 with drop(C) also FinMA-sized would mean both causes contribute and Part D can't apportion them.
+- DiD2 is reported as a secondary check. It doesn't change the verdict.
+
+### Limits written before the run
+- Part D shows what memorisation and over-training do **to our model**. It can show that memorisation *can* produce FinMA's pattern, not that it *did* for FinMA, whose training data and recipe differ (7B LLaMA, full fine-tune, instruction mix).
+- 15 epochs at lr 4e-4 is our stand-in for "heavy training". It is not FinMA's exact recipe.
+- C and D may run on one seed only (see seed matching above).
