@@ -2,8 +2,10 @@
 
   uv run python scripts/c4_report.py
 
-Gold labels = YOUR labels (data/fresh/labels.csv: adjudicated 'final' if set, else your blind label);
-sentences you excluded are dropped. Scores against the second annotator are shown as a sensitivity check.
+Gold labels = data/fresh/labels.csv (adjudicated 'final' if set, else the blind 'human' label); excluded
+sentences are dropped. AS SHIPPED that file was labelled by an AI (Claude), not a human: the report says so
+and asks for a human spot-check (c2_label.py --spotcheck 40). With human labels, scores against the second
+annotator are shown as a sensitivity check.
 
 DECISION RULE (fixed 2026-10-01, before any fresh-set result existed):
   lead(X) = FinMA wF1 - our 3-seed-ensemble wF1 on test set X
