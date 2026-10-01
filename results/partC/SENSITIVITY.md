@@ -2,7 +2,7 @@
 
 > **This is a sensitivity analysis, not a re-labelling.** The fresh-set answer key is unchanged. It was made by an LLM (Claude), and the human spot-check is still pending. Each section asks how far a conclusion would move if labels or reference numbers were different.
 
-Labels: `data\fresh\labels.csv`; 349 labelled sentences (negative 27, neutral 210, positive 112). "Ours" = the frozen 3-seed ensemble unless a seed is named.
+Labels: `data/fresh/labels.csv`; 349 labelled sentences (negative 27, neutral 210, positive 112). "Ours" = the frozen 3-seed ensemble unless a seed is named.
 
 ## a) FinMA's lead on the fresh set alone
 
