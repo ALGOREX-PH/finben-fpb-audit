@@ -225,6 +225,40 @@ if __name__ == "__main__":
     lines += ["", f"*FinMA's own drop: {finma_scored.drop:+.4f}. FinMA-sized = drop ≤ {FINMA_SIZED}. Bootstrap CIs "
                   "cover sentence sampling only, not seed-to-seed variation (cell A's seeds alone span several points).*", ""]
 
+    # ---- 4. the pre-registered predictions, checked
+    g = lambda cell: scored.get((cell, PRIMARY_SEED))
+    gap = lambda cell: acc(systems[(cell, PRIMARY_SEED)]["train_sample"]) - acc(systems[(cell, PRIMARY_SEED)]["test"])
+    a50 = lambda cell: accuracy_by_agreement(systems[(cell, PRIMARY_SEED)]["test"].pred,
+                                             systems[(cell, PRIMARY_SEED)]["test"].gold, agree)["50Agree"][0]
+    did15, did2 = results["DiD15 = drop(C) − drop(D)"], results["DiD2 = drop(A) − drop(B)"]
+    checks = [
+        ("D1", "D test wF1 ≥ 0.97", ["D"], lambda: (g("D").test >= 0.97, f"{g('D').test:.4f}")),
+        ("D2", "B test wF1 0.96 ± 0.02, and A < B ≤ D", ["A", "B", "D"],
+         lambda: (abs(g("B").test - 0.96) <= 0.02 and g("A").test < g("B").test <= g("D").test,
+                  f"A {g('A').test:.4f}, B {g('B').test:.4f}, D {g('D').test:.4f}")),
+        ("D3", "C within 0.02 of A (test wF1)", ["A", "C"],
+         lambda: (abs(g("C").test - g("A").test) <= 0.02, f"{g('C').test - g('A').test:+.4f}")),
+        ("D4", "gap B and D within ±0.02 of 0; gap C ≥ gap A", ["A", "B", "C", "D"],
+         lambda: (abs(gap("B")) <= 0.02 and abs(gap("D")) <= 0.02 and gap("C") >= gap("A"),
+                  f"A {gap('A'):+.3f}, B {gap('B'):+.3f}, C {gap('C'):+.3f}, D {gap('D'):+.3f}")),
+        ("D5", "50Agree: D ≥ 0.90; C within 0.07 of A", ["A", "C", "D"],
+         lambda: (a50("D") >= 0.90 and abs(a50("C") - a50("A")) <= 0.07,
+                  f"A {a50('A'):.3f}, C {a50('C'):.3f}, D {a50('D'):.3f}")),
+        ("D6", "drop(C) = −0.08 ± 0.04", ["C"], lambda: (abs(g("C").drop + 0.08) <= 0.04, f"{g('C').drop:+.4f}")),
+        ("D7", "DiD15 ≥ +0.05 and DiD2 ≥ +0.04, both CIs excluding 0", ["A", "B", "C", "D"],
+         lambda: (did15[0] >= 0.05 and did15[1][0] > 0 and did2[0] >= 0.04 and did2[1][0] > 0,
+                  f"DiD15 {did15[0]:+.4f} [{did15[1][0]:+.3f}, {did15[1][1]:+.3f}], "
+                  f"DiD2 {did2[0]:+.4f} [{did2[1][0]:+.3f}, {did2[1][1]:+.3f}]")),
+    ]
+    lines += ["## 4. Pre-registered predictions (seed 3407)", "", "| # | Prediction | Observed | Outcome |", "|---|---|---|---|"]
+    for key, text, needs, check in checks:
+        if all(g(c) is not None for c in needs):
+            ok, observed = check()
+            lines.append(f"| {key} | {text} | {observed} | {'**confirmed**' if ok else '**failed**'} |")
+        else:
+            lines.append(f"| {key} | {text} | — | *not run yet* |")
+    lines.append("")
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
