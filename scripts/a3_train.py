@@ -7,7 +7,7 @@
 Trains on FinBen's exact prompt: user turn = the dataset's `query` (instruction + sentence), assistant
 turn = the bare lowercase label. So the adapter learns the same format it's evaluated with.
   --decontaminate  trains on data/finben_train_decontam.csv instead: FinBen train MINUS every sentence
-                   that near-copies a test sentence (from 02_contamination.py). Comparing this model with
+                   that near-copies a test sentence (from a2_contamination.py). Comparing this model with
                    the normal one is the second, independent way to measure contamination.
 Prompt masking (train_on_responses_only): the loss covers only the label + end-of-turn tokens.
 Saves the adapter to models/adapters/fpb-seed<seed>[-decontam].
