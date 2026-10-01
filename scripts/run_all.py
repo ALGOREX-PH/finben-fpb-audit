@@ -111,8 +111,8 @@ run("B2. our train-only twin on TEST (memorisation reference)", "b2_eval.py", "-
 run("B2. zero-shot on the train sample", "b2_eval.py", "--zeroshot", "--split", "train_sample")
 
 # ================================ PART C: fresh sentences FinMA can't have seen ==============
-# Collected once (never re-collected: new news would break the link to your labels). Labelling is
-# interactive and separate: uv run python scripts/c2_label.py
+# Collected once (never re-collected: new news would break the link to the labels). Labels live in
+# data/fresh/labels.csv (shipped: AI-made by Claude); human labelling is separate: scripts/c2_label.py
 if not (config.DATA_DIR / "fresh" / "candidates.csv").exists():
     run("C1. collect fresh 2026 sentences (network)", "c1_collect.py", skip=False)
 run("C3. zero-shot on fresh sentences", "c3_eval.py", "--system", "zeroshot")
