@@ -28,6 +28,7 @@ from config_b import LABELS
 C_DIR = config.ROOT / "results" / "partC"
 MIN_SHRINK = 0.03          # c4_report.py's decision threshold
 N_BOOT, BOOT_SEED = 2000, 0   # c4_report.py's bootstrap settings
+N_ORDERS = 50              # random relabelling orders for the tipping-point CI check
 CLASSES = LABELS + ["missing"]   # FinBen's parser outputs 'missing' when no label is found
 
 
@@ -150,6 +151,69 @@ if __name__ == "__main__":
     lines += ["", f"*{'None' if max(ours_p.values()) >= 0.05 and min(ours_p.values()) >= 0.05 else 'Not all'} of our models "
                   f"differ significantly from FinMA on the fresh set (smallest p = {min(ours_p.values()):.2g}). Our seeds "
                   f"span {max(seeds_w) - min(seeds_w):.3f} wF1 among themselves, about the size of the FinMA gap.*", ""]
+
+    # ---- c) tipping point: how many label changes would flip c4_report.py's verdict?
+    FG = codes(fg)
+    fin_f, fin_o = codes(fin["FinMA-7B"]), codes(fin["Ours, 3-seed ensemble"])
+    lead_fin = wf1(fg, fin["FinMA-7B"]) - wf1(fg, fin["Ours, 3-seed ensemble"])
+    lead_fin_b = boot_wf1(FG, fin_f, I_c4) - boot_wf1(FG, fin_o, I_c4)    # FinBen half of c4's stream
+
+    def shrink_at(Gk):
+        """c4_report.py's shrink, its 95% CI and its verdict, with fresh gold labels Gk."""
+        lead_fresh = boot_wf1(Gk, finma, np.arange(len(Gk))[None])[0] - boot_wf1(Gk, ours, np.arange(len(Gk))[None])[0]
+        sh_b = lead_fin_b - (boot_wf1(Gk, finma, J_c4) - boot_wf1(Gk, ours, J_c4))
+        lo_, hi_ = np.quantile(sh_b, [0.025, 0.975])
+        gk = np.array(CLASSES)[Gk]
+        p_, _, _ = mcnemar(gk, fresh["FinMA-7B"], fresh["Ours, 3-seed ensemble"])
+        shrink = lead_fin - lead_fresh
+        verdict = ("memorisation SUPPORTED" if shrink >= MIN_SHRINK and lo_ > 0 else
+                   "memorisation NOT supported" if lead_fresh >= MIN_SHRINK and p_ < 0.05 else "INCONCLUSIVE")
+        return lead_fresh, shrink, lo_, hi_, verdict
+
+    flip = np.flatnonzero((g == "neutral") & (fresh["FinMA-7B"] == "positive") & (fresh["Ours, 3-seed ensemble"] == "neutral"))
+    flip = flip[np.argsort(ids[flip])]       # primary order: by sentence id (deterministic, content-blind)
+    POS = CLASSES.index("positive")
+    rows, first_rule, first_ci = [], None, None
+    for k in range(len(flip) + 1):
+        Gk = G.copy()
+        Gk[flip[:k]] = POS
+        lead_fresh, shrink, lo_, hi_, verdict = shrink_at(Gk)
+        rows.append(f"| {k} | {lead_fresh:+.4f} | **{shrink:+.4f}** | [{lo_:+.3f}, {hi_:+.3f}] | {verdict} |")
+        first_rule = k if first_rule is None and shrink < MIN_SHRINK else first_rule
+        first_ci = k if first_ci is None and lo_ <= 0 else first_ci
+
+    # the point estimates don't depend on WHICH k sentences are relabelled (they share gold, FinMA and ensemble
+    # labels, so every choice gives the same confusion matrices); only the bootstrap CI can. Check over random orders.
+    rng_o = np.random.default_rng(1)
+    lo_range = {}
+    for _ in range(N_ORDERS):
+        order = rng_o.permutation(flip)
+        for k in range(1, len(flip) + 1):
+            Gk = G.copy()
+            Gk[order[:k]] = POS
+            sh_b = lead_fin_b - (boot_wf1(Gk, finma, J_c4) - boot_wf1(Gk, ours, J_c4))
+            lo_range.setdefault(k, []).append(np.quantile(sh_b, 0.025))
+    ci_first = [min(k for k in lo_range if lo_range[k][r] <= 0) if any(lo_range[k][r] <= 0 for k in lo_range) else None
+                for r in range(N_ORDERS)]
+    ci_first_known = [c for c in ci_first if c is not None]
+
+    lines += ["## c) Tipping point: label changes needed to flip the Part C verdict", "",
+              f"Candidates: the **{len(flip)}** fresh sentences labelled *neutral* that FinMA calls *positive* and our "
+              "ensemble calls *neutral*. Relabelling one of them *positive* moves one sentence from \"only ours right\" "
+              "to \"only FinMA right\", the change most favourable to FinMA a single label edit can make. "
+              f"Sentence ids, in the order used: {', '.join(f'`{i}`' for i in ids[flip])}.", "",
+              "| k relabelled | FinMA lead, fresh | Shrink | 95% CI | c4 verdict |", "|---|---|---|---|---|", *rows, "",
+              f"- The shrink falls below the {MIN_SHRINK} rule at **k = {first_rule}**"
+              f"{'' if first_rule is not None else ' (never, within the candidates)'}.",
+              f"- The CI first includes 0 at **k = {first_ci}** in id order"
+              + (f"; over {N_ORDERS} random orders, at k = {min(ci_first_known)}–{max(ci_first_known)}"
+                 if ci_first_known else "") + ".",
+              "- Which sentences are relabelled doesn't change the point estimates: all candidates share the same gold, "
+              "FinMA and ensemble labels, so any k of them give the same confusion matrices. Only the bootstrap CI depends "
+              "on the choice, through which sentences each replicate happens to draw.", "",
+              f"*k = 0 reproduces c4_report.py exactly (same bootstrap stream). {len(flip)} candidates out of "
+              f"{int(np.sum(g == 'neutral'))} neutral-labelled sentences; a human disagreeing with the AI on "
+              f"{first_rule} of them, all in FinMA's favour, would make the result inconclusive.*", ""]
 
     args.out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
