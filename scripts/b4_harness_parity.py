@@ -16,6 +16,7 @@ import pandas as pd
 from sklearn.metrics import f1_score, matthews_corrcoef
 
 import config_b as config
+import preds
 
 # ---- verbatim from PIXIU src/tasks/flare.py, Classification.process_results (LOWER_CASE = True) ----------
 
@@ -57,11 +58,13 @@ def pixiu_aggregate(items):
 
 test = pd.read_csv(config.DATA_DIR / config.SPLIT_FILES["test"])
 docs = [{"choices": json.loads(c), "gold": int(g)} for c, g in zip(test.choices, test.gold)]
+test_gold = test.set_index("id").answer.str.strip().str.lower()     # shipped predictions carry ids only
 rows = []
 for f in sorted((config.PRED_DIR / "test").glob("*.csv")):
-    ours = pd.read_csv(f, keep_default_na=False)
+    ours = preds.read(f, test_gold)
     if len(ours) != len(test) or "raw" not in ours:
         continue
+    assert (ours.id.values == test.id.values).all(), f"{f.name}: rows not in test-set order"
     items = [pixiu_process_results(d, [r]) for d, r in zip(docs, ours.raw)]
     same_pred = np.mean([it["f1"][0] == p for it, p in zip(items, ours.pred)])
     same_gold = np.mean([it["f1"][1] == g for it, g in zip(items, ours.gold)])
