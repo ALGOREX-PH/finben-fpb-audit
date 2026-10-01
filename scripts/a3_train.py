@@ -44,7 +44,7 @@ if args.skip_existing and (out_dir / "train_info.json").exists():
 
 train_file = config.DATA_DIR / ("finben_train_decontam.csv" if args.decontaminate else "finben_train.csv")
 if not train_file.exists():
-    raise SystemExit(f"{train_file.name} missing -- run 01_download.py" + (" and 02_contamination.py" if args.decontaminate else ""))
+    raise SystemExit(f"{train_file.name} missing -- run a1_download.py" + (" and a2_contamination.py" if args.decontaminate else ""))
 train = pd.read_csv(train_file)
 valid_file = config.DATA_DIR / config.VALID_FILE
 valid = pd.read_csv(valid_file) if valid_file.exists() else None
