@@ -84,7 +84,7 @@ def run_finma(queries, batch=8, wrap=True):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     who = ap.add_mutually_exclusive_group(required=True)
-    who.add_argument("--adapter", help="run name under models/task03")
+    who.add_argument("--adapter", help="run name under models/adapters (or --adapter-dir)")
     who.add_argument("--zeroshot", action="store_true")
     who.add_argument("--finma", action="store_true")
     ap.add_argument("--finma-raw", action="store_true",
