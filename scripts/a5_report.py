@@ -1,4 +1,4 @@
-"""Step 5: results/REPORT.md -- leaderboard score vs contamination-corrected score. No GPU, seconds.
+"""Step 5: results/partA/REPORT.md -- leaderboard score vs contamination-corrected score. No GPU, seconds.
 
   uv run python scripts/a5_report.py
 
