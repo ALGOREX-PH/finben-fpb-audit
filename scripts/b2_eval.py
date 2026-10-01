@@ -35,7 +35,7 @@ def load_split(split):
     return pd.read_csv(config.DATA_DIR / config.SPLIT_FILES[split])
 
 
-def run_gemma(queries, adapter=None, batch=16):
+def run_gemma(queries, adapter=None, batch=16, adapter_dir=None):
     from ftlib.llm_classify import classify
     from ftlib.model_loader import load_model
     from unsloth import FastModel
@@ -43,7 +43,7 @@ def run_gemma(queries, adapter=None, batch=16):
     model, tokenizer = load_model(config.MODEL_NAME, max_seq_length=1024)
     if adapter:
         from peft import PeftModel
-        model = PeftModel.from_pretrained(model, str(config.ADAPTERS_DIR / adapter))
+        model = PeftModel.from_pretrained(model, str((adapter_dir or config.ADAPTERS_DIR) / adapter))
     tokenizer = get_chat_template(tokenizer, chat_template=config.CHAT_TEMPLATE)
     FastModel.for_inference(model)
     return classify(model, tokenizer, [[{"role": "user", "content": q}] for q in queries], LABELS, batch=batch, max_new_tokens=16)
