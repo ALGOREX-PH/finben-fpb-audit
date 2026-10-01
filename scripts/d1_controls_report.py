@@ -259,6 +259,26 @@ if __name__ == "__main__":
             lines.append(f"| {key} | {text} | — | *not run yet* |")
     lines.append("")
 
+    # ---- 5. verdict
+    prelim = " (preliminary: AI labels)" if ai_labels else ""
+    if g("C") is None or g("D") is None:
+        verdict, detail = "NOT READY: cells C and D (seed 3407) are needed", []
+    else:
+        d_c, d_d, (did, (lo, hi), _) = g("C").drop, g("D").drop, did15
+        if did >= MIN_DID and lo > 0 and d_d <= FINMA_SIZED and d_c > FINMA_SIZED:
+            verdict = "MEMORISATION explains the pattern" + prelim
+        elif lo <= 0 <= hi and d_c <= FINMA_SIZED and d_d <= FINMA_SIZED:
+            verdict = "OVER-SPECIALISATION explains the pattern" + prelim
+        else:
+            verdict = "INCONCLUSIVE" + prelim
+        detail = [f"- drop(C) {d_c:+.4f}, drop(D) {d_d:+.4f}, FinMA {finma_scored.drop:+.4f} (FinMA-sized: ≤ {FINMA_SIZED})",
+                  f"- DiD15 {did:+.4f}, 95% CI [{lo:+.3f}, {hi:+.3f}]", ""]
+    lines += ["## 5. Verdict (rule fixed before the runs)", "", *detail, f"**{verdict}.**", "",
+              "*Memorisation: DiD15 ≥ 0.03 with CI excluding 0, drop(D) FinMA-sized, drop(C) not. Over-specialisation: "
+              "DiD15's CI includes 0 and both drops FinMA-sized. Anything else: inconclusive. Part D shows what "
+              "memorisation and over-training do to OUR model; it can show memorisation can produce FinMA's pattern, "
+              "not that it did for FinMA.*", ""]
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
