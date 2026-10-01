@@ -165,6 +165,25 @@ if __name__ == "__main__":
     if missing:
         lines += ["**Not run yet:** " + "; ".join(f"{c} seed {s} ({', '.join(m)})" for c, s, m in missing), ""]
 
+    # ---- 1. per system
+    def acc(d):
+        return float((d.pred.values == d.gold.values).mean())
+
+    lines += ["## 1. Scores per cell and seed", "",
+              "| Cell | Seed | FinBen test wF1 [95% CI] | Train-sample acc | Test acc | Gap (train − test) | "
+              "Fresh wF1 [95% CI] | Drop (fresh − FinBen) [95% CI] |", "|---|---|---|---|---|---|---|---|"]
+
+    def row(label, seed, s, sc):
+        a_tr, a_te = acc(s["train_sample"]), acc(s["test"])
+        return (f"| {label} | {seed} | {fmt_ci(sc.test, sc.test_boot)} | {a_tr:.4f} | {a_te:.4f} | {a_tr - a_te:+.4f} | "
+                f"{fmt_ci(sc.fresh, sc.fresh_boot)} | {sc.drop:+.4f} [{ci(sc.drop_boot)[0]:+.3f}, {ci(sc.drop_boot)[1]:+.3f}] |")
+
+    for (cell, seed), s in systems.items():
+        lines.append(row(f"**{cell}** {CELLS[cell][2]}", seed, s, scored[(cell, seed)]))
+    lines += [row("FinMA-7B (official prompt)", "—", finma, finma_scored), "",
+              "*Every model trained on the train sample, so its gap is train-vs-test familiarity. Contaminated cells "
+              "(B, D) also trained on the test sentences: their gap should be near 0, like a model that saw both.*", ""]
+
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines), encoding="utf-8")
     print("\n".join(lines))
