@@ -4,6 +4,9 @@
   uv run python scripts/b2_eval.py --zeroshot --split test
   uv run python scripts/b2_eval.py --finma --split test
   add --limit 40 for a smoke test
+  Part D controls:  ... --adapter e15_lr0.0004_r16_s3407_tvt --adapter-dir models/controls \
+                        --pred-dir results/partD/predictions --split test
+  (control adapters can't write into results/partB, and existing Part B files are never overwritten)
 
 Splits: validation (choosing), test (the final number, once), train_sample (MEMO_SAMPLE random train
 sentences, for the memorisation check: a model does better on sentences it trained on).
