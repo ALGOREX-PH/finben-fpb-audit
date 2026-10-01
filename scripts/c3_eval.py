@@ -45,7 +45,8 @@ def finben_template():
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", required=True, choices=["zeroshot", "ours", "finma"])
+    ap.add_argument("--system", required=True, choices=["zeroshot", "ours", "finma", "control"])
+    ap.add_argument("--adapter", help="--system control: run name under --adapter-dir, e.g. e15_lr0.0004_r16_s3407_tvt")
     ap.add_argument("--seed", type=int, default=3407)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--skip-existing", action="store_true")
@@ -57,7 +58,9 @@ if __name__ == "__main__":
 
     sel = json.loads(config.SELECTED.read_text())
     adapter = f"e{sel['epochs']}_lr{sel['lr']:g}_r{sel['rank']}_s{args.seed}_tv"
-    name = {"zeroshot": "e4b_zeroshot", "finma": "finma_7b", "ours": adapter}[args.system]
+    if args.system == "control" and not args.adapter:
+        ap.error("--system control needs --adapter")
+    name = {"zeroshot": "e4b_zeroshot", "finma": "finma_7b", "ours": adapter, "control": args.adapter}[args.system]
     cand = pd.read_csv(config.DATA_DIR / "fresh" / "candidates.csv")
     out = args.pred_dir / f"{name}.csv"
     if args.skip_existing and out.exists() and len(pd.read_csv(out)) == len(cand):
@@ -77,7 +80,8 @@ if __name__ == "__main__":
     if args.system == "finma":
         raws, probs = b2.run_finma(queries, wrap=True)
     else:
-        raws, probs = b2.run_gemma(queries, adapter if args.system == "ours" else None)
+        raws, probs = b2.run_gemma(queries, {"ours": adapter, "control": args.adapter}.get(args.system),
+                                   adapter_dir=args.adapter_dir)
     res = pd.DataFrame({"id": cand.id, "text": cand.text, "raw": raws,
                         "pred": [b2.finben_parse(r, CHOICES) for r in raws],
                         "pred_argmax": np.array(LABELS)[probs.argmax(1)]})
