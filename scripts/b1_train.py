@@ -42,12 +42,15 @@ if __name__ == "__main__":
     ap.add_argument("--rank", type=int, default=config.BASE["rank"])
     ap.add_argument("--seed", type=int, default=config.SEARCH_SEED)
     ap.add_argument("--data", choices=list(DATA_SUFFIX), default="train")
+    ap.add_argument("--control", action="store_true",
+                    help="Part D control: adapter -> models/controls (implied by --data trainvaltest)")
     ap.add_argument("--max-steps", type=int, default=-1)
     ap.add_argument("--skip-existing", action="store_true")
     args = ap.parse_args()
 
     name = run_name(args.epochs, args.lr, args.rank, args.seed, args.data)
-    out_dir = config.ADAPTERS_DIR / name
+    control = args.control or args.data == "trainvaltest"
+    out_dir = (config.CONTROLS_DIR if control else config.ADAPTERS_DIR) / name
     if args.skip_existing and (out_dir / "train_info.json").exists():
         print(f"skip: {name} already trained")
         raise SystemExit(0)
