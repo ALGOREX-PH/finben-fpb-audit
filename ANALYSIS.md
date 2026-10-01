@@ -3,7 +3,7 @@
 One benchmark (FinBen's Financial PhraseBank split: 3,100 train / 776 validation / 970 test), two questions:
 - **Part A:** does FinBen's own train split leak into its test split, and does that inflate a fine-tune's score? *(done)*
 - **Part B:** can a laptop fine-tune of Gemma 4 E4B-it beat FinMA-7B (published 0.88), choosing only on validation? *(done: behind FinMA's re-run, which shows signs of test contamination)*
-- **Part C:** on fresh 2026 sentences FinMA can't have seen, does its lead survive? *(done: no. FinMA drops twice as much as we do; memorisation supported. Labels are AI-made.)*
+- **Part C:** on fresh 2026 sentences FinMA can't have seen, does its lead survive? *(done, preliminary: apparently not. FinMA drops about twice as much as we do, consistent with memorisation; labels are AI-made and the Part D controls are pending.)*
 
 ## Part A: contamination
 
